@@ -1,0 +1,20 @@
+﻿<Page x:Class="WpfApp1.vue.lecteurNA"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.vue"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      Title="lecteurNA" Width="563.084">
+    <StackPanel>
+        <TextBox Name="sdsf" HorizontalAlignment="Left" Height="315"  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="563" AcceptsReturn="True" AcceptsTab="True"/>
+
+        <StackPanel Orientation="Horizontal">
+            <Label> </Label>
+            <Button Name="b" Content="Butto" HorizontalAlignment="center"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="-2.68,-1.775"/>
+            <Label>              </Label>
+            <Button Name="c" Content="Butto" HorizontalAlignment="center"  VerticalAlignment="Top" Width="75" RenderTransformOrigin="-2.68,-1.775"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

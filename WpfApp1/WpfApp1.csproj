@@ -102,6 +102,9 @@
     <Compile Include="vue\AjouterNA.xaml.cs">
       <DependentUpon>AjouterNA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="vue\lecteurNA.xaml.cs">
+      <DependentUpon>lecteurNA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vue\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
     </Compile>
@@ -120,6 +123,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vue\AjouterNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vue\lecteurNA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

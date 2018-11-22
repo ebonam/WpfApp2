@@ -8,7 +8,24 @@
         Title="Menu" Height="450" Width="800">
     <DockPanel LastChildFill="True" Height="auto" Width="auto">
         <StackPanel Height="Auto" Width="200"  DockPanel.Dock="Left">
-                    </StackPanel>
+            <Label Height="50">  </Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+            <Button>fesdfkozef</Button>
+            <Label Height="50"></Label>
+
+
+
+
+        </StackPanel>
         <!--<StackPanel Height="auto" Width="auto" DockPanel.Dock="Bottom"></StackPanel>
         <StackPanel DockPanel.Dock="Right"></StackPanel>
         <StackPanel  DockPanel.Dock="Top" ></StackPanel>-->

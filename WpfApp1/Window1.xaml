@@ -6,9 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="Window1" Height="450" Width="800">
-    <Grid>
-        <Button Name="b" Content="Button" HorizontalAlignment="Left" Margin="440,361,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-2.68,-1.775"/>
-        <TextBox Name="sdsf" HorizontalAlignment="Left" Height="147" Margin="10,43,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="550" AcceptsReturn="True" AcceptsTab="True"/>
-
+    <Grid Margin="0,0,2,5">
+        
     </Grid>
 </Window>

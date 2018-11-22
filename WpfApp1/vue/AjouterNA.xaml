@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="AjouterNA" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="AjouterNA" Height="450" Width="222.278">
+    <StackPanel Margin="0,0,-8,0">
+        <Label Height="49"></Label>
+        <StackPanel Orientation="Horizontal">
+            <Label>mot cle :</Label>
+            <TextBox Width="95" ></TextBox>
+        </StackPanel>
+        <Label></Label>
+        <StackPanel Orientation="Horizontal">
+            <Label Width="56">Rayon :</Label>
+            <TextBox Width="95" ></TextBox>
+            <Label></Label>
+            <Button>Aide</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Label>mot complet :</Label>
+            <CheckBox VerticalAlignment="Center" ></CheckBox>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button>mot cle :</Button>
+            <Button>rgfswd</Button>
+        </StackPanel>
+    
+    </StackPanel>
 </Window>
