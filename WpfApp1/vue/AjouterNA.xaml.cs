@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using WpfApp1.code.bdd;
 namespace WpfApp1.vue
 {
     /// <summary>
@@ -22,6 +22,22 @@ namespace WpfApp1.vue
         public AjouterNA()
         {
             InitializeComponent();
+            _Valider.Click += Ajouter;
+            cancel.Click +=  listee;
         }
+
+        private void listee(object sender, RoutedEventArgs e)
+        {
+            Bdd.Instance().listeNA();
+        }
+
+        private void Ajouter(object sender, RoutedEventArgs e)
+        {
+            Bdd.Instance().addNA(this._MC.Text.ToUpper(),  int.Parse( this._rayon.Text), (bool)this._bool.IsChecked, this._combo.SelectedIndex);
+            Console.WriteLine(this._MC.Text.ToUpper()+"   " +int.Parse(this._rayon.Text)+"        " +(bool)this._bool.IsChecked+"   "+this._combo.SelectedIndex);
+        }
+
+
+
     }
 }

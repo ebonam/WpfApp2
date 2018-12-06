@@ -5,14 +5,30 @@ namespace WpfApp1.code.bdd
     [Table("NA")]
     class NAbdd
     {
+        public void NAbdd1(string Nom, int Rayon, bool motcomplet, int sec)
+        {
+            _Nom = Nom;
+            _Rayon = Rayon;
+            _motcomplet = motcomplet;
+            _sec = sec;
+        }
 
-            [PrimaryKey, AutoIncrement]
+        public override string ToString()
+        {
+            return ""+_Nom+"  "+_Rayon+"   "+ _motcomplet+"   "+_sec+"\n";
+
+        }
+
+        [PrimaryKey, AutoIncrement]
             public int _Id { get; set; }
-            [Column("test")]
-            public string _LastName { get; set; }
-            [Column("motcomplet")]
-            public bool _motcomplet { get; set; }
+            [Column("Nom")]
+            public string _Nom { get; set; }
+            [Column("Rayon")]
+        public int _Rayon { get; set; }
+
+        [Column("boolComplet")]
+        public bool _motcomplet { get; set; }
             [Column("secteur")]
-            public int _RoleId { get; set; }     
+            public int _sec { get; set; }     
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
+using WpfApp1.code;
 using WpfApp1.code.bdd.cmdVlep;
 
 namespace WpfApp1
@@ -14,7 +15,7 @@ namespace WpfApp1
         public Window1()
         {
             InitializeComponent();
-            b.Click += Test;
+            b.Click += ReadXL.getExcelFile;
         }
 
         private void Test2(object sender, RoutedEventArgs e)

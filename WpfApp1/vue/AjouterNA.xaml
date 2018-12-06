@@ -5,28 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="AjouterNA" Height="450" Width="222.278">
-    <StackPanel Margin="0,0,-8,0">
+        Title="Ajouter un mot clé" Height="260.528" Width="222.278">
+    <StackPanel Margin="0,0,-8,-2">
         <Label Height="49"></Label>
         <StackPanel Orientation="Horizontal">
             <Label>mot cle :</Label>
-            <TextBox Width="95" ></TextBox>
+            <TextBox Name="_MC" Width="95" ></TextBox>
         </StackPanel>
         <Label></Label>
         <StackPanel Orientation="Horizontal">
             <Label Width="56">Rayon :</Label>
-            <TextBox Width="95" ></TextBox>
+            <TextBox Name="_rayon" Width="95" ></TextBox>
             <Label></Label>
             <Button>Aide</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>mot complet :</Label>
-            <CheckBox VerticalAlignment="Center" ></CheckBox>
+            <CheckBox Name="_bool" VerticalAlignment="Center" ></CheckBox>
         </StackPanel>
+        <Label> </Label>
         <StackPanel Orientation="Horizontal">
-            <Button>mot cle :</Button>
-            <Button>rgfswd</Button>
+
+            <Label Width="62">Secteur</Label>
+            <ComboBox Name="_combo" Width="128">
+                <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
+                <ComboBoxItem >Epicerie</ComboBoxItem>
+                <ComboBoxItem>DPH</ComboBoxItem>
+                <ComboBoxItem>Frais</ComboBoxItem>
+                <ComboBoxItem>NAL</ComboBoxItem>
+                <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+            </ComboBox>
         </StackPanel>
-    
+        <Label>  </Label>
+        <StackPanel Orientation="Horizontal">
+            <Label Width="34"></Label>
+            <Button Name="_Valider">mot cle :</Button>
+            <Label Width="58"></Label>
+            <Button Name="cancel">Annuler</Button>
+        </StackPanel>
+        
+
     </StackPanel>
 </Window>
