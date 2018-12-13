@@ -45,45 +45,50 @@ namespace WpfApp1.code.bdd
         public void addNA(string Nom, int rayon, bool MC,int secteur)
         {
             NAbdd nAbdd = new NAbdd();
-            nAbdd.NAbdd1(Nom, rayon, MC, secteur);
+            nAbdd.setter(Nom, rayon, MC, secteur);
             Console.WriteLine(nAbdd.ToString());
             addNA(nAbdd);
          }
         public List<NAbdd> listeNA() {
             List<NAbdd> listena = conn.Query<NAbdd>("SELECT * FROM NA ");
 
-            foreach (NAbdd n in listena){
+          /*  foreach (NAbdd n in listena){
 
                 Console.WriteLine(n.ToString());
             }
-            Console.Write("\n ");
+            Console.Write("\n ");*/
             return listena;
         }
-        public void ModifNA(NAbdd na) {
-            conn.Update(na);
-
+        public void ModifNA(ListeArticle lA) {
+            conn.Update(lA);
         }
 
-
-        public void addProduit() {
-            //@todo
+        public void addProduit(long codebar, string lib, int alle, int trave) {
+            ListeArticle lA = new ListeArticle();
+            lA.setter(codebar, lib, alle, trave);
+            addProduit(lA);
         }
 
-        public string searchLocProduit() {
+        private void addProduit(ListeArticle lA)
+        {
+            conn.Insert(lA);
+        }
 
+        public List<ListeArticle> searchLocProduit(long produ) {
 
-            return null;
+            List<ListeArticle> roles = conn.Table<ListeArticle>().Where(x => x._codebar == produ).ToList();
+            return roles;
         }
 
         public void ViderTProduit()
         {
 
-            //conn.DropTable<Produit>();
+            conn.DropTable<ListeArticle>();
            
         }
 
-
-
+        /**not used 
+         * reference & test*/
 
         public void Test()
         {
@@ -94,9 +99,7 @@ namespace WpfApp1.code.bdd
          //   IEnumerable<NAbdd> personnes = conn.Query<NAbdd>("SELECT * FROM People WHERE RoleId = {0}", r1._Id);
             conn.Query<NAbdd>("");
         }
-        public void SelectGencodetoloc() {
-
-        }
+       
 
        
     }

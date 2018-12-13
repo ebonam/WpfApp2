@@ -50,7 +50,7 @@ namespace WpfApp1
                     var qte = gege3[0].Value;
                     l = l.Replace(gege3[0].Value, "");
                     string lib = l;//bordel retirer
-                    d.Add(new ProductVlep(gencode, prix1, prix2, qte, lib));
+                    d.Add(new ProductVlep(long.Parse(gencode), prix1, prix2, qte, lib));
 
 
                     //l.

@@ -1,48 +1,74 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;      
 
 namespace WpfApp1.code.bdd.cmdVlep
 {
-    class VlepCmd
+    public class VlepCmd
     {
+        private List<ProductVlep> d;
 
-        //Gâteaux pépites de chocolat Pépito Pépito 317241 24378 3048282900646  1.0 le paquet de 5 - 150 g 1,01€ 1,01€ 
-        public static void Test(string sdsf)
+        public void Test(string sdsf)
         {
-            List<ProductVlep> d = new List<ProductVlep>();
+            d = new List<ProductVlep>();
             var liness = sdsf.Split('\n');//Regex.Matches(sdsf, "\n");
             foreach (string l in liness)
             {
-                MatchCollection gege= Regex.Matches(l, "\n");
-                //
-                var gencode = gege[2].Value;
-                l.Replace(gege[0].Value, "");
-                l.Replace(gege[1].Value, "");
-                l.Replace(gege[2].Value, "");
-
-                var gege2= Regex.Matches(l, "[0-9]+,[0-9]+€");
-                var prix1= gege2[0].Value;
-                string prix2 = gege2[1].Value;
-                l.Replace(gege2[0].Value, "");
-                l.Replace(gege2[1].Value, "");
-
-                var gege3 = Regex.Matches(l, "[0-9]+\\.[0-9]+");
-                var qte = gege3[0].Value;
-                l.Replace(gege3[0].Value, "");
-                string lib = l;//bordel retirer
-                d.Add(new ProductVlep(gencode, prix1, prix2, qte, lib));
-          
-                foreach(var v in d) {
-                    Console.WriteLine(d.ToString());
-}
-                //l.
-                //d.Add(l.Value.Replace("^FS", "").Replace("^FD", ""));
+                if (!l.Equals("\r") && !l.Equals(""))
+                {
+                    string lib = l;
+                    MatchCollection gege = Regex.Matches(lib, "([0-9]{4,13} ){2}");
+                    MatchCollection gegebis = Regex.Matches(lib, "([0-9]{4,13} )");
+                    var gencode = gegebis[2].Value;
+                    lib = lib.Replace(gegebis[2].Value, "");
+                    lib = lib.Replace(gegebis[1].Value, "");
+                    lib = lib.Replace(gegebis[0].Value, "");
+                    var gege2 = Regex.Matches(lib, "[0-9]+,[0-9]+€");
+                    var prix1 = gege2[0].Value;
+                    string prix2 = gege2[1].Value;
+                    lib = lib.Replace(gege2[0].Value, "");
+                    lib = lib.Replace(gege2[1].Value, "");
+                    var gege3 = Regex.Matches(l, "[0-9]+\\.[0-9]+");
+                    var qte = gege3[0].Value;
+                    lib = lib.Replace(gege3[0].Value, "");
+                    ProductVlep pv = new ProductVlep(long.Parse(gencode),prix1, prix2, qte, lib);
+                    pv.searchemplacement();
+                    d.Add(pv);
+                }
             }
-                return ;
+        }
+
+        public void writeExcelFile()
+        {
+            Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\antoine\Desktop\test.xlsm");
+            _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            xlApp.Visible = true;
+            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI; 
+            int i = 1;
+            foreach(ProductVlep product in d)
+            {               
+                    xlWorksheet.Cells[i, 1].value2 =product.Lib;
+                    xlWorksheet.Cells[i, 2].value2 =product.Gencode;
+                    xlWorksheet.Cells[i, 3].value2 =product.Prix1;
+                    xlWorksheet.Cells[i, 4].value2 =product.Qte;
+                    xlWorksheet.Cells[i, 5].value2 =product.Prix2;
+                    xlWorksheet.Cells[i, 6].value2 = product.Loc;
+                i++;
+
+            }
+            xlWorkbook.PrintPreview();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Marshal.ReleaseComObject(xlWorksheet);
+            xlWorkbook.Close();
+            Marshal.ReleaseComObject(xlWorkbook);
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
         }
     }
 }
+

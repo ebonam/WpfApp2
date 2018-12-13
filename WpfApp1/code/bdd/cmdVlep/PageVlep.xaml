@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="WpfApp1.code.bdd.cmdVlep.PageVlep"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp1.code.bdd.cmdVlep"
+      mc:Ignorable="d"
+       Width="661" Height="354">
+    <StackPanel Background="White">
+        <Label></Label>
+        <Label>Coller ci-dessous la commande de VLEP</Label>
+        <Label Height="34"></Label>
+        <TextBox Height="238" Margin="45,0,98,0" Name="textblock" AcceptsReturn="True" AcceptsTab="True"/>
+        <Label></Label>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label Width="146"></Label>
+            <Button Width="67" HorizontalAlignment="Center" Click="Button_Click">Valider</Button>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

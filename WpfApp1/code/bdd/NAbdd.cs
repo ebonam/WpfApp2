@@ -5,7 +5,7 @@ namespace WpfApp1.code.bdd
     [Table("NA")]
     class NAbdd
     {
-        public void NAbdd1(string Nom, int Rayon, bool motcomplet, int sec)
+        public void setter(string Nom, int Rayon, bool motcomplet, int sec)
         {
             _Nom = Nom;
             _Rayon = Rayon;

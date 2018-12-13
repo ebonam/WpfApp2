@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.code.bdd.cmdVlep;
 
-namespace WpfApp1.vue
+namespace WpfApp1
 {
     /// <summary>
-    /// Logique d'interaction pour lecteurNA.xaml
+    /// Logique d'interaction pour @void.xaml
     /// </summary>
-    public partial class lecteurNA : Page
+    public partial class vooid : Page
     {
-        public lecteurNA()
+        public vooid()
         {
             InitializeComponent();
-            b.Click += te;
-        }
-
-        private void te(object sender, RoutedEventArgs e)
-        {
-         //  VlepCmd.Test( sdsf.Text);
         }
     }
 }

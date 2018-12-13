@@ -35,11 +35,11 @@ namespace WpfApp1.code
                 {
                     //new line
                     if (j == 1)
-                        Console.Write("\r\n");
+                        //Console.Write("\r\n");
 
                     //write the value to the console
                     if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                        Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
+                       Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
                 }
             }
 
@@ -58,7 +58,6 @@ namespace WpfApp1.code
             //close and release
             xlWorkbook.Close();
             Marshal.ReleaseComObject(xlWorkbook);
-
             //quit and release
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);

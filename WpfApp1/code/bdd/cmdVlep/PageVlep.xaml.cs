@@ -10,30 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.code.bdd.cmdEmag;
-using WpfApp1.code.bdd.cmdVlep;
 
-namespace WpfApp1.vue
+namespace WpfApp1.code.bdd.cmdVlep
 {
     /// <summary>
-    /// Logique d'interaction pour Menu.xaml
+    /// Logique d'interaction pour PageVlep.xaml
     /// </summary>
-    public partial class Menu : Window
+    public partial class PageVlep : UserControl
     {
-        public Menu()
+        public PageVlep()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ContentArea.Content = new PageVlep();
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            new CmdEmag().getExcelFile();
+            VlepCmd vlepCmd= new VlepCmd();
+            vlepCmd.Test(textblock.Text);
+            vlepCmd.writeExcelFile();
         }
     }
 }
