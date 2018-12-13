@@ -23,16 +23,15 @@
             this.Prix2 =prix2;
             this.Qte =qte;
             this.Lib = lib;
-            Loc = "";
+            Loc = "NA";
         }
-        public void searchemplacement() {
+        public void Searchemplacement() {
          //   Bdd.Instance().searchLocProduit(this.gencode);
         }
 
-        public string  oString()
+        public string  OString()
         {
              return Gencode + "   " + lib + "   " + qte + "   " + prix1 + "   " + prix2;
-
         }
     }
 }

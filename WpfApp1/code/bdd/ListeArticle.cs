@@ -6,11 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WpfApp1.code.bdd
-{
+{  
     class ListeArticle
     {
         [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Column("codebar")]
         public long _codebar { get; set; }
         [Column("lib")]
@@ -20,7 +20,7 @@ namespace WpfApp1.code.bdd
         [Column("trave")]
         public int _trave { get; set; }
 
-        public void setter(long codebar, string lib, int alle, int trave)
+        public void Setter(long codebar, string lib, int alle, int trave)
         {
             _codebar = codebar;
             _lib = lib;

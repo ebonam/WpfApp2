@@ -1,12 +1,12 @@
-﻿<Window x:Class="WpfApp1.vue.AjouterNA"
+﻿<UserControl x:Class="WpfApp1.vue.AjouterNA"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Ajouter un mot clé" Height="260.528" Width="222.278">
-    <StackPanel Margin="0,0,-8,-2">
+         Height="260.528" Width="222.278">
+    <StackPanel Margin="0,0,-8,-2" Background="White">
         <Label Height="49"></Label>
         <StackPanel Orientation="Horizontal">
             <Label>mot cle :</Label>
@@ -23,7 +23,7 @@
             <Label>mot complet :</Label>
             <CheckBox Name="_bool" VerticalAlignment="Center" ></CheckBox>
         </StackPanel>
-        <Label> </Label>
+        <Label></Label>
         <StackPanel Orientation="Horizontal">
 
             <Label Width="62">Secteur</Label>
@@ -36,14 +36,14 @@
                 <ComboBoxItem>Fruit et legumes</ComboBoxItem>
             </ComboBox>
         </StackPanel>
-        <Label>  </Label>
+        <Label></Label>
         <StackPanel Orientation="Horizontal">
             <Label Width="34"></Label>
             <Button Name="_Valider">mot cle :</Button>
             <Label Width="58"></Label>
             <Button Name="cancel">Annuler</Button>
         </StackPanel>
-        
+
 
     </StackPanel>
-</Window>
+</UserControl>

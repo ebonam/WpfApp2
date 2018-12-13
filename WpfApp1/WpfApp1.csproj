@@ -122,13 +122,6 @@
     <Compile Include="code\Etiquette.cs" />
     <Compile Include="code\Fonctions.cs" />
     <Compile Include="code\ReadXL.cs" />
-    <Compile Include="code\Secteur.cs" />
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="void.xaml.cs">
-      <DependentUpon>void.xaml</DependentUpon>
-    </Compile>
     <Compile Include="vue\AjouterNA.xaml.cs">
       <DependentUpon>AjouterNA.xaml</DependentUpon>
     </Compile>
@@ -144,22 +137,11 @@
     <Compile Include="vue\pageEtiquettr.xaml.cs">
       <DependentUpon>pageEtiquettr.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="code\bdd\cmdVlep\PageVlep.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="void.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,10 +166,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vue\pageEtiquettr.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

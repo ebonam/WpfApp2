@@ -19,15 +19,15 @@ namespace WpfApp1.vue
     /// <summary>
     /// Logique d'interaction pour lecteurNA.xaml
     /// </summary>
-    public partial class lecteurNA : Page
+    public partial class LecteurNA : Page
     {
-        public lecteurNA()
+        public LecteurNA()
         {
             InitializeComponent();
-            b.Click += te;
+            b.Click += Te;
         }
 
-        private void te(object sender, RoutedEventArgs e)
+        private void Te(object sender, RoutedEventArgs e)
         {
          //  VlepCmd.Test( sdsf.Text);
         }

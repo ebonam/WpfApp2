@@ -35,13 +35,13 @@ namespace WpfApp1.code.bdd.cmdVlep
                     var qte = gege3[0].Value;
                     lib = lib.Replace(gege3[0].Value, "");
                     ProductVlep pv = new ProductVlep(long.Parse(gencode),prix1, prix2, qte, lib);
-                    pv.searchemplacement();
+                    pv.Searchemplacement();
                     d.Add(pv);
                 }
             }
         }
 
-        public void writeExcelFile()
+        public void WriteExcelFile()
         {
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             Workbook xlWorkbook = xlApp.Workbooks.Open(@"C:\Users\antoine\Desktop\test.xlsm");
@@ -58,7 +58,6 @@ namespace WpfApp1.code.bdd.cmdVlep
                     xlWorksheet.Cells[i, 5].value2 =product.Prix2;
                     xlWorksheet.Cells[i, 6].value2 = product.Loc;
                 i++;
-
             }
             xlWorkbook.PrintPreview();
             GC.Collect();

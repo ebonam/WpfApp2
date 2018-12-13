@@ -33,7 +33,7 @@ namespace WpfApp1.vue
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new CmdEmag().getExcelFile();
+            new CmdEmag().GetExcelFile();
         }
     }
 }

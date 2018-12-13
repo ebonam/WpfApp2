@@ -1,12 +1,12 @@
 ﻿namespace WpfApp1.code.bdd.cmdEmag
 {
-    internal class ArticleEmag
+    public class ArticleEmag
     {
-        internal dynamic ean;
-        internal dynamic lib;
-        internal dynamic qte;
-        internal dynamic prix;
-        internal dynamic loc;
+        public string _ean;
+        public string _lib;
+        public string _qte;
+        public string _prix;
+        public string _loc;
 
         public ArticleEmag()
         {
