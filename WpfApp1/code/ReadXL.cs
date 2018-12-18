@@ -7,6 +7,7 @@ namespace WpfApp1.code
 {   /**
     *classe de test
     **/
+    //undone: juste pour test
     class ReadXL
     {
         public static void GetExcelFile(object sender, RoutedEventArgs e)

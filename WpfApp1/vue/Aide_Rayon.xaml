@@ -1,0 +1,121 @@
+﻿<Window x:Class="WpfApp1.vue.Aide_Rayon"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.vue"
+        mc:Ignorable="d"
+        Title="Aide_Rayon" Height="321.648" Width="1003.957" MaxWidth="1003.957" MaxHeight="321.648" MinWidth="1003.957" MinHeight="321.648">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel>
+            <Label FontWeight="Bold">DPH:</Label>
+            <Label></Label>
+            <Label>
+                42: Rayon bébé
+            </Label>
+
+            <Label>
+                40: Gel douche-Dentaire-Savon-Rasoir-Deodorant
+            </Label>
+
+            <Label>38: Shampoing-Maquillage-Fixateur-Coloration
+            </Label>
+            <Label>
+                36: Papier hygienique-Hygiene feminine-Mouchoirs
+            </Label>
+            <Label>
+                34: Lessive-Lave linge-Detachant-Adoussisant
+            </Label>
+            <Label>
+                32: Vaisselle-Eponge-Cirage-Allume Feu
+            </Label>
+            <Label>
+                30: Rayon chat
+            </Label>
+            <Label>
+                28: Rayon chien
+            </Label>
+
+
+
+
+        </StackPanel>
+        <Label></Label>
+        <StackPanel>
+            <Label FontWeight="Bold">Epicerie:
+        </Label>
+            <Label></Label>
+        <Label>
+            26: Epices-Preparation paticerie-Sucre-Farine-Compote-Plaque chocolat
+        </Label>
+        <Label>
+
+
+            24: Thé-Poudre chocolat-Confitures-Miel-Nutella-Café
+        </Label>
+        <Label>
+
+            22: Bonbon-Cereal-Biscotte
+        </Label>
+        <Label>
+
+            20: Biscuit-Gouter
+        </Label>
+        <Label>
+
+            18 Soupe-Condiment-Conserve poisson-Huile-Vinaigre-Sauce-Sel
+        </Label>
+        <Label>
+
+            16 Paté-Conserve
+        </Label>
+        <Label>
+
+            14 Bio-Pates-Purée-Legume sec-Riz-Sauce pour pates
+        </Label>
+
+        </StackPanel>
+        <Label></Label>
+        <StackPanel>
+
+            <Label FontWeight="Bold">
+                Liquides:
+            </Label>
+            <Label></Label>
+            <Label>
+                10: Rhum-Vodka-Punch
+            </Label>
+            <Label>
+
+                8: Clairette-Cremant-Liqueur
+            </Label>
+            <Label>
+
+                6: Vin rouge-Beaujolais-Bordeaux
+            </Label>
+            <Label>
+
+                5: Biscuits aperitif-Chips-Olives
+            </Label>
+            <Label>
+
+                4: Rosé-Vin blanc
+            </Label>
+            <Label>
+
+                3: Limonade-Boisons gazeuses-Cola-Energisantes
+            </Label>
+            <Label>
+
+                2: Bieres-Whisky
+            </Label>
+            <Label>
+
+                1: Eau-Sirop-Bieres a l'unité
+
+            </Label>
+        </StackPanel>
+
+
+    </StackPanel>
+</Window>

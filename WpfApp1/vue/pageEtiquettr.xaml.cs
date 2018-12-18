@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp1.vue
 {
+    //todo faire, impression?
     /// <summary>
     /// Logique d'interaction pour pageEtiquettr.xaml
     /// </summary>

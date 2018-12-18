@@ -9,8 +9,16 @@ namespace WpfApp1.code.bdd.cmdVlep
 {
     public class VlepCmd
     {
+        /// <summary>
+        /// Liste de produit
+        /// </summary>
         private List<ProductVlep> d;
 
+
+        /// <summary>
+        /// Fonction de parse pour commande VLEP
+        /// </summary>
+        /// <param name="sdsf"></param>
         public void Test(string sdsf)
         {
             d = new List<ProductVlep>();
@@ -40,7 +48,11 @@ namespace WpfApp1.code.bdd.cmdVlep
                 }
             }
         }
+        //Todo
 
+            /// <summary>
+            /// ecrit dans un fichier pour impression
+            /// </summary>
         public void WriteExcelFile()
         {
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();

@@ -13,9 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.code.bdd.cmdEmag;
 using WpfApp1.code.bdd.cmdVlep;
+using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.vue
 {
+    //todo revoir tout ca pas beau
     /// <summary>
     /// Logique d'interaction pour Menu.xaml
     /// </summary>
@@ -33,7 +35,18 @@ namespace WpfApp1.vue
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new CmdEmag().GetExcelFile();
+            ContentArea.Content = new CmdEmagVue();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new Etiquette();// new UpdateBaseNA();
+        
+    }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new AjouterNA();
         }
     }
 }

@@ -15,7 +15,7 @@
         public string Qte { get => qte; set => qte = value; }
         public string Lib { get => lib; set => lib = value; }
         public string Loc { get => loc; set => loc = value; }
-
+        //todo finir ici
         public ProductVlep(long gencode, string prix1, string prix2, string qte, string lib)
         {
             this.Gencode = gencode;

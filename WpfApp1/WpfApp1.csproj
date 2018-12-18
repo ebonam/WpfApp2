@@ -112,6 +112,9 @@
     <Compile Include="code\bdd\bdd.cs" />
     <Compile Include="code\bdd\cmdEmag\ArticleEmag.cs" />
     <Compile Include="code\bdd\cmdEmag\CmdEmag.cs" />
+    <Compile Include="code\bdd\cmdEmag\cmdEmag.xaml.cs">
+      <DependentUpon>cmdEmag.xaml</DependentUpon>
+    </Compile>
     <Compile Include="code\bdd\cmdVlep\PageVlep.xaml.cs">
       <DependentUpon>PageVlep.xaml</DependentUpon>
     </Compile>
@@ -119,9 +122,17 @@
     <Compile Include="code\bdd\cmdVlep\VlepCmd.cs" />
     <Compile Include="code\bdd\ListeArticle.cs" />
     <Compile Include="code\bdd\NAbdd.cs" />
+    <Compile Include="code\bdd\NonAddresse\NonAddresseS.cs" />
+    <Compile Include="code\bdd\NonAddresse\ToutLesNonA.cs" />
+    <Compile Include="code\bdd\NonAddresse\updateBaseNA.xaml.cs">
+      <DependentUpon>updateBaseNA.xaml</DependentUpon>
+    </Compile>
     <Compile Include="code\Etiquette.cs" />
     <Compile Include="code\Fonctions.cs" />
     <Compile Include="code\ReadXL.cs" />
+    <Compile Include="vue\Aide_Rayon.xaml.cs">
+      <DependentUpon>Aide_Rayon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="vue\AjouterNA.xaml.cs">
       <DependentUpon>AjouterNA.xaml</DependentUpon>
     </Compile>
@@ -141,7 +152,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="code\bdd\cmdEmag\cmdEmag.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="code\bdd\cmdVlep\PageVlep.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="code\bdd\NonAddresse\updateBaseNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vue\Aide_Rayon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,11 +214,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="code128.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\code128.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

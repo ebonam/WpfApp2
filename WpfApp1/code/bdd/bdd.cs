@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.code.bdd
 {
@@ -42,11 +43,6 @@ namespace WpfApp1.code.bdd
         {
             List<NAbdd> listena = conn.Query<NAbdd>("SELECT * FROM NA ");
 
-            /*  foreach (NAbdd n in listena){
-
-                  Console.WriteLine(n.ToString());
-              }
-              Console.Write("\n ");*/
             return listena;
         }
         public void ModifNA(ListeArticle lA)
@@ -56,12 +52,33 @@ namespace WpfApp1.code.bdd
 
         public void AddProduit(long codebar, string lib, int alle, int trave)
         {
-            ListeArticle lA = new ListeArticle();
+            NonAddresseS lA = new NonAddresseS();
             lA.Setter(codebar, lib, alle, trave);
             AddProduit(lA);
         }
 
-        private void AddProduit(ListeArticle lA)
+        public void AddProduit(NonAddresseS lA)
+        {
+            try
+            {
+                conn.Insert(lA);
+            }
+            catch (SQLite.SQLiteException) {
+                Console.WriteLine(lA.Ean);
+            }
+
+        }
+
+
+        public void AddProduit2(long codebar, string lib, int alle, int trave)
+        {
+            ListeArticle lA = new ListeArticle();
+            lA.Setter(codebar, lib, alle, trave);
+            AddProduit2(lA);
+        }
+
+
+        public void AddProduit2(ListeArticle lA)
         {
             conn.Insert(lA);
         }
@@ -71,7 +88,7 @@ namespace WpfApp1.code.bdd
             List<ListeArticle> roles = conn.Table<ListeArticle>().Where(x => x._codebar == produ).ToList();
             return roles;
         }
-    
+
         public void ViderTProduit()
         {
             conn.DropTable<ListeArticle>();

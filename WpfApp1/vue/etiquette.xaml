@@ -1,13 +1,21 @@
-﻿<Page x:Class="WpfApp1.NewFolder1.Page1"
+﻿<UserControl x:Class="WpfApp1.vue.Etiquette"
 
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:WpfApp1.NewFolder1"
+      xmlns:local="clr-namespace:WpfApp1.vue"
       mc:Ignorable="d"
-      Title="Page1" Height="459.574" Width="474.468" Opacity="0.99">
-
+       Height="585.574" Width="474.468" Opacity="0.99">
+    <UserControl.Resources>
+        <FontFamily x:Key="test">
+            pack://application:,,,/WpfApp1;component/Resources/#Code 128
+            <!-- Note: NameOfFont can be font by double clicking
+             on font from explorer and writing down name
+             of the font reported.  Its not the same
+             as the file name -->
+        </FontFamily>
+    </UserControl.Resources>
     <Grid Margin="0,0,10,0">
         <StackPanel>
             <StackPanel Orientation="Horizontal">
@@ -48,12 +56,15 @@
                 <Label Content="*Retrait*" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
                 <Label Margin="100,0,0,0" Content="HYP FOURMIES" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             </StackPanel>
+            <TextBlock Name="label1"  Height="90"></TextBlock>
+
+            <Label FontSize="40"  FontFamily="file:///C:/Users/antoine/Downloads/#Code128bWin">ÌC002460030139357Î</Label>
            
-
-
+            <Label FontFamily="{StaticResource test}">Text</Label>
+            <Label FontSize="40" FontFamily="/WpfApp1;component/Resources/#Code 128">C002460030139357</Label>
 
 
 
         </StackPanel>
     </Grid>
-</Page>
+</UserControl>

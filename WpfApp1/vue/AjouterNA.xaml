@@ -17,7 +17,7 @@
             <Label Width="56">Rayon :</Label>
             <TextBox Name="_rayon" Width="95" ></TextBox>
             <Label></Label>
-            <Button>Aide</Button>
+            <Button Click="Button_Click">Aide</Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal">
             <Label>mot complet :</Label>

@@ -14,11 +14,13 @@ namespace WpfApp1.code.bdd.cmdEmag
         public string Hdeb;
         public string hfin;
         List<ArticleEmag> List = new List<ArticleEmag>();
-
-        public void ReadCp()
+        /// <summary>
+        /// fonction qui permet de lire un presse papier pour en faire une liste d'article
+        /// </summary>
+        public void ReadCp(string text)
         {
             List = new List<ArticleEmag>();
-            string str = "";
+            string str = text;
             str = str.Replace('\r', ' ');
             string[] vs = str.Split('\n');
             /*
@@ -42,14 +44,15 @@ namespace WpfApp1.code.bdd.cmdEmag
                 List.Add(art);
             }
         }
-        /**
-         *
-         */
-        public void GetExcelFile()
+        /// <summary>
+        /// fonction qui permet de lire un fichier excel pour en faire une liste d'article
+        /// </summary>
+        /// <param name="filename">nom du fichier Excel</param>
+        public void GetExcelFile(string filename)
         {
             List = new List<ArticleEmag>();
             Excel.Application xlApp = new Excel.Application();
-            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@"D:\EXTR_DETAILCDE_52188893.xlsx");
+            Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@filename);
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             Excel.Range xlRange = xlWorksheet.UsedRange;
             xlApp.Visible = true;

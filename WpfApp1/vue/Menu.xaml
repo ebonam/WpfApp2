@@ -13,9 +13,9 @@
             <Label Height="50"></Label>
             <Button Content="lister commande Emag " Click="Button_Click_1"/>
             <Label Height="50"></Label>
-            <Button Content="Non addressé"/>
+            <Button Content="Ajouter mot clé" Click="Button_Click_3"/>
             <Label Height="50"></Label>
-            <Button>fesdfkozef</Button>
+            <Button Click="Button_Click_2">fesdfkozef</Button>
             <Label Height="50"></Label>
             <Button>fesdfkozef</Button>
             <Label Height="50"></Label>

@@ -10,27 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.code.bdd.cmdVlep;
 
 namespace WpfApp1.vue
 {
-    //undone : plus utile
     /// <summary>
-    /// Logique d'interaction pour lecteurNA.xaml
+    /// Logique d'interaction pour Aide_Rayon.xaml
     /// </summary>
-    public partial class LecteurNA : Page
+    public partial class Aide_Rayon : Window
     {
-        public LecteurNA()
+        public Aide_Rayon()
         {
             InitializeComponent();
-            b.Click += Te;
-        }
-
-        private void Te(object sender, RoutedEventArgs e)
-        {
-         //  VlepCmd.Test( sdsf.Text);
         }
     }
 }

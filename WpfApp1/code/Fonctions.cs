@@ -9,6 +9,7 @@ namespace WpfApp1.code
 {
     class Fonctions
     {
+        //todo voir pour les NC
         public static List<string> Test(string sdsf)
         {
             List<string> d = new List<string>();

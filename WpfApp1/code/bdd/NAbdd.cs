@@ -5,6 +5,7 @@ namespace WpfApp1.code.bdd
     [Table("NA")]
     class NAbdd
     {
+        //undone: plus besoin 
         public void Setter(string Nom, int Rayon, bool motcomplet, int sec)
         {
             _Nom = Nom;
