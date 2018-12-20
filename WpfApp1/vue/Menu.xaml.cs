@@ -52,7 +52,7 @@ namespace WpfApp1.vue
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-             new pageEtiquettr().Show();
+             new PageEtiquette().Show();
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)

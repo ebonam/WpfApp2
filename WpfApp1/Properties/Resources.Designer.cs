@@ -63,6 +63,16 @@ namespace WpfApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
+        internal static byte[] BarcodeLib {
+            get {
+                object obj = ResourceManager.GetObject("BarcodeLib", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
         internal static byte[] code128 {
             get {
                 object obj = ResourceManager.GetObject("code128", resourceCulture);
