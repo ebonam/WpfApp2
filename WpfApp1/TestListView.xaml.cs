@@ -29,10 +29,9 @@ namespace WpfApp1
             items.Add(new Employe("franck", "ebel", "0", para++));
             
             items.Add(new Employe("frnck", "ebl", "1", para++));
-
            lvUsers.ItemsSource = items;
             
-            Console.WriteLine("mes couilles");
+          
         }
         private void LastNameCM_Click(object sender, RoutedEventArgs e)
         {

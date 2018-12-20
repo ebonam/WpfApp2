@@ -14,14 +14,15 @@ namespace WpfApp1.code.bdd.cmdVlep
         /// </summary>
         private List<ProductVlep> d;
 
-        List<ProductVlep> Fleg = new List<ProductVlep>();
-        List<ProductVlep> Surg = new List<ProductVlep>();
-        List<ProductVlep> Liquide = new List<ProductVlep>();
-        List<ProductVlep> Epicerie = new List<ProductVlep>();
-        List<ProductVlep> DPH = new List<ProductVlep>();
-        List<ProductVlep> FRAIS = new List<ProductVlep>();
-        List<ProductVlep> NAL = new List<ProductVlep>();
-        List<ProductVlep> NA = new List<ProductVlep>();
+       /*  private   List<ProductVlep> Fleg = new List<ProductVlep>();
+        private List<ProductVlep> Surg = new List<ProductVlep>();
+        private List<ProductVlep> Liquide = new List<ProductVlep>();
+        private List<ProductVlep> Epicerie = new List<ProductVlep>();
+        private List<ProductVlep> DPH = new List<ProductVlep>();
+        private List<ProductVlep> FRAIS = new List<ProductVlep>();
+        private List<ProductVlep> NAL = new List<ProductVlep>();
+        private List<ProductVlep> NA = new List<ProductVlep>();
+        */
         public static int Mtri(ProductVlep x, ProductVlep y)
         {
             int i = int.Parse(x.Loc.Split('.')[0]);

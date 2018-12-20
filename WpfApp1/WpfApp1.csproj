@@ -135,7 +135,6 @@
     </Compile>
     <Compile Include="code\Fonctions.cs" />
     <Compile Include="code\ReadXL.cs" />
-    <Compile Include="Rayon.cs" />
     <Compile Include="TestListView.xaml.cs">
       <DependentUpon>TestListView.xaml</DependentUpon>
     </Compile>
@@ -154,8 +153,8 @@
     <Compile Include="vue\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="vue\pageEtiquettr.xaml.cs">
-      <DependentUpon>pageEtiquettr.xaml</DependentUpon>
+    <Compile Include="vue\PageEtiquette.xaml.cs">
+      <DependentUpon>PageEtiquette.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -201,7 +200,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="vue\pageEtiquettr.xaml">
+    <Page Include="vue\PageEtiquette.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -301,6 +300,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="carrefour-drive-1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BarcodeLib.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets" Condition="Exists('..\packages\SQLitePCLRaw.lib.e_sqlite3.linux.1.1.11\build\net35\SQLitePCLRaw.lib.e_sqlite3.linux.targets')" />

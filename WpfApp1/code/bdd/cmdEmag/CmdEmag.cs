@@ -53,10 +53,10 @@ namespace WpfApp1.code.bdd.cmdEmag
                             _prix = item[20],
                             _loc = item[23]
                         };
-                        tri(art);
+                        Tri(art);
                     }
                 }
-                catch (Exception e) { }
+                catch (Exception e) { Console.WriteLine(e.Message); }
             }
         }
         /// <summary>
@@ -80,18 +80,18 @@ namespace WpfApp1.code.bdd.cmdEmag
             hfin = xlRange.Cells[2, 13].Value2.ToString();
             for (int i = 2; i <= rowCount; i++)
             {
-                ArticleEmag art = new ArticleEmag();
+                ArticleEmag art = new ArticleEmag
+                {
+                    _ean = xlRange.Cells[i, 14].Value2.ToString(),
+                    _lib = xlRange.Cells[i, 16].Value2.ToString(),
+                    _qte = xlRange.Cells[i, 17].Value2.ToString(),
+                    _prix = xlRange.Cells[i, 21].Value2.ToString(),
+
+                    _loc = xlRange.Cells[i, 24].Value2.ToString()
+                };
 
 
-                art._ean = xlRange.Cells[i, 14].Value2.ToString();
-                art._lib = xlRange.Cells[i, 16].Value2.ToString();
-                art._qte = xlRange.Cells[i, 17].Value2.ToString();
-                art._prix = xlRange.Cells[i, 21].Value2.ToString();
-
-                art._loc = xlRange.Cells[i, 24].Value2.ToString();
-
-
-                tri(art);
+                Tri(art);
             }
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -103,7 +103,7 @@ namespace WpfApp1.code.bdd.cmdEmag
         }
 
 
-        public int fctQuifaittout(List<ArticleEmag> List, int i, _Worksheet xlWorksheet)
+        public int FctQuifaittout(List<ArticleEmag> List, int i, _Worksheet xlWorksheet)
         {
 
             foreach (ArticleEmag product in List)
@@ -138,50 +138,50 @@ namespace WpfApp1.code.bdd.cmdEmag
             if (this.NA.Count != 0)
             {
                 xlWorksheet.Cells[i, 1].value2 = "Non addressé";
-                i = fctQuifaittout(NA, i, xlWorksheet);
+                i = FctQuifaittout(NA, i, xlWorksheet);
 
             }
             if (this.Liquide.Count != 0)
             {
                 Liquide.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "Liquide";
-                i = fctQuifaittout(Liquide, i, xlWorksheet);
+                i = FctQuifaittout(Liquide, i, xlWorksheet);
             }
             if (this.Epicerie.Count != 0)
             {
                 Epicerie.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "Epicerie";
-                i = fctQuifaittout(Epicerie, i, xlWorksheet);
+                i = FctQuifaittout(Epicerie, i, xlWorksheet);
             }
             if (this.DPH.Count != 0)
             {
                 DPH.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "DPH";
-                i = fctQuifaittout(DPH, i, xlWorksheet);
+                i = FctQuifaittout(DPH, i, xlWorksheet);
             }
             if (this.Fleg.Count != 0)
             {
                 Fleg.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "Fruits et legumes";
-                i = fctQuifaittout(Fleg, i, xlWorksheet);
+                i = FctQuifaittout(Fleg, i, xlWorksheet);
             }
             if (this.FRAIS.Count != 0)
             {
                 FRAIS.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "Frais";
-                i = fctQuifaittout(FRAIS, i, xlWorksheet);
+                i = FctQuifaittout(FRAIS, i, xlWorksheet);
             }
             if (this.Surg.Count != 0)
             {
                 Surg.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "Surgelé";
-                i = fctQuifaittout(Surg, i, xlWorksheet);
+                i = FctQuifaittout(Surg, i, xlWorksheet);
             }
             if (this.NAL.Count != 0)
             {
                 NAL.Sort(Mtri);
                 xlWorksheet.Cells[i, 1].value2 = "NAL";
-                i = fctQuifaittout(NAL, i, xlWorksheet);
+                i = FctQuifaittout(NAL, i, xlWorksheet);
             }
 
             //TODO REPEAT X
@@ -215,7 +215,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             else return x._loc.CompareTo(y._loc);
             */
         }
-        public void tri(ArticleEmag ae)
+        public void Tri(ArticleEmag ae)
         {
 
             //            NA.Sort(Mtri);
@@ -266,6 +266,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             }
             catch (Exception e)
             {
+                Console.WriteLine(e.Message);
                 NA.Add(ae);
             }
         }

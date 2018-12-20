@@ -5,7 +5,7 @@ using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.code.bdd
 {
-    class Bdd
+  class Bdd : IDisposable
     {
         SQLiteConnection conn;
         private static Bdd _instance = null;
@@ -93,6 +93,11 @@ namespace WpfApp1.code.bdd
         public void ViderTProduit()
         {
             conn.DropTable<ListeArticle>();
+        }
+
+        public void Dispose()
+        {
+            conn.Dispose();
         }
     }
 }

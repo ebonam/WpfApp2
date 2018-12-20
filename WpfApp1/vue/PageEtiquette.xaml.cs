@@ -7,7 +7,7 @@ namespace WpfApp1.vue
     /// <summary>
     /// Logique d'interaction pour pageEtiquettr.xaml
     /// </summary>
-    public partial class pageEtiquettr : Window
+    public partial class PageEtiquette : Window
     {
 
         Etiquette etiquette0;
@@ -18,7 +18,7 @@ namespace WpfApp1.vue
         Etiquette etiquette5;
 
 
-        public pageEtiquettr()
+        public PageEtiquette()
         {
             InitializeComponent();
             del0.Visibility = Visibility.Hidden;
