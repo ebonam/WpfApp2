@@ -44,6 +44,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             {
                 var tlna = new CmdEmag();
                 tlna.GetExcelFile(openFileDialog1.FileName);
+                tlna.WriteExcelFile();
             }
         }
     }

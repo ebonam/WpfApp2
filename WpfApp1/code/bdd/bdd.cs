@@ -27,6 +27,7 @@ namespace WpfApp1.code.bdd
         public void CreateTable()
         {
             conn.CreateTable<NAbdd>();
+            conn.CreateTable<NonAddresseS>();
         }
         public void AddNA(NAbdd nAbdd)
         {

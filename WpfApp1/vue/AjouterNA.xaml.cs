@@ -11,12 +11,12 @@ namespace WpfApp1.vue
     public partial class AjouterNA : UserControl
     {
 
-        //todo finir ce bordel
+        //todo Test
         public AjouterNA()
         {
             InitializeComponent();
             _Valider.Click += Ajouter;
-            cancel.Click += Listee;
+           
         }
 
         private void Listee(object sender, RoutedEventArgs e)
@@ -27,7 +27,7 @@ namespace WpfApp1.vue
         private void Ajouter(object sender, RoutedEventArgs e)
         {
             Bdd.Instance().AddNA(this._MC.Text.ToUpper(), int.Parse(this._rayon.Text), (bool)this._bool.IsChecked, this._combo.SelectedIndex);
-            Console.WriteLine(this._MC.Text.ToUpper() + "   " + int.Parse(this._rayon.Text) + "        " + (bool)this._bool.IsChecked + "   " + this._combo.SelectedIndex);
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

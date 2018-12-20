@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1.vue"
       mc:Ignorable="d"
-       Height="585.574" Width="474.468" Opacity="0.99">
+       Height="9cm" Width="9cm" Opacity="0.99">
     <UserControl.Resources>
         <FontFamily x:Key="test">
             pack://application:,,,/WpfApp1;component/Resources/#Code 128
@@ -16,55 +16,53 @@
              as the file name -->
         </FontFamily>
     </UserControl.Resources>
-    <Grid Margin="0,0,10,0">
-        <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <StackPanel Orientation="Horizontal">
-                    <Label Content="cde:" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                    <Label Name="_commande" Content="XXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="280,0,0,0">
-                    <Label Content="Prep:" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                    <Label Name="_Prep" Content="XXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                </StackPanel>
 
+    <StackPanel>
+        <StackPanel Width="9cm" Orientation="Horizontal">
+            <StackPanel Width="4.5cm" Orientation="Horizontal" HorizontalAlignment="Left">
+                
+                <Label Name="commande" Content="XXXXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </StackPanel>
-            <Line X1="0" X2="1000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="cde:" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                        <Label Name="commande" Content="XXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="280,0,0,0">
-                        <Label Content="Prep:" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                        <Label Name="Prep" Content="XXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    </StackPanel>
+            <StackPanel Width="4.5cm">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                  
+                    <Label Name="Prep" Content="XXXXXX" />
                 </StackPanel>
             </StackPanel>
-            <Line X1="0" X2="10000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
-            <StackPanel >
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Label Content="Info :" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                <Label Name="_zone" Content="Zone blabla" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            </StackPanel>
-                </StackPanel>
-            <Label Name="_cmdShort" Content="Zone blabla" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <Label  Content="PICKING DRIVE" FontWeight="Bold" FontSize="40" HorizontalAlignment="Right" VerticalAlignment="Top"/>
-            <Label  Content="XX/XX/XXX XX:XX" FontWeight="Bold"  VerticalAlignment="Top"/>
-            <StackPanel Orientation="Horizontal">
-                <Label Content="*Retrait*" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
-                <Label Margin="100,0,0,0" Content="HYP FOURMIES" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-            </StackPanel>
-            <TextBlock Name="label1"  Height="90"></TextBlock>
-
-            <Label FontSize="40"  FontFamily="file:///C:/Users/antoine/Downloads/#Code128bWin">ÌC002460030139357Î</Label>
-           
-            <Label FontFamily="{StaticResource test}">Text</Label>
-            <Label FontSize="40" FontFamily="/WpfApp1;component/Resources/#Code 128">C002460030139357</Label>
-
-
-
         </StackPanel>
-    </Grid>
+        <Line X1="0" X2="1000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
+        <StackPanel>
+            <StackPanel Width="9cm" Orientation="Horizontal">
+                <StackPanel Width="4.5cm">
+                    <Label Name="nom" Content="NOM PRENOM" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                </StackPanel>
+                <StackPanel Width="4.5cm">
+                    <StackPanel HorizontalAlignment="Right" >
+                        <Label Name="idclient" Content="NUMCLIEN" VerticalAlignment="Top"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Line X1="0" X2="10000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
+        <StackPanel >
+            <Label></Label>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,-20">
+                
+                <Label Name="zone" Content="Info : Zone NAL BAZECS, 7322PREP13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            </StackPanel>
+        </StackPanel>
+        <Label Margin="0,-20" FontSize="95" FontWeight="Bold" Name="cmdShort" Content="4241" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label  Margin="1,-10" FontWeight="Bold" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Top" Content="_PICKING_DRIVE"/>
+        <Label  Name="date" Content="XX/XX/XXX XX:XX" FontWeight="Bold"  VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal">
+            <Label Content="*Retrait*" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+            <Label Margin="100,0,0,0" Content="HYP FOURMIES" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        </StackPanel>
+        <Image Name="test" ></Image>
+         <Label Name="cont" Margin="0,-5" FontWeight="DemiBold"  HorizontalAlignment="Center">C002460030139357</Label>
+
+
+
+    </StackPanel>
+
 </UserControl>

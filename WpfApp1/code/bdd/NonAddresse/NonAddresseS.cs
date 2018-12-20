@@ -9,8 +9,11 @@ namespace WpfApp1.code.bdd.NonAddresse
         public int Id{ get; set; }
         [PrimaryKey]
         public long Ean { get; set; }
+        [Column("Lib")]
         public string Lib { get; set; }
+        [Column("Alle")]
         public  int Alle { get; set; }
+        [Column("Trave")]
         public int Trave { get; set; }
 
        public void Setter(long codebar, string lib, int alle, int trave)

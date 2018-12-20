@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,13 +41,24 @@ namespace WpfApp1.vue
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            ContentArea.Content = new Etiquette();// new UpdateBaseNA();
+            ContentArea.Content =  new UpdateBaseNA();
         
     }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             ContentArea.Content = new AjouterNA();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+             new pageEtiquettr().Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+
+            ContentArea.Content = new TestListView();
         }
     }
 }

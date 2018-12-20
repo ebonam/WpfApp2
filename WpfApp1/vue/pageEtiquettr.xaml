@@ -5,8 +5,90 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="pageEtiquettr" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="pageEtiquettr" Height="29cm" Width="30cm">
+    <StackPanel Orientation="Horizontal">
+        <StackPanel Name="ToPrint" Height="29cm" Width="21cm">
+            <StackPanel Orientation="Horizontal">
+                <UserControl Name="eti0" Height="9cm" Width="9CM">
+
+                </UserControl>
+                <UserControl Name="eti1" Height="9cm" Width="9CM">
+
+                </UserControl>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="1CM"></Label>
+                <UserControl Name="eti2" Height="9cm" Width="9CM">
+
+                </UserControl>
+                <Label Width="1CM"></Label>
+                <UserControl Name="eti3" Height="9cm" Width="9CM">
+
+                </UserControl>
+
+                <Label Width="1CM"></Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Width="1CM"></Label>
+                <UserControl Name="eti4" Height="9cm" Width="9CM">
+
+                </UserControl>
+                <Label Width="1CM"></Label>
+                <UserControl Name="eti5" Height="9cm" Width="9CM">
+
+                </UserControl>
+
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <Label FontWeight="Bold">Creer et imprimer Etiquettes</Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 1</Label>
+                <Button Name="add0" Click="Button_Ajouter" Tag="0" Margin="20,0">Ajouter</Button>
+                <Button Name="del0" Click="Button_Annuler" Tag="0">Supprimer</Button>
+            </StackPanel>
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 2</Label>
+                <Button Name="add1" Click="Button_Ajouter" Tag="1" Margin="20,0">Ajouter</Button>
+                <Button Name="del1" Click="Button_Annuler" Tag="1">Supprimer</Button>
+            </StackPanel>
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 3</Label>
+                <Button Name="add2" Click="Button_Ajouter" Tag="2" Margin="20,0">Ajouter</Button>
+                <Button Name="del2" Click="Button_Annuler" Tag="2">Supprimer</Button>
+            </StackPanel>
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 4</Label>
+                <Button Name="add3" Click="Button_Ajouter" Tag="3" Margin="20,0">Ajouter</Button>
+                <Button Name="del3" Click="Button_Annuler" Tag="3">Supprimer</Button>
+            </StackPanel>
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 5</Label>
+                <Button Name="add4" Click="Button_Ajouter" Tag="4" Margin="20,0">Ajouter</Button>
+                <Button Name="del4" Click="Button_Annuler" Tag="4">Supprimer</Button>
+            </StackPanel>
+
+
+            <Label></Label>
+            <StackPanel Orientation="Horizontal">
+                <Label>Etiquette 6</Label>
+                <Button Name="add5" Click="Button_Ajouter" Tag="5" Margin="20,0">Ajouter</Button>
+                <Button Name="del5" Click="Button_Annuler" Tag="5">Supprimer</Button>
+            </StackPanel>
+            <Button  Click="Button_print">Imprimer</Button>
+            
+            <Label></Label>
+            <StackPanel Name="cp" Visibility="Hidden">
+                <Label>Coller l'etiquette ci dessous</Label>
+                <TextBox Name="tb" Height="203" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                <Button Name="addtag" Click="Button_AjouterEtiquette">Ajouter</Button>
+                
+            </StackPanel>
+        </StackPanel>
+
+    </StackPanel>
 </Window>

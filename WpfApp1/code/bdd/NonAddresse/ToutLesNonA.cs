@@ -12,6 +12,7 @@ namespace WpfApp1.code.bdd.NonAddresse
 
         public void ReadCp(string text)
         {
+            var bdd = Bdd.Instance();
             _list = new List<NonAddresseS>();
             string str = text;
             str = str.Replace('\r', ' ');
@@ -32,12 +33,18 @@ namespace WpfApp1.code.bdd.NonAddresse
                 };
                 _list.Add(art);
             }
+            foreach (NonAddresseS nonAddresseS in _list) {
+                bdd.AddProduit(nonAddresseS);
+            }
+
+
         }
         /**
          *
          */
         public void GetExcelFile(string fileName)
         {
+            var bdd = Bdd.Instance();
             _list = new List<NonAddresseS>();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@fileName);
@@ -77,6 +84,11 @@ namespace WpfApp1.code.bdd.NonAddresse
             xlWorkbook.Close();
             Marshal.ReleaseComObject(xlWorkbook);
             Marshal.ReleaseComObject(xlApp);
+            foreach (NonAddresseS nonAddresseS in _list)
+            {
+                bdd.AddProduit(nonAddresseS);
+            }
+
         }
     }
 }
