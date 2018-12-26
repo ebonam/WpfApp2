@@ -12,7 +12,7 @@ namespace WpfApp1.code.bdd
 
         private Bdd()
         {
-            string _dbPath = "myDb.db3";
+            string _dbPath = "carrefour.db3";
             conn = new SQLiteConnection(_dbPath);
             CreateTable();
         }
@@ -27,19 +27,22 @@ namespace WpfApp1.code.bdd
         public void CreateTable()
         {
             conn.CreateTable<NAbdd>();
-            conn.CreateTable<NonAddresseS>();
+           conn.CreateTable<NonAddresseS>();
         }
         public void AddNA(NAbdd nAbdd)
         {
             conn.Insert(nAbdd);
         }
-        public void AddNA(string Nom, int rayon, bool MC, int secteur)
+        public void AddNA(string Nom, int rayon, bool MC, string secteur)
         {
             NAbdd nAbdd = new NAbdd();
             nAbdd.Setter(Nom, rayon, MC, secteur);
             Console.WriteLine(nAbdd.ToString());
             AddNA(nAbdd);
         }
+
+        
+
         public List<NAbdd> ListeNA()
         {
             List<NAbdd> listena = conn.Query<NAbdd>("SELECT * FROM NA ");
@@ -50,9 +53,17 @@ namespace WpfApp1.code.bdd
         {
             conn.Update(lA);
         }
+        public void RemoveNA(NAbdd i) {
+
+            conn.Delete(i);
+
+        }
 
         public void AddProduit(long codebar, string lib, int alle, int trave)
         {
+
+
+            //conn.q("            SELECT name FROM sqlite_master WHERE type IN('table', 'view') AND name NOT LIKE 'sqlite_%' ORDER BY 1");
             NonAddresseS lA = new NonAddresseS();
             lA.Setter(codebar, lib, alle, trave);
             AddProduit(lA);
@@ -60,12 +71,15 @@ namespace WpfApp1.code.bdd
 
         public void AddProduit(NonAddresseS lA)
         {
+        
+
             try
             {
                 conn.Insert(lA);
             }
-            catch (SQLite.SQLiteException) {
+            catch (Exception e) {
                 Console.WriteLine(lA.Ean);
+                Console.WriteLine(e.Message);
             }
 
         }
@@ -84,10 +98,10 @@ namespace WpfApp1.code.bdd
             conn.Insert(lA);
         }
 
-        public List<ListeArticle> SearchLocProduit(long produ)
+        public List<NonAddresseS> SearchLocProduit(long produ)
         {
-            List<ListeArticle> roles = conn.Table<ListeArticle>().Where(x => x._codebar == produ).ToList();
-            return roles;
+            List<NonAddresseS> roles = conn.Table<NonAddresseS>().Where(x => x.Ean == produ).ToList();
+                return roles;
         }
 
         public void ViderTProduit()

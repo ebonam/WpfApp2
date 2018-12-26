@@ -1,9 +1,10 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WpfApp1.vue
 {
-    //todo faire, impression?
+   
     /// <summary>
     /// Logique d'interaction pour pageEtiquettr.xaml
     /// </summary>
@@ -41,7 +42,7 @@ namespace WpfApp1.vue
             PrintDialog printDlg = new PrintDialog();
             if (printDlg.ShowDialog() == true)
             {
-                printDlg.PrintVisual(this.ToPrint, "User Control Printing.");
+                printDlg.PrintVisual(this.ToPrint, "Impression des étiquettes.");
             }
         }
         
@@ -135,6 +136,17 @@ namespace WpfApp1.vue
             }
             this.tb.Text = "";
             this.cp.Visibility = Visibility.Hidden;
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+ 
+            
+            foreach (string f in Directory.GetFiles(System.IO.Path.Combine(exeDir, "excel\\"), "*.png", SearchOption.TopDirectoryOnly))
+            {
+                File.Delete(f);
+            }
         }
     }
 }

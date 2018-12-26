@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Menu" Height="484" Width="1006">
-    <DockPanel LastChildFill="True" Height="auto" Width="auto">
+        Title="Menu" Height="524" Width="1006">
+    <StackPanel Height="auto" Width="auto" Margin="0,0,0,-21">
+        <Menu Width="Auto" Height="20">
+            <!-- DockPanel.Dock="Top" -->
+        <MenuItem Header="VLEP">
+                <MenuItem Header="Lister commande Vlep" Click="Button_Click" />
+            </MenuItem>
+            <MenuItem Header="EMAG">
+                <MenuItem Header=" Lister commande Emag" Click="Button_Click_1" />
+            </MenuItem>
+            <MenuItem Header="Mot clé">
+                <MenuItem Header="Ajouter mot clé" Click="Button_Click_3" />
+            </MenuItem>
+            <MenuItem Header="Base Produit">
+                <MenuItem Header="mettre a jour Base" Click="Button_Click_2" />
+            </MenuItem>
+            <MenuItem Header="Etiquettes">
+                <MenuItem Header="Creer des etiquettes" Click="Button_Click_4" />
+            </MenuItem>
+            <MenuItem Header="Liste mots clés" Click="Button_Click_5">
+               
+            </MenuItem>
+        </Menu>
+       <!--
         <StackPanel Height="Auto" Width="200"  DockPanel.Dock="Left">
             <Label Height="50">  </Label>
             <Button Content="Lister commande Vlep" Click="Button_Click"/>
@@ -15,6 +37,7 @@
             <Label Height="50"></Label>
             <Button Content="Ajouter mot clé" Click="Button_Click_3"/>
             <Label Height="50"></Label>
+            
             <Button Click="Button_Click_2">mettre a jour Base</Button>
             <Label Height="50"></Label>
             <Button Click="Button_Click_4">fesdfkozef</Button>
@@ -25,13 +48,14 @@
 
 
 
-        </StackPanel>
+        </StackPanel>-->
         <!--<StackPanel Height="auto" Width="auto" DockPanel.Dock="Bottom"></StackPanel>
         <StackPanel DockPanel.Dock="Right"></StackPanel>
         <StackPanel  DockPanel.Dock="Top" ></StackPanel>-->
-        <ContentControl x:Name="ContentArea" Height="450" Width="800" />
+        <ContentControl x:Name="ContentArea"  />
+    
 
 
 
-    </DockPanel>    
+    </StackPanel>    
 </Window>

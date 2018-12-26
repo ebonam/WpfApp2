@@ -26,7 +26,7 @@ namespace WpfApp1.vue
 
         private void Ajouter(object sender, RoutedEventArgs e)
         {
-            Bdd.Instance().AddNA(this._MC.Text.ToUpper(), int.Parse(this._rayon.Text), (bool)this._bool.IsChecked, this._combo.SelectedIndex);
+            Bdd.Instance().AddNA(this._MC.Text.ToUpper(), int.Parse(this._rayon.Text), (bool)this._bool.IsChecked, ((ComboBoxItem)_combo.SelectedItem).Content.ToString()); ;
 
         }
 

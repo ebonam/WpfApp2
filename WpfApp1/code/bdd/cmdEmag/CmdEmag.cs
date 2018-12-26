@@ -184,7 +184,7 @@ namespace WpfApp1.code.bdd.cmdEmag
                 i = FctQuifaittout(NAL, i, xlWorksheet);
             }
 
-            //TODO REPEAT X
+           
             xlWorksheet.PageSetup.PrintArea = "A$1:E" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();

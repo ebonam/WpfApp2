@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Page d'etiquette" Height="29cm" Width="30cm">
+        Title="Page d'etiquette" Height="29cm" Width="30cm" Closed="Window_Closed">
     <StackPanel Orientation="Horizontal">
         <StackPanel Name="ToPrint" Height="29cm" Width="21cm">
             <StackPanel Orientation="Horizontal">

@@ -1,4 +1,6 @@
-﻿namespace WpfApp1.code.bdd.cmdVlep
+﻿using WpfApp1.code.bdd.NonAddresse;
+
+namespace WpfApp1.code.bdd.cmdVlep
 {
     public class ProductVlep
     {
@@ -23,12 +25,22 @@
             this.Prix2 =prix2;
             this.Qte =qte;
             this.Lib = lib;
-            Loc = "NA";
+             Searchemplacement();
         }
-        public void Searchemplacement() {
-         //   Bdd.Instance().searchLocProduit(this.gencode);
+        public void Searchemplacement()
+        {
+            string sr = "";
+            var lis = Bdd.Instance().SearchLocProduit(this.gencode);
+            if (lis.Count != 0)
+            {
+                foreach (NonAddresseS s in lis)
+                {
+                    sr += s.Alle + "." + s.Trave + "\n";
+                }
+                Loc = sr;
+            }
+            else Loc = "NA";
         }
-
         public string  OString()
         {
              return Gencode + "   " + lib + "   " + qte + "   " + prix1 + "   " + prix2;

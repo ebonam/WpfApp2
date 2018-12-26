@@ -10,19 +10,20 @@
     <ListView Margin="10" Name="lvUsers">
         <ListView.View>
             <GridView>
-                <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding nom}" />
-                <GridViewColumn Header="Age" Width="50" DisplayMemberBinding="{Binding prenom}" />
-                <GridViewColumn Header="Mail" Width="150">
+                <GridViewColumn Header="Nom" Width="120" DisplayMemberBinding="{Binding _Nom}" />
+                <GridViewColumn Header="Rayon" Width="50" DisplayMemberBinding="{Binding _Rayon}" />
+                <GridViewColumn Header="Mot complet" Width="150">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding num}" TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
+                            <CheckBox IsChecked="{Binding _motcomplet}"   />
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>
-                <GridViewColumn>
+                <GridViewColumn Header="Secteur" Width="50" DisplayMemberBinding="{Binding _sec}" />
+                <GridViewColumn Header="supprimer" Width="70">
                     <GridViewColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click" Content="supprimer" Tag="{Binding para}" />
+                            <Button Click="Button_Click" Content="supprimer" Tag="{Binding _Id}" />
                         </DataTemplate>
                     </GridViewColumn.CellTemplate>
                 </GridViewColumn>

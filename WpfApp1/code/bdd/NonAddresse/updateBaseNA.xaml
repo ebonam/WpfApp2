@@ -14,7 +14,7 @@
                 <Label></Label>
                 <Label>Par un copier/coller</Label>
                 <Label Height="28"></Label>
-                <TextBox Name="tb" Height="113"></TextBox>
+                <TextBox Name="tb" Height="113" AcceptsReturn="True" AcceptsTab="True"></TextBox>
                 <Label></Label>
                 <Button Name="Validate" Click="Validate_Click">Valider</Button>
 

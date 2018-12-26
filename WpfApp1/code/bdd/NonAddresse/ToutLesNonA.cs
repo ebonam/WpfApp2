@@ -20,21 +20,27 @@ namespace WpfApp1.code.bdd.NonAddresse
 
             for (int i = 1; i < vs.Length; i++)
             {
-                string line = vs[i];
-                string[] item = line.Split('\t');
-                NonAddresseS art = new NonAddresseS
+                try
                 {
-                    Lib = item[2],
-                    Ean = long.Parse(item[3]),
-                    Alle = int.Parse(item[8]),
-                    Trave = int.Parse(item[9])
+                    string line = vs[i];
+                    string[] item = line.Split('\t');
+                    NonAddresseS art = new NonAddresseS();
 
+                    art.Lib = item[2];
+                    art.Ean = long.Parse(item[3]);
+                    art.Alle = int.Parse(item[8]);
+                    art.Trave = int.Parse(item[9]);
 
-                };
-                _list.Add(art);
-            }
+                    _list.Add(art);
+
+                }
+                catch (Exception e) { Console.WriteLine(e.Message); }
+
+                           }
             foreach (NonAddresseS nonAddresseS in _list) {
                 bdd.AddProduit(nonAddresseS);
+
+                Console.WriteLine("ok");
             }
 
 

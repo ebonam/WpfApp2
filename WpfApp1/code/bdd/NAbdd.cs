@@ -6,7 +6,7 @@ namespace WpfApp1.code.bdd
     class NAbdd
     {
         //undone: plus besoin 
-        public void Setter(string Nom, int Rayon, bool motcomplet, int sec)
+        public void Setter(string Nom, int Rayon, bool motcomplet, string sec)
         {
             _Nom = Nom;
             _Rayon = Rayon;
@@ -28,6 +28,6 @@ namespace WpfApp1.code.bdd
         [Column("boolComplet")]
         public bool _motcomplet { get; set; }
         [Column("secteur")]
-        public int _sec { get; set; }
+        public string _sec { get; set; }
     }
 }
