@@ -134,6 +134,10 @@
       <DependentUpon>updateBaseNA.xaml</DependentUpon>
     </Compile>
     <Compile Include="code\Fonctions.cs" />
+    <Compile Include="vue\ListeManquants.xaml.cs">
+      <DependentUpon>ListeManquants.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="code\Manquant.cs" />
     <Compile Include="code\ReadXL.cs" />
     <Compile Include="TestListView.xaml.cs">
       <DependentUpon>TestListView.xaml</DependentUpon>
@@ -169,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="code\bdd\NonAddresse\updateBaseNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vue\ListeManquants.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,6 +239,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="excel\vlep.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="excel\manquants.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

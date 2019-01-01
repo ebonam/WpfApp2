@@ -9,32 +9,32 @@
     <StackPanel Orientation="Horizontal">
         <StackPanel Name="ToPrint" Height="29cm" Width="21cm">
             <StackPanel Orientation="Horizontal">
-                <UserControl Name="eti0" Height="9cm" Width="9CM">
+                <UserControl Name="eti0" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0">
 
                 </UserControl>
-                <UserControl Name="eti1" Height="9cm" Width="9CM">
+                <UserControl Name="eti1" Height="8cm" Width="8CM" Margin="1cm,1cm,1cm,0cm">
 
                 </UserControl>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="1CM"></Label>
-                <UserControl Name="eti2" Height="9cm" Width="9CM">
+                <UserControl Name="eti2" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0">
 
                 </UserControl>
                 <Label Width="1CM"></Label>
-                <UserControl Name="eti3" Height="9cm" Width="9CM">
+                <UserControl Name="eti3" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0cm">
 
                 </UserControl>
 
-                <Label Width="1CM"></Label>
+
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Width="1CM"></Label>
-                <UserControl Name="eti4" Height="9cm" Width="9CM">
+                <UserControl Name="eti4" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0">
 
                 </UserControl>
                 <Label Width="1CM"></Label>
-                <UserControl Name="eti5" Height="9cm" Width="9CM">
+                <UserControl Name="eti5" Height="8cm" Width="8CM" Margin="1cm,1cm,0,1cm">
 
                 </UserControl>
 
@@ -80,13 +80,13 @@
                 <Button Name="del5" Click="Button_Annuler" Tag="5">Supprimer</Button>
             </StackPanel>
             <Button  Click="Button_print">Imprimer</Button>
-            
+
             <Label></Label>
             <StackPanel Name="cp" Visibility="Hidden">
                 <Label>Coller l'etiquette ci dessous</Label>
                 <TextBox Name="tb" Height="203" AcceptsReturn="True" AcceptsTab="True"></TextBox>
                 <Button Name="addtag" Click="Button_AjouterEtiquette">Ajouter</Button>
-                
+
             </StackPanel>
         </StackPanel>
 

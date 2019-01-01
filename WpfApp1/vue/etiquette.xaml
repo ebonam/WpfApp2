@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:WpfApp1.vue"
       mc:Ignorable="d"
-       Height="9cm" Width="9cm" Opacity="0.99">
+       Height="8cm" Width="8cm" Opacity="0.99">
     <UserControl.Resources>
         <FontFamily x:Key="test">
             pack://application:,,,/WpfApp1;component/Resources/#Code 128
@@ -18,12 +18,12 @@
     </UserControl.Resources>
 
     <StackPanel>
-        <StackPanel Width="9cm" Orientation="Horizontal">
-            <StackPanel Width="4.5cm" Orientation="Horizontal" HorizontalAlignment="Left">
+        <StackPanel Width="8cm" Orientation="Horizontal">
+            <StackPanel Width="4cm" Orientation="Horizontal" HorizontalAlignment="Left">
                 
                 <Label Name="commande" Content="XXXXXXXX" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </StackPanel>
-            <StackPanel Width="4.5cm">
+            <StackPanel Width="4cm">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                   
                     <Label Name="Prep" Content="XXXXXX" />
@@ -32,11 +32,11 @@
         </StackPanel>
         <Line X1="0" X2="1000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
         <StackPanel>
-            <StackPanel Width="9cm" Orientation="Horizontal">
-                <StackPanel Width="4.5cm">
+            <StackPanel Width="8cm" Orientation="Horizontal">
+                <StackPanel Width="4cm">
                     <Label Name="nom" Content="NOM PRENOM" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 </StackPanel>
-                <StackPanel Width="4.5cm">
+                <StackPanel Width="4cm">
                     <StackPanel HorizontalAlignment="Right" >
                         <Label Name="idclient" Content="NUMCLIEN" VerticalAlignment="Top"/>
                     </StackPanel>
@@ -51,7 +51,7 @@
                 <Label Name="zone" Content="Info : Zone NAL BAZECS, 7322PREP13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-        <Label Margin="0,-20" FontSize="95" FontWeight="Bold" Name="cmdShort" Content="4241" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Margin="0,-20" FontSize="80" FontWeight="Bold" Name="cmdShort" Content="4241" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label  Margin="1,-10" FontWeight="Bold" FontSize="25" HorizontalAlignment="Right" VerticalAlignment="Top" Content="_PICKING_DRIVE"/>
         <Label  Name="date" Content="XX/XX/XXX XX:XX" FontWeight="Bold"  VerticalAlignment="Top"/>
         <StackPanel Orientation="Horizontal">

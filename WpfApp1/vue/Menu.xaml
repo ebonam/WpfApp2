@@ -27,6 +27,9 @@
             <MenuItem Header="Liste mots clés" Click="Button_Click_5">
                
             </MenuItem>
+            <MenuItem Header="Manquant" Click="MenuItem_Click_3">
+               
+            </MenuItem>
         </Menu>
        <!--
         <StackPanel Height="Auto" Width="200"  DockPanel.Dock="Left">

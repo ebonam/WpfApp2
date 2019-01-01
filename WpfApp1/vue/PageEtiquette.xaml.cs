@@ -28,6 +28,12 @@ namespace WpfApp1.vue
             del3.Visibility = Visibility.Hidden;
             del4.Visibility = Visibility.Hidden;
             del5.Visibility = Visibility.Hidden;
+            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            foreach (string f in Directory.GetFiles(System.IO.Path.Combine(exeDir, "excel\\"), "*.png", SearchOption.TopDirectoryOnly))
+            {
+                File.Delete(f);
+            }
         }
 
         private void Button_Ajouter(object sender, RoutedEventArgs e)
@@ -140,13 +146,21 @@ namespace WpfApp1.vue
 
         private void Window_Closed(object sender, System.EventArgs e)
         {
-            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
- 
+           
+            eti1.Content = null;
+            eti2.Content = null;
+            eti3.Content = null;
+            eti4.Content = null;
+            eti5.Content = null;
+            eti0.Content = null;
+            etiquette0 = null;
+            etiquette1 = null;
+            etiquette2 = null;
+            etiquette3 = null;
+            etiquette4 = null;
+            etiquette5 = null;
+//todo regler cette merde
             
-            foreach (string f in Directory.GetFiles(System.IO.Path.Combine(exeDir, "excel\\"), "*.png", SearchOption.TopDirectoryOnly))
-            {
-                File.Delete(f);
-            }
         }
     }
 }

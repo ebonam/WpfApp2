@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.code;
 using WpfApp1.code.bdd.cmdEmag;
 using WpfApp1.code.bdd.cmdVlep;
 using WpfApp1.code.bdd.NonAddresse;
@@ -61,19 +62,11 @@ namespace WpfApp1.vue
             ContentArea.Content = new TestListView();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+  
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
-        {
-
+            ContentArea.Content = new ListeManquants();
         }
     }
 }
