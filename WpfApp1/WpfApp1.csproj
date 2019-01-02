@@ -97,6 +97,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -128,11 +129,13 @@
     <Compile Include="code\bdd\cmdVlep\VlepCmd.cs" />
     <Compile Include="code\bdd\ListeArticle.cs" />
     <Compile Include="code\bdd\NAbdd.cs" />
-    <Compile Include="code\bdd\NonAddresse\NonAddresseS.cs" />
-    <Compile Include="code\bdd\NonAddresse\ToutLesNonA.cs" />
-    <Compile Include="code\bdd\NonAddresse\updateBaseNA.xaml.cs">
+    <Compile Include="code\bdd\BaseProduit\NonAddresseS.cs" />
+    <Compile Include="code\bdd\BaseProduit\ToutLesNonA.cs" />
+    <Compile Include="code\bdd\BaseProduit\updateBaseNA.xaml.cs">
       <DependentUpon>updateBaseNA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\bdd\NonAddressé\ListeNA.cs" />
+    <Compile Include="code\bdd\NonAddressé\NA.cs" />
     <Compile Include="code\Fonctions.cs" />
     <Compile Include="vue\ListeManquants.xaml.cs">
       <DependentUpon>ListeManquants.xaml</DependentUpon>
@@ -150,6 +153,9 @@
     </Compile>
     <Compile Include="vue\lecteurNA.xaml.cs">
       <DependentUpon>lecteurNA.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="code\bdd\NonAddressé\ListeNonAddresse.xaml.cs">
+      <DependentUpon>ListeNonAddresse.xaml</DependentUpon>
     </Compile>
     <Compile Include="vue\Menu.xaml.cs">
       <DependentUpon>Menu.xaml</DependentUpon>
@@ -172,7 +178,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="code\bdd\NonAddresse\updateBaseNA.xaml">
+    <Page Include="code\bdd\BaseProduit\updateBaseNA.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vue\lecteurNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="code\bdd\NonAddressé\ListeNonAddresse.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
