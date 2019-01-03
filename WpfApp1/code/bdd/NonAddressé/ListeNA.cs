@@ -34,10 +34,9 @@ namespace WpfApp1.code.bdd.NonAddressé
                 catch (Exception e) { Console.WriteLine(e.Message); }
 
             }
-            foreach (NonAddresseS nonAddresseS in _list)
+            foreach (NA nonAddresseS in _NAs)
             {
-                bdd.AddProduit(nonAddresseS);
-
+                
                 Console.WriteLine("ok");
             }
 

@@ -24,12 +24,20 @@ namespace WpfApp1.vue
             var liness = this.textblock.Text.Split('\n');//Regex.Matches(sdsf, "\n");
             int i = 0;
             string l = liness[i];
-            while (!l.Equals("\r") && !l.Equals(""))
+            bool flag = true;
+            while ( flag && i<liness.Length)
             {
-                Manquant m = new Manquant();
-                m.fct(l);
-                _manquants.Add(m);
-                l = liness[++i];
+                l = liness[i++];
+                if (l.Equals("") || l.Equals("\r") || l.Equals(" "))
+                {
+                    flag = false;
+                }
+                else
+                {
+                    Manquant m = new Manquant();
+                    m.fct(l);
+                    _manquants.Add(m);
+                }
                 
             }
             _manquants.Sort(Tri);
@@ -51,7 +59,7 @@ namespace WpfApp1.vue
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             object misValue = System.Reflection.Missing.Value;
             string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\manquants.xlsx"));
+            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\manquants.xlsm"));
             _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
@@ -68,15 +76,15 @@ namespace WpfApp1.vue
                 }
                 else if (st != manquant._nomPrep)
                 {
-
+                    st = manquant._nomPrep;
                     xlWorksheet.Cells[i, 1].value2 = manquant._nomPrep;
                     i++;
                 }
                 try
                 {
                     xlWorksheet.Cells[i, 1].value2 = manquant._date + manquant._heure;
-                    xlWorksheet.Cells[i, 2].value2 = manquant._lib;
-                    xlWorksheet.Cells[i, 3].value2 = manquant._ean;
+                    xlWorksheet.Cells[i, 2].value2 = manquant._lib+"\n"+ manquant._ean;
+                   xlWorksheet.Cells[i, 3].value2 = "=Transbar("+manquant._ean+")";
                     xlWorksheet.Cells[i, 4].value2 = manquant._loca;
                     xlWorksheet.Cells[i, 5].value2 = manquant._Prixvente;
                     xlWorksheet.Cells[i, 6].value2 = manquant._qtecmd;
@@ -105,6 +113,7 @@ namespace WpfApp1.vue
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             ReadManquant();
+            this.textblock.Text = "";
         }
     }
 }

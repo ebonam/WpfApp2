@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace WpfApp1.code
 {
- public   class Manquant
+    public class Manquant
     {
         public Manquant() { }
         //todo changer pour le compareTO 
@@ -35,12 +35,24 @@ namespace WpfApp1.code
                 gege = Regex.Matches(lib, "[0-9]{2}:[0-9]{2} ");
                 _heure = gege[0].Value;
                 lib = lib.Replace(gege[0].Value, "");
-                gege = Regex.Matches(lib, "(\\w)*");
+                gege = Regex.Matches(lib, "((\\w)*|([0-9]))");
                 _sec = gege[0].Value;
-                lib = lib.Replace(gege[0].Value, "");
-                gege = Regex.Matches(lib, "([0-9]+\\.){3}([0-9]+)");
-                _loca = gege[0].Value;
-                lib = lib.Replace(gege[0].Value, "");
+                if (_sec == "99")
+                {
+                    lib = lib.Replace(gege[0].Value, "");
+                    gege = Regex.Matches(lib, "(\\w)+ :([A-z]| )*");
+                    _loca = gege[0].Value;
+                    lib = lib.Replace(gege[0].Value, "");
+
+                }
+                else
+                {
+                    lib = lib.Replace(gege[0].Value, "");
+                    gege = Regex.Matches(lib, "([0-9]+\\.){3}([0-9]+)");
+                    _loca = gege[0].Value;
+                    lib = lib.Replace(gege[0].Value, "");
+
+                }
                 gege = Regex.Matches(lib, "([0-9]+) ");
                 _ean = long.Parse(gege[1].Value);
                 lib = lib.Replace(gege[0].Value, "");
@@ -64,16 +76,18 @@ namespace WpfApp1.code
                 _Prixvente = gege[0].Value;
                 str = lib.Substring(0, lib.IndexOf(gege[0].Value) + 0);
                 gege = Regex.Matches(str, "(\\w+) ");
+
                 lib = lib.Replace(str, "");
                 _nomClient = str.Substring(0, (str.Length) - gege[gege.Count - 1].Value.Length - 1);
                 _nomPrep = gege[gege.Count - 1].Value;
-
+                Console.Write(_nomPrep);
             }
-            catch ( Exception e){
+            catch (Exception e)
+            {
                 //215 : \w \w
 
 
             }
-            }
+        }
     }
 }
