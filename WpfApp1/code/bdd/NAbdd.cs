@@ -3,7 +3,7 @@
 namespace WpfApp1.code.bdd
 {
     [Table("NA")]
-    class NAbdd
+    class MotCle
     {
         //undone: plus besoin 
         public void Setter(string Nom, int Rayon, bool motcomplet, string sec)
@@ -13,12 +13,10 @@ namespace WpfApp1.code.bdd
             _motcomplet = motcomplet;
             _sec = sec;
         }
-
         public override string ToString()
         {
             return "" + _Nom + "  " + _Rayon + "   " + _motcomplet + "   " + _sec + "\n";
         }
-
         [PrimaryKey, AutoIncrement]
         public int _Id { get; set; }
         [Column("Nom")]

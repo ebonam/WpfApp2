@@ -122,6 +122,7 @@
     <Compile Include="code\bdd\cmdEmag\cmdEmag.xaml.cs">
       <DependentUpon>cmdEmag.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\bdd\NonAddressé\ListMotClé.cs" />
     <Compile Include="code\bdd\cmdVlep\PageVlep.xaml.cs">
       <DependentUpon>PageVlep.xaml</DependentUpon>
     </Compile>
@@ -134,6 +135,7 @@
     <Compile Include="code\bdd\BaseProduit\updateBaseNA.xaml.cs">
       <DependentUpon>updateBaseNA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\bdd\NonAddressé\ListeGencode.cs" />
     <Compile Include="code\bdd\NonAddressé\ListeNA.cs" />
     <Compile Include="code\bdd\NonAddressé\NA.cs" />
     <Compile Include="code\Fonctions.cs" />

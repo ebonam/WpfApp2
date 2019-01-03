@@ -5,7 +5,7 @@ using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.code.bdd
 {
-  class Bdd : IDisposable
+    class Bdd : IDisposable
     {
         SQLiteConnection conn;
         private static Bdd _instance = null;
@@ -26,34 +26,40 @@ namespace WpfApp1.code.bdd
 
         public void CreateTable()
         {
-            conn.CreateTable<NAbdd>();
-           conn.CreateTable<NonAddresseS>();
+            conn.CreateTable<MotCle>();
+            conn.CreateTable<NonAddresseS>();
         }
-        public void AddNA(NAbdd nAbdd)
+        public void AddNA(MotCle mc)
         {
-            conn.Insert(nAbdd);
+            conn.Insert(mc);
         }
         public void AddNA(string Nom, int rayon, bool MC, string secteur)
         {
-            NAbdd nAbdd = new NAbdd();
-            nAbdd.Setter(Nom, rayon, MC, secteur);
-            Console.WriteLine(nAbdd.ToString());
-            AddNA(nAbdd);
+            MotCle mc = new MotCle();
+            mc.Setter(Nom, rayon, MC, secteur);
+            Console.WriteLine(mc.ToString());
+            AddNA(mc);
         }
 
-        
 
-        public List<NAbdd> ListeNA()
+
+        public List<MotCle> ListeNA()
         {
-            List<NAbdd> listena = conn.Query<NAbdd>("SELECT * FROM NA ");
-
+            List<MotCle> listena = conn.Query<MotCle>("SELECT * FROM NA ");
             return listena;
         }
+        public List<MotCle> ListeNA(string sec)
+        {
+            List<MotCle> roles = conn.Table<MotCle>().Where(x => x._sec == sec).ToList();
+            return roles;
+        }
+
         public void ModifNA(ListeArticle lA)
         {
             conn.Update(lA);
         }
-        public void RemoveNA(NAbdd i) {
+        public void RemoveNA(MotCle i)
+        {
 
             conn.Delete(i);
 
@@ -61,8 +67,6 @@ namespace WpfApp1.code.bdd
 
         public void AddProduit(long codebar, string lib, int alle, int trave)
         {
-
-
             //conn.q("            SELECT name FROM sqlite_master WHERE type IN('table', 'view') AND name NOT LIKE 'sqlite_%' ORDER BY 1");
             NonAddresseS lA = new NonAddresseS();
             lA.Setter(codebar, lib, alle, trave);
@@ -71,28 +75,23 @@ namespace WpfApp1.code.bdd
 
         public void AddProduit(NonAddresseS lA)
         {
-        
-
             try
             {
                 conn.Insert(lA);
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 Console.WriteLine(lA.Ean);
                 Console.WriteLine(e.Message);
             }
 
         }
-
-
         public void AddProduit2(long codebar, string lib, int alle, int trave)
         {
             ListeArticle lA = new ListeArticle();
             lA.Setter(codebar, lib, alle, trave);
             AddProduit2(lA);
         }
-
-
         public void AddProduit2(ListeArticle lA)
         {
             conn.Insert(lA);
@@ -101,7 +100,7 @@ namespace WpfApp1.code.bdd
         public List<NonAddresseS> SearchLocProduit(long produ)
         {
             List<NonAddresseS> roles = conn.Table<NonAddresseS>().Where(x => x.Ean == produ).ToList();
-                return roles;
+            return roles;
         }
 
         public void ViderTProduit()

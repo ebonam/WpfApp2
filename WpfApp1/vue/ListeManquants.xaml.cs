@@ -25,7 +25,7 @@ namespace WpfApp1.vue
             int i = 0;
             string l = liness[i];
             bool flag = true;
-            while ( flag && i<liness.Length)
+            while (flag && i < liness.Length)
             {
                 l = liness[i++];
                 if (l.Equals("") || l.Equals("\r") || l.Equals(" "))
@@ -38,7 +38,7 @@ namespace WpfApp1.vue
                     m.fct(l);
                     _manquants.Add(m);
                 }
-                
+
             }
             _manquants.Sort(Tri);
             WriteExcelFile();
@@ -83,8 +83,8 @@ namespace WpfApp1.vue
                 try
                 {
                     xlWorksheet.Cells[i, 1].value2 = manquant._date + manquant._heure;
-                    xlWorksheet.Cells[i, 2].value2 = manquant._lib+"\n"+ manquant._ean;
-                   xlWorksheet.Cells[i, 3].value2 = "=Transbar("+manquant._ean+")";
+                    xlWorksheet.Cells[i, 2].value2 = manquant._lib + "\n" + manquant._ean;
+                    xlWorksheet.Cells[i, 3].value2 = "=Transbar(" + manquant._ean + ")";
                     xlWorksheet.Cells[i, 4].value2 = manquant._loca;
                     xlWorksheet.Cells[i, 5].value2 = manquant._Prixvente;
                     xlWorksheet.Cells[i, 6].value2 = manquant._qtecmd;
@@ -95,11 +95,11 @@ namespace WpfApp1.vue
 
 
                 }
-                catch(Exception e) { i ++; }
+                catch (Exception e) { i++; }
 
             }
             this._manquants = new List<Manquant>();
-                xlWorksheet.PageSetup.PrintArea = "A$1:K" + i;
+            xlWorksheet.PageSetup.PrintArea = "A$1:K" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
             GC.WaitForPendingFinalizers();
