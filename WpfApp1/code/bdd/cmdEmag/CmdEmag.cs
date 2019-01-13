@@ -109,8 +109,8 @@ namespace WpfApp1.code.bdd.cmdEmag
             foreach (ArticleEmag product in List)
             {
                 i++;
-                xlWorksheet.Cells[i, 1].value2 = product._lib;
-                xlWorksheet.Cells[i, 2].value2 = product._ean;
+                xlWorksheet.Cells[i, 1].value2 = product._lib+"\n" + product._ean;
+                xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
                 MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");
                 xlWorksheet.Cells[i, 3].value2 = gege[0].Value + "€";
                 xlWorksheet.Cells[i, 4].value2 = product._qte;
@@ -128,7 +128,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\emag.xlsx"));
+            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\emag.xlsm"));
 
             _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             xlApp.Visible = true;

@@ -49,9 +49,18 @@ namespace WpfApp1.code
                 {
                     lib = lib.Replace(gege[0].Value, "");
                     gege = Regex.Matches(lib, "([0-9]+\\.){3}([0-9]+)");
-                    _loca = gege[0].Value;
-                    lib = lib.Replace(gege[0].Value, "");
-
+                    if (gege.Count != 0)
+                    {
+                        _loca = gege[0].Value;
+                        lib = lib.Replace(gege[0].Value, "");
+                    }
+                    else
+                    {
+                       
+                        gege = Regex.Matches(lib, "(\\w)+ :([A-z]| )*");
+                        _loca = gege[0].Value;
+                        lib = lib.Replace(gege[0].Value, "");
+                    }
                 }
                 gege = Regex.Matches(lib, "([0-9]+) ");
                 _ean = long.Parse(gege[1].Value);
@@ -85,7 +94,7 @@ namespace WpfApp1.code
             catch (Exception e)
             {
                 //215 : \w \w
-
+                Console.Write(e.Message);
 
             }
         }

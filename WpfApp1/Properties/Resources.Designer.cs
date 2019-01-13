@@ -69,15 +69,5 @@ namespace WpfApp1.Properties {
                 return ((byte[])(obj));
             }
         }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        internal static byte[] code128 {
-            get {
-                object obj = ResourceManager.GetObject("code128", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

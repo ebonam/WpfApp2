@@ -82,7 +82,7 @@ namespace WpfApp1.code.bdd.cmdVlep
 
             string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\vlep.xlsx"));
+            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\vlep.xlsm"));
             _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
@@ -137,20 +137,6 @@ namespace WpfApp1.code.bdd.cmdVlep
                 xlWorksheet.Cells[i, 1].value2 = "NAL";
                 i = FctQuifaittout(NAL, i, xlWorksheet);
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
             xlWorksheet.PageSetup.PrintArea = "A$1:F" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
@@ -167,8 +153,8 @@ namespace WpfApp1.code.bdd.cmdVlep
             foreach (ProductVlep product in liste)
             {
                 i++;
-                xlWorksheet.Cells[i, 1].value2 = product.Lib;
-                xlWorksheet.Cells[i, 2].value2 = product.Gencode;
+                xlWorksheet.Cells[i, 1].value2 = product.Lib+"\n" + product.Gencode;
+                xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product.Gencode + ")"; 
                 xlWorksheet.Cells[i, 3].value2 = product.Prix1;
                 xlWorksheet.Cells[i, 4].value2 = product.Qte;
                 xlWorksheet.Cells[i, 5].value2 = product.Prix2;
