@@ -29,6 +29,9 @@
             </MenuItem>
             <MenuItem Header="Manquant" Click="MenuItem_Click_3">
                
+            </MenuItem> 
+            <MenuItem Header="NA" Click="MenuItem_Click">
+               
             </MenuItem>
         </Menu>
        <!--

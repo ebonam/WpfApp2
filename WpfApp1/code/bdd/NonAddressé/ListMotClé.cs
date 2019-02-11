@@ -5,31 +5,29 @@ namespace WpfApp1.code.bdd.NonAddressé
 {
     class ListMotClé
     {
-    
-        public List<NA> _NaMC;
+
+        public List<NA2> _NaMC;
         public Bdd bd;
-        List<MotCle> _mc = new List<MotCle>();
-        public ListMotClé()
+        List<NA> _mc = new List<NA>();
+        public ListMotClé(string text)
         {
             bd = Bdd.Instance();
-            _NaMC = new List<NA>();
-            var _mc = Bdd.Instance().ListeNA();
+            bd = Bdd.Instance();
+            _NaMC = new List<NA2>();
+            _mc = Bdd.Instance().ListeNA(text);
         }
-        public static int Mtri(NA x, NA y)
+        public List<NA2> TriDesFamilles(List<NA2> Atrier)
         {
-            return x.loc.CompareTo(y.loc);
+            List<NA2> NonTrier = new List<NA2>();
+            // List<NA> nAbdds = new List<NA>();
 
-        }
-        public List<NA> TriDesFamilles(List<NA> Atrier)
-        {
-            List<NA> NonTrier = new List<NA>();
-            foreach (NA nA in Atrier)
+            foreach (NA2 nA in Atrier)
             {
                 bool flag = false;
                 int i = 0;
                 while (i < _mc.Count && !flag)
                 {
-                    MotCle mc = _mc[i];
+                    NA mc = _mc[i];
                     MatchCollection gege;
                     if (mc._motcomplet)
                     {
@@ -46,7 +44,9 @@ namespace WpfApp1.code.bdd.NonAddressé
                     }
                     else
                     {
-                        nA.loc = "" + mc._Rayon;
+                        nA.rayon = mc._Rayon;
+                        
+                         nA.loc="" + mc._Nom;
                         flag = true;
                         _NaMC.Add(nA);
                     }
@@ -58,6 +58,23 @@ namespace WpfApp1.code.bdd.NonAddressé
             }
             _NaMC.Sort(Mtri);
             return NonTrier;
+        }
+
+
+        public static int Mtri(NA2 x, NA2 y)
+        {
+            int i = x.rayon;
+            int j = y.rayon;
+            int cpr = i.CompareTo(j);
+
+            if (cpr == 0)
+            {
+                string i1 = x.loc;
+                string j1 = y.loc;
+                int cpr2 = i.CompareTo(j);
+                return cpr2;
+            }
+                return cpr;
         }
     }
 }

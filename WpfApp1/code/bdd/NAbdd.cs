@@ -3,7 +3,7 @@
 namespace WpfApp1.code.bdd
 {
     [Table("NA")]
-    class MotCle
+    class NA
     {
         //undone: plus besoin 
         public void Setter(string Nom, int Rayon, bool motcomplet, string sec)

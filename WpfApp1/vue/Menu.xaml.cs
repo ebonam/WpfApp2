@@ -68,5 +68,10 @@ namespace WpfApp1.vue
         {
             ContentArea.Content = new ListeManquants();
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new ListeNonAddresse();
+        }
     }
 }

@@ -26,16 +26,16 @@ namespace WpfApp1.code.bdd
 
         public void CreateTable()
         {
-            conn.CreateTable<MotCle>();
+            conn.CreateTable<NA>();
             conn.CreateTable<NonAddresseS>();
         }
-        public void AddNA(MotCle mc)
+        public void AddNA(NA mc)
         {
             conn.Insert(mc);
         }
         public void AddNA(string Nom, int rayon, bool MC, string secteur)
         {
-            MotCle mc = new MotCle();
+           NA mc = new NA();
             mc.Setter(Nom, rayon, MC, secteur);
             Console.WriteLine(mc.ToString());
             AddNA(mc);
@@ -43,14 +43,14 @@ namespace WpfApp1.code.bdd
 
 
 
-        public List<MotCle> ListeNA()
+        public List<NA> ListeNA()
         {
-            List<MotCle> listena = conn.Query<MotCle>("SELECT * FROM NA ");
+            List<NA> listena = conn.Query<NA>("SELECT * FROM NA; ");
             return listena;
         }
-        public List<MotCle> ListeNA(string sec)
+        public List<NA> ListeNA(string sec)
         {
-            List<MotCle> roles = conn.Table<MotCle>().Where(x => x._sec == sec).ToList();
+            List<NA> roles = conn.Table<NA>().Where(x => x._sec == sec).ToList();
             return roles;
         }
 
@@ -58,7 +58,7 @@ namespace WpfApp1.code.bdd
         {
             conn.Update(lA);
         }
-        public void RemoveNA(MotCle i)
+        public void RemoveNA(NA i)
         {
 
             conn.Delete(i);

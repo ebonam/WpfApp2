@@ -246,6 +246,9 @@
     <None Include="excel\manquants.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="excel\na.xlsm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="excel\vlep.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

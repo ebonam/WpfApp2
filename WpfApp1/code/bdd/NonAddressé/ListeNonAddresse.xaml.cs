@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.code.bdd.NonAddressé;
 
 namespace WpfApp1.vue
 {
@@ -27,7 +28,9 @@ namespace WpfApp1.vue
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string str =  ((ComboBoxItem)_combo.SelectedItem).Content.ToString();
 
+            new ListeNA().ReadCp(this.tb.Text,str,true,true);
         }
     }
 }
