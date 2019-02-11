@@ -27,7 +27,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                     {
                         nA.loc += " " + nonAddresseS.Alle + "."+nonAddresseS.Trave;
                     }
-                    this._NaMC.Add(nA);
+                   this._NaMC.Add(nA);
                 }
                 else
                 {

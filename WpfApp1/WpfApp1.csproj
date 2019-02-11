@@ -240,11 +240,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="excel\emag.xlsm" />
+    <None Include="excel\emag.xlsm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="excel\manquants.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="excel\vlep.xlsm" />
+    <None Include="excel\vlep.xlsm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

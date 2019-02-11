@@ -22,13 +22,20 @@ namespace WpfApp1.code.bdd.NonAddressé
                     na.Lib = item[0];
                     na.Ean = long.Parse(item[1]);
                     _NAs.Add(na);
+
                 }
                 catch (Exception e) { Console.WriteLine(e.Message); }
             }
-            foreach (NA nonAddresseS in _NAs)
-            {
-                Console.WriteLine("ok");
-            }
+            ListeGencode listeGencode = new ListeGencode();
+            ListMotClé listeMC = new ListMotClé();
+            _NAs = listeGencode.TriDesFamilles(_NAs);
+            _NAs = listeMC.TriDesFamilles(_NAs);
+
+            _NAs.Sort(Mtri);
+        }
+        public static int Mtri(NA x, NA y)
+        {
+            return x.Lib.CompareTo(y.Lib);
         }
     }
 }
