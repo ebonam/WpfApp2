@@ -21,7 +21,7 @@ namespace WpfApp1
     /// </summary>
     public partial class TestListView : UserControl
     {
-        List<MotCle> items = new List<MotCle>();
+        List<NA> items = new List<NA>();
         public TestListView()
         {
             InitializeComponent();

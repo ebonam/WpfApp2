@@ -42,7 +42,7 @@ namespace WpfApp1.code.bdd.cmdVlep
         public void Test(string sdsf)
         {
             d = new List<ProductVlep>();
-            var liness = sdsf.Split('\n');//Regex.Matches(sdsf, "\n");
+            var liness = sdsf.Split('\n');
             foreach (string l in liness)
             {
                 if (!l.Equals("\r") && !l.Equals(""))
@@ -65,13 +65,10 @@ namespace WpfApp1.code.bdd.cmdVlep
                     lib = lib.Replace(gege3[0].Value, "");
                     ProductVlep pv = new ProductVlep(long.Parse(gencode), prix1, prix2, qte, lib);
                     pv.Searchemplacement();
-                    Tri(pv);
-//                    d.Add(pv);
+                    Tri(pv);          
                 }
             }
         }
-
-
         /// <summary>
         /// ecrit dans un fichier pour impression
         /// </summary>
@@ -79,16 +76,12 @@ namespace WpfApp1.code.bdd.cmdVlep
         {
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             object misValue = System.Reflection.Missing.Value;
-
             string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
             Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\vlep.xlsm"));
             _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
-            int i = 1;
-
-
+            int i = 2;
             if (this.NA.Count != 0)
             {
                 xlWorksheet.Cells[i, 1].value2 = "Non addressé";

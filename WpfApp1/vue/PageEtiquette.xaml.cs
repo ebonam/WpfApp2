@@ -6,7 +6,8 @@ namespace WpfApp1.vue
 {
    
     /// <summary>
-    /// Logique d'interaction pour pageEtiquettr.xaml
+    /// Logique d'interaction pour pageEtiquette.xaml
+    /// Goldé
     /// </summary>
     public partial class PageEtiquette : Window
     {
@@ -66,26 +67,31 @@ namespace WpfApp1.vue
                     break;
                 case 1:
                     etiquette1 = null;
+                    eti1.Content = etiquette1;
                     del1.Visibility = Visibility.Hidden;
                     add1.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     etiquette2 = null;
+                    eti2.Content = etiquette2;
                     del2.Visibility = Visibility.Hidden;
                     add2.Visibility = Visibility.Visible;
                     break;
                 case 3:
                     etiquette3 = null;
+                    eti3.Content = etiquette3;
                     del3.Visibility = Visibility.Hidden;
                     add3.Visibility = Visibility.Visible;
                     break;
                 case 4:
                     etiquette4 = null;
+                    eti4.Content = etiquette4;
                     del4.Visibility = Visibility.Hidden;
                     add4.Visibility = Visibility.Visible;
                     break;
                 case 5:
                     etiquette5 = null;
+                    eti5.Content = etiquette5;
                     del5.Visibility = Visibility.Hidden;
                     add5.Visibility = Visibility.Visible;
                     break;
@@ -135,7 +141,7 @@ namespace WpfApp1.vue
                 case 5:
                     etiquette5 = new Etiquette();
                     etiquette5.Setter(tb.Text);
-                    add0.Visibility = Visibility.Hidden;
+                    add5.Visibility = Visibility.Hidden;
                     eti5.Content = etiquette5;
                     del5.Visibility = Visibility.Visible;
                     break;

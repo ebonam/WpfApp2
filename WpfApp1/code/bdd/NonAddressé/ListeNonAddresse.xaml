@@ -17,7 +17,7 @@
         <Label></Label>
         <StackPanel Orientation="Horizontal"> 
             <StackPanel Width="300" HorizontalAlignment="Left" Margin="30,0,0,0">
-                <TextBox AcceptsReturn="True" AcceptsTab="True" Height="177"/>
+                <TextBox Name="tb" AcceptsReturn="True" AcceptsTab="True" Height="177"/>
             </StackPanel>
             <StackPanel Width="30">
                 <Label></Label>

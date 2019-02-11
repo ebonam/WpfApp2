@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Page d'etiquette" Height="29cm" Width="30cm" Closed="Window_Closed">
+        Title="Page d'etiquette" Height="29cm" Width="1133" Closed="Window_Closed" MinWidth="1133.85826771654" MinHeight="1096.06299212598" MaxHeight="1096.06299212598" MaxWidth="1133.85826771654" WindowStyle="ToolWindow">
     <StackPanel Orientation="Horizontal">
         <StackPanel Name="ToPrint" Height="29cm" Width="21cm">
             <StackPanel Orientation="Horizontal">
@@ -17,11 +17,11 @@
                 </UserControl>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Width="1CM"></Label>
+              
                 <UserControl Name="eti2" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0">
 
                 </UserControl>
-                <Label Width="1CM"></Label>
+                
                 <UserControl Name="eti3" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0cm">
 
                 </UserControl>
@@ -29,11 +29,11 @@
 
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <Label Width="1CM"></Label>
+               
                 <UserControl Name="eti4" Height="8cm" Width="8CM" Margin="1cm,1cm,0,0">
 
                 </UserControl>
-                <Label Width="1CM"></Label>
+                
                 <UserControl Name="eti5" Height="8cm" Width="8CM" Margin="1cm,1cm,0,1cm">
 
                 </UserControl>
