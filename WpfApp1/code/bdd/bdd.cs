@@ -19,7 +19,7 @@ namespace WpfApp1.code.bdd
 
         public static Bdd Instance()
         {
-            if (_instance == null)
+            if (_instance == null)  
                 _instance = new Bdd();
             return _instance;
         }

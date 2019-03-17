@@ -12,25 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using WpfApp1.code.bdd.NonAddressé;
 
-namespace WpfApp1.vue
+namespace WpfApp1.code.client
 {
     /// <summary>
-    /// Logique d'interaction pour ListeNonAddresse.xaml
+    /// Logique d'interaction pour client.xaml
     /// </summary>
-    public partial class ListeNonAddresse : UserControl
+    public partial class client : UserControl
     {
-        public ListeNonAddresse()
+        public client()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            string str =  ((ComboBoxItem)_combo.SelectedItem).Content.ToString();
-
-            new ListeNA().ReadCp(this.tb.Text,str,(bool)checkAddresse.IsChecked, (bool)checkMC.IsChecked);
         }
     }
 }

@@ -25,7 +25,6 @@ namespace WpfApp1.code.bdd.NonAddressé
 
         public static int Mtri(NA2 x, NA2 y)
         {
-           
             int i = int.Parse(x.loc.Split('.')[0]);
             int j = int.Parse(y.loc.Split('.')[0]);
 
@@ -41,11 +40,26 @@ namespace WpfApp1.code.bdd.NonAddressé
             {
                 int i2 = int.Parse(x.loc.Split('.')[1]);
                 int j2 = int.Parse(y.loc.Split('.')[1]);
-                return i2.CompareTo(j2);
-            }
-        }
 
-    
+                if (i2 > j2)
+                {
+                    return 1;
+                }
+                else if (i2 < j2)
+                {
+                    return -1;
+                }
+                return 0;
+            }
+
+//            return i.CompareTo(j);
+/*
+            if (x._loc == null && y._loc == null) return 0;
+            else if (x._loc == null) return -1;
+            else if (y._loc == null) return 1;
+            else return x._loc.CompareTo(y._loc);
+            */
+        }
 
 
 
@@ -57,28 +71,29 @@ namespace WpfApp1.code.bdd.NonAddressé
             List<NA2> NonTrier = new List<NA2>();
             foreach (NA2 nA in Atrier)
             {
-                List<NonAddresseS> n = bd.SearchLocProduit(long.Parse(nA.Ean));
-                if (n.Count != 0)
-                {
-                    
+                 List<NonAddresseS> n = bd.SearchLocProduit(long.Parse(nA.Ean));
+                   if (n.Count != 0)
+                   {
+                       nA.loc = "";
+                           foreach (NonAddresseS nonAddresseS in n)
+                       {
+                           nA.loc = " " + nonAddresseS.Alle + "."+nonAddresseS.Trave;
+                          
 
-                    nA.loc = n[0].Alle + "." + n[0].Trave ;
 
-
-
-                    this._NaMC.Add(nA);
-                }
-                else
-                {
-                    NonTrier.Add(nA);
-                }
+                       }
+                       this._NaMC.Add(nA);
+                   }
+                   else
+                   {
+                       NonTrier.Add(nA);
+                   }
             }
             _NaMC.Sort(Mtri);
             return NonTrier;
         }
     }
+
+
+
 }
-
-
-
-
