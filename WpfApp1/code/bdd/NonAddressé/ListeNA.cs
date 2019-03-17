@@ -91,7 +91,7 @@ namespace WpfApp1.code.bdd.NonAddressé
             string label = "";
             foreach (NA2 nonAddresseS in _listGencode._NaMC)//METTRE GENCODE
             {
-                if (label != "" || label != nonAddresseS.loc) {
+                if (label == "" || label != nonAddresseS.loc) {
                     label = nonAddresseS.loc;
                     xlWorksheet.Cells[i, 2].value2 ="Localisation="+ label;
                     i++;
@@ -103,7 +103,7 @@ namespace WpfApp1.code.bdd.NonAddressé
             
             foreach (NA2 nonAddresseS in _listMotClé._NaMC)//METTRE GENCODE
             {
-                if (label != "" || label != nonAddresseS.loc)
+                if (label == "" || label != nonAddresseS.loc)
                 {
                     label = nonAddresseS.loc;
                     xlWorksheet.Cells[i, 2].value2 = label +" : " +nonAddresseS.rayon;
