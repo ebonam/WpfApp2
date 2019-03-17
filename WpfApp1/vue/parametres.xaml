@@ -10,41 +10,138 @@
         <TabControl HorizontalAlignment="Left" Height="440" Margin="10,0,0,0" VerticalAlignment="Top" Width="790">
             <TabItem Header="Mot clés">
 
-                <StackPanel >
-                    <Label>Vider les mot clés</Label>
-                    <Button Click="ViderMotCle" >Vider</Button>
-                    <Button Click="ViderMotCle" >Exporter</Button>
-                    <Button Click="ViderMotCle" >Importer</Button>
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="16">Operations sur les mots clés</Label>
+                    <Label></Label>
+                    <Label></Label>
+                    <Label HorizontalAlignment="Center">Vider les mot clés</Label>
+                    <Button Click="ViderMotCle" Width="100">Vider</Button>
+                    <Label></Label>
+                    <Label></Label>
+                    <Label HorizontalAlignment="Center">Exporter les mots clés dans un fichier excel</Label>
+                    <Button Click="ExporterMotCle" Width="100" >Exporter</Button>
+                    <Label></Label>
+                    <Label></Label>
+
+                    <Label HorizontalAlignment="Center">Importer les mots clés à partir d'un fichier excel</Label>
+                    <Button Click="ViderMotCle" Width="100">Importer</Button>
+
                 </StackPanel>
             </TabItem>
             <TabItem Header="definition rayon">
-                <StackPanel>
-                    <Label>secteur</Label>
-                    <ComboBox Name="_combo" Width="128">
-                        <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
-                        <ComboBoxItem >Epicerie</ComboBoxItem>
-                        <ComboBoxItem>DPH</ComboBoxItem>
-                        <ComboBoxItem>Frais</ComboBoxItem>
-                        <ComboBoxItem>NAL</ComboBoxItem>
-                        <ComboBoxItem>Fruit et legumes</ComboBoxItem>
-                    </ComboBox>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <StackPanel Margin="0,0,0,40">
+                            <Label>Ajouter Secteur:</Label>
+                            <StackPanel Margin="0,10,0,20" Orientation="Horizontal">
+                                <Label>Nom secteur :</Label>
+                                <TextBox Name="_nomSecteur" Width="150"></TextBox>
+                            </StackPanel>
+                            <Button>Ajouter Secteur</Button>
+                        </StackPanel>
+                        <Label>Liste des Secteurs enregistrées</Label>
+                        <Label></Label>
+                        <ListBox Margin="0,0,0,15" Name="_listboxNomSecteur" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="110">
+                        </ListBox>
+                        <Button Click="retirerTG">supprimer secteur selectionée</Button>
 
-                    <Label>Premier rayon:</Label>
-                    <Label>dernier rayon:</Label>
-                    <Label>numeros paire</Label>
+                    </StackPanel>
+                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                    <StackPanel>
+                        <Label>Selectionner Secteur:</Label>
+                        <StackPanel Orientation="Horizontal">
+                            <ComboBox Name="_comboSecteur0" Width="128">
+                                <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
+                                <ComboBoxItem >Epicerie</ComboBoxItem>
+                                <ComboBoxItem>DPH</ComboBoxItem>
+                                <ComboBoxItem>Frais</ComboBoxItem>
+                                <ComboBoxItem>NAL</ComboBoxItem>
+                                <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+                            </ComboBox>
+                            <Button Margin="20,0,0,0" Click="Button_Click">Recherche rayon </Button>
+                        </StackPanel>
+                        <StackPanel>
+                            <Label></Label>
+                            <Label>Liste des Rayons enregistrées pour ce secteur</Label>
+                            <Label></Label>
+                            <ListBox Margin="0,0,0,13" Name="_comboSecteurRayon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="200">
+                            </ListBox>
+                            <Button Click="retirerTG">Retirer rayon selectionée</Button>
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Tete de gondoles">
-                <StackPanel><Label>Secteur</Label>
-                <Label>emplacement</Label>
+            <TabItem Header="Tête de gondoles">
+                <StackPanel>
+                    <Label Margin="120,0,0,0" FontWeight="Bold" FontSize="16" TextOptions.TextHintingMode="Animated" >Operations sur les Têtes de gondoles</Label>
+                    <Label></Label>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <Label></Label>
+                            <Label>Ajouter une tête de gondole</Label>
+                            <Label></Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Secteur:</Label>
+                                <Label></Label>
+
+                                <ComboBox Name="_comboSecteur1" Width="128">
+                                    <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
+                                    <ComboBoxItem >Epicerie</ComboBoxItem>
+                                    <ComboBoxItem>DPH</ComboBoxItem>
+                                    <ComboBoxItem>Frais</ComboBoxItem>
+                                    <ComboBoxItem>NAL</ComboBoxItem>
+                                    <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <Label></Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Rayon :</Label>
+                                <TextBox Margin="2,0,0,0" Width="50" Name="rayonTg"></TextBox>
+                            </StackPanel>
+                            <Label></Label>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Travée :</Label>
+                                <TextBox Name="traveTg" Width="50"></TextBox>
+                            </StackPanel>
+                            <Label></Label>
+                            <Label></Label>
+                            <Button Click="AjouterTg">Ajouter une TG</Button>
+
+                        </StackPanel>
+                        <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+
+                        <StackPanel>
+                            <Label></Label>
+                            <Label>Liste des Têtes de gondoles enregistrées</Label>
+                            <Label></Label>
+                            <ListBox Margin="0,0,0,13" Name="listBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="200">
+
+                            </ListBox>
+                            <Button Click="retirerTG">Retirer TG selectionée</Button>
+                        </StackPanel>
+                    </StackPanel>
+
                 </StackPanel>
             </TabItem>
             <TabItem Header="Adressage">
-                <StackPanel>
-                    <Button>Vider</Button>
-                    <Button>MAJ</Button>
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel>
+                        <Label></Label>
+                        <Label>Vider la memoire de tous les produits</Label>
+                        <Button>Vider</Button>
+                    </StackPanel>
+                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+
+                    <StackPanel>
+                        <Label></Label>
+                        <Label>Pour mettre a jour les produits et leurs emplacements</Label>
+                        <Button Click="MAJBD">Mettre a jour</Button>
+                    </StackPanel>
                 </StackPanel>
+
+
             </TabItem>
+
         </TabControl>
 
     </Grid>

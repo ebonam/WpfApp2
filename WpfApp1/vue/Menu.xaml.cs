@@ -61,8 +61,13 @@ namespace WpfApp1.vue
 
             ContentArea.Content = new TestListView();
         }
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
 
-  
+            ContentArea.Content = new parametres();
+        }
+
+
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)
         {
@@ -72,6 +77,11 @@ namespace WpfApp1.vue
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             ContentArea.Content = new ListeNonAddresse();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

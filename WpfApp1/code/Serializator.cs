@@ -8,8 +8,10 @@ using System.Xml;
 using System.Xml.Serialization;
 
 namespace WpfApp1.code
-{
-    class Serializatorcs
+{/// <summary>
+/// sample 
+/// </summary>
+    class Serializator
     {
         /// <summary>
         /// Serializes an object.
@@ -21,8 +23,8 @@ namespace WpfApp1.code
         {
             if (serializableObject == null) { return; }
 
-            try
-            {
+//            try
+  //          {
                 XmlDocument xmlDocument = new XmlDocument();
                 XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
                 using (MemoryStream stream = new MemoryStream())
@@ -32,11 +34,11 @@ namespace WpfApp1.code
                     xmlDocument.Load(stream);
                     xmlDocument.Save(fileName);
                 }
-            }
+         /*   }
             catch (Exception ex)
             {
                 //Log exception here
-            }
+            }*/
         }
 
 
