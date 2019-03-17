@@ -187,12 +187,12 @@ namespace WpfApp1.code.bdd.cmdVlep
                     //    Frais / boucherie
 
                 }
-                else if (i < 28 && i % 2 == 0)
+                else if (i<= 14 && i < 28 && i % 2 == 0)
                 {
                     Epicerie.Add(ae);
                     //epi
                 }
-                else if (i <= 42 && i % 2 == 0)
+                else if (i>=28 && i <= 42 && i % 2 == 0)
                 {
                     //DPH
                     DPH.Add(ae);

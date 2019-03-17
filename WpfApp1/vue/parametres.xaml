@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="WpfApp1.vue.parametres"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.vue"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="440" Margin="10,0,0,0" VerticalAlignment="Top" Width="790">
+            <TabItem Header="Mot clés">
+
+                <StackPanel >
+                    <Label>Vider les mot clés</Label>
+                    <Button Click="ViderMotCle" >Vider</Button>
+                    <Button Click="ViderMotCle" >Exporter</Button>
+                    <Button Click="ViderMotCle" >Importer</Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="definition rayon">
+                <StackPanel>
+                    <Label>secteur</Label>
+                    <ComboBox Name="_combo" Width="128">
+                        <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
+                        <ComboBoxItem >Epicerie</ComboBoxItem>
+                        <ComboBoxItem>DPH</ComboBoxItem>
+                        <ComboBoxItem>Frais</ComboBoxItem>
+                        <ComboBoxItem>NAL</ComboBoxItem>
+                        <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+                    </ComboBox>
+
+                    <Label>Premier rayon:</Label>
+                    <Label>dernier rayon:</Label>
+                    <Label>numeros paire</Label>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Tete de gondoles">
+                <StackPanel><Label>Secteur</Label>
+                <Label>emplacement</Label>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Adressage">
+                <StackPanel>
+                    <Button>Vider</Button>
+                    <Button>MAJ</Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</UserControl>

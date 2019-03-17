@@ -31,9 +31,11 @@
                     <ComboBoxItem >Epicerie</ComboBoxItem>
                     <ComboBoxItem>DPH</ComboBoxItem>
                     <ComboBoxItem>Frais</ComboBoxItem>
-                    <ComboBoxItem>NAL</ComboBoxItem>
-                    <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+                    
                 </ComboBox>
+                <Label></Label>
+                <CheckBox x:Name="checkAddresse" IsChecked="True">recherche derniere addresse connue</CheckBox>
+                <CheckBox x:Name="checkMC" IsChecked="True">recherche par mot clé </CheckBox>
             </StackPanel>
 
         </StackPanel>

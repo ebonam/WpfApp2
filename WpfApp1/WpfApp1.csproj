@@ -132,7 +132,12 @@
     <Compile Include="code\bdd\NonAddressé\ListeGencode.cs" />
     <Compile Include="code\bdd\NonAddressé\ListeNA.cs" />
     <Compile Include="code\bdd\NonAddressé\NA.cs" />
+    <Compile Include="code\client\client.xaml.cs">
+      <DependentUpon>client.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="code\erializatorcs.cs" />
     <Compile Include="code\Fonctions.cs" />
+    <Compile Include="code\parameters.cs" />
     <Compile Include="vue\ListeManquants.xaml.cs">
       <DependentUpon>ListeManquants.xaml</DependentUpon>
     </Compile>
@@ -166,6 +171,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="vue\parametres.xaml.cs">
+      <DependentUpon>parametres.xaml</DependentUpon>
+    </Compile>
     <Page Include="code\bdd\cmdEmag\cmdEmag.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -175,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="code\bdd\BaseProduit\updateBaseNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="code\client\client.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -215,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="vue\PageEtiquette.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="vue\parametres.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -77,7 +77,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                        nA.loc = "";
                            foreach (NonAddresseS nonAddresseS in n)
                        {
-                           nA.loc += " " + nonAddresseS.Alle + "."+nonAddresseS.Trave;
+                           nA.loc = " " + nonAddresseS.Alle + "."+nonAddresseS.Trave;
                           
 
 

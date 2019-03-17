@@ -9,7 +9,7 @@ namespace WpfApp1.code.bdd.NonAddressé
         public List<NA2> _NAs;
         public ListMotClé _listMotClé;
         public ListeGencode _listGencode;
-        public void ReadCp(string text, string str2,bool gencode,bool motcle)
+        public void ReadCp(string text, string str2, bool gencode, bool motcle)
         {
             _NAs = new List<NA2>();
             string str = text;
@@ -21,17 +21,23 @@ namespace WpfApp1.code.bdd.NonAddressé
                 {
                     string line = vs[i];
                     string[] item = line.Split('\t');
-                    var na = new NA2();
-                    na.Lib = item[0];
-                    na.Ean = item[1];// long.Parse(item[1]);
-                    _NAs.Add(na);
+                    if (item.Length == 2)
+                    {
+                        if (item[1]!="EAN" && item[1] != "")
+                        {
+                            var na = new NA2();
+                            na.Lib = item[0];
+                            na.Ean = item[1];// long.Parse(item[1]);
+                            _NAs.Add(na);
+                        }
+                    }
                 }
                 catch (Exception e) { Console.WriteLine(e.Message); }
             }
             if (gencode)
             {
                 _listGencode = new ListeGencode();
-                 _NAs = _listGencode.TriDesFamilles(_NAs);
+                _NAs = _listGencode.TriDesFamilles(_NAs);
             }
             if (motcle)
             {
@@ -39,7 +45,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                 _NAs = _listMotClé.TriDesFamilles(_NAs);
             }
             WriteExcelFile();
-          //  WriteExcelFil2e();
+            //  WriteExcelFil2e();
 
 
 
@@ -91,22 +97,23 @@ namespace WpfApp1.code.bdd.NonAddressé
             string label = "";
             foreach (NA2 nonAddresseS in _listGencode._NaMC)//METTRE GENCODE
             {
-                if (label != "" || label != nonAddresseS.loc) {
+                if (label != "" || label != nonAddresseS.loc)
+                {
                     label = nonAddresseS.loc;
-                    xlWorksheet.Cells[i, 2].value2 ="Localisation="+ label;
+                    xlWorksheet.Cells[i, 2].value2 = "Localisation=" + label;
                     i++;
                 }
                 xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
                 xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
                 i++;
             }
-            
+
             foreach (NA2 nonAddresseS in _listMotClé._NaMC)//METTRE GENCODE
             {
                 if (label != "" || label != nonAddresseS.loc)
                 {
                     label = nonAddresseS.loc;
-                    xlWorksheet.Cells[i, 2].value2 = label +" : " +nonAddresseS.rayon;
+                    xlWorksheet.Cells[i, 2].value2 = label + " : " + nonAddresseS.rayon;
                     i++;
                 }
                 xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
