@@ -110,6 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="code\bdd\BaseProduit\Test.cs" />
     <Compile Include="code\bdd\bdd.cs" />
     <Compile Include="code\bdd\cmdEmag\ArticleEmag.cs" />
     <Compile Include="code\bdd\cmdEmag\CmdEmag.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="code\client\client.xaml.cs">
       <DependentUpon>client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\ListeMC.cs" />
     <Compile Include="code\Loggeur.cs" />
     <Compile Include="code\Serializator.cs" />
     <Compile Include="code\Fonctions.cs" />

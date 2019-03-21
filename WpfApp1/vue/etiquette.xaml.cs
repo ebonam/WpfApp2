@@ -36,10 +36,6 @@ namespace WpfApp1.vue
             var liness = Regex.Matches(str, "\\^FD(.*)(\\^FS)");
             foreach (Match l in liness)
                 s.Add(l.Value.Replace("^FS", "").Replace("^FD", ""));
-
-
-
-
             if (s.Count == 13)
             {
 
@@ -87,6 +83,7 @@ namespace WpfApp1.vue
             this.Prep.Content = _prep;
             this.nom.Content = _nom;
             this.idclient.Content = _idclient;
+            this._lbNC.Content = this._nc;
             zone.Content = _info;
             cmdShort.Content = _ncommandShort;
             date.Content = _dat;

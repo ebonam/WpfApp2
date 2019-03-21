@@ -10,10 +10,12 @@ namespace WpfApp1.code.bdd.cmdVlep
         private string qte;
         private string lib;
         private string loc;
+        private string _sec;
 
         public long Gencode { get => gencode; set => gencode = value; }
         public string Prix1 { get => prix1; set => prix1 = value; }
         public string Prix2 { get => prix2; set => prix2 = value; }
+        public string Sec { get => _sec; set => _sec = value; }
         public string Qte { get => qte; set => qte = value; }
         public string Lib { get => lib; set => lib = value; }
         public string Loc { get => loc; set => loc = value; }

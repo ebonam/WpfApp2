@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp1.code;
 using WpfApp1.code.bdd.NonAddressé;
 
 namespace WpfApp1.vue
@@ -21,16 +10,30 @@ namespace WpfApp1.vue
     /// </summary>
     public partial class ListeNonAddresse : UserControl
     {
+        Parameters p = Parameters.Instance();
         public ListeNonAddresse()
         {
             InitializeComponent();
+
+            _combo.ItemsSource = null;
+            _combo.ItemsSource = p.ps.nomSecteur;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string str =  ((ComboBoxItem)_combo.SelectedItem).Content.ToString();
-
-            new ListeNA().ReadCp(this.tb.Text,str,(bool)checkAddresse.IsChecked, (bool)checkMC.IsChecked);
+            string str = (string)_combo.SelectedItem;
+            bool b, b1;
+            b = (bool)checkAddresse.IsChecked;
+            if (str == "" || str == null)
+            {
+                b1 = false;
+            }
+            else {
+                b1 = (bool)checkMC.IsChecked;
+            }
+            
+            new ListeNA().ReadCp(this.tb.Text, str, (bool)checkAddresse.IsChecked, b1);
         }
     }
 }

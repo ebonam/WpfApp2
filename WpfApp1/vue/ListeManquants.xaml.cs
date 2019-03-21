@@ -95,7 +95,7 @@ namespace WpfApp1.vue
 
 
                 }
-                catch (Exception e) { i++; }
+                catch (Exception ) { i++; }
 
             }
             this._manquants = new List<Manquant>();

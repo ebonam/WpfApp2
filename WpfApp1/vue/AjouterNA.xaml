@@ -29,12 +29,7 @@
 
             <Label Width="62">Secteur</Label>
             <ComboBox Name="_combo" Width="128">
-                <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
-                <ComboBoxItem >Epicerie</ComboBoxItem>
-                <ComboBoxItem>DPH</ComboBoxItem>
-                <ComboBoxItem>Frais</ComboBoxItem>
-                <ComboBoxItem>NAL</ComboBoxItem>
-                <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+             
             </ComboBox>
         </StackPanel>
         <Label></Label>

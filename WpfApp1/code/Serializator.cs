@@ -71,7 +71,7 @@ namespace WpfApp1.code
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 //Log exception here
             }

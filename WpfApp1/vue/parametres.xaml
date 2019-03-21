@@ -37,13 +37,13 @@
                                 <Label>Nom secteur :</Label>
                                 <TextBox Name="_nomSecteur" Width="150"></TextBox>
                             </StackPanel>
-                            <Button>Ajouter Secteur</Button>
+                            <Button Click="AddSecteur">Ajouter Secteur</Button>
                         </StackPanel>
                         <Label>Liste des Secteurs enregistrées</Label>
                         <Label></Label>
                         <ListBox Margin="0,0,0,15" Name="_listboxNomSecteur" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="110">
                         </ListBox>
-                        <Button Click="retirerTG">supprimer secteur selectionée</Button>
+                        <Button Click="RetirerSec">supprimer secteur selectionée</Button>
 
                     </StackPanel>
                     <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
@@ -51,22 +51,31 @@
                         <Label>Selectionner Secteur:</Label>
                         <StackPanel Orientation="Horizontal">
                             <ComboBox Name="_comboSecteur0" Width="128">
-                                <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
-                                <ComboBoxItem >Epicerie</ComboBoxItem>
-                                <ComboBoxItem>DPH</ComboBoxItem>
-                                <ComboBoxItem>Frais</ComboBoxItem>
-                                <ComboBoxItem>NAL</ComboBoxItem>
-                                <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+
                             </ComboBox>
-                            <Button Margin="20,0,0,0" Click="Button_Click">Recherche rayon </Button>
+                            <Button Margin="20,0,0,0" Click="AfficherRayonSecteur">Recherche rayon</Button>
                         </StackPanel>
                         <StackPanel>
-                            <Label></Label>
-                            <Label>Liste des Rayons enregistrées pour ce secteur</Label>
-                            <Label></Label>
-                            <ListBox Margin="0,0,0,13" Name="_comboSecteurRayon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="200">
-                            </ListBox>
-                            <Button Click="retirerTG">Retirer rayon selectionée</Button>
+                            <Label/>
+                            <Label/>
+                            <StackPanel Name="_rayonSecteur"  Visibility="Hidden">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>Secteur :</Label>
+                                    <Label Name="_labelSecteur"/>
+                                    
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label>N° de rayon:</Label>
+                                    <TextBox Width="50" Name="RayonSecteurNum"/>
+                                    <Label/>
+                                    <Button Click="AjouterRayonSecteur">Ajouter</Button>
+                                </StackPanel>
+                                <Label>Liste des Rayons enregistrées pour ce secteur</Label>
+                                <Label></Label>
+                                <ListBox Margin="0,0,0,13" Name="_listSecteurRayon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="200">
+                                </ListBox>
+                                <Button Click="RetirerRayon">Retirer rayon selectionée</Button>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -85,12 +94,7 @@
                                 <Label></Label>
 
                                 <ComboBox Name="_comboSecteur1" Width="128">
-                                    <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
-                                    <ComboBoxItem >Epicerie</ComboBoxItem>
-                                    <ComboBoxItem>DPH</ComboBoxItem>
-                                    <ComboBoxItem>Frais</ComboBoxItem>
-                                    <ComboBoxItem>NAL</ComboBoxItem>
-                                    <ComboBoxItem>Fruit et legumes</ComboBoxItem>
+                                    
                                 </ComboBox>
                             </StackPanel>
                             <Label></Label>
@@ -113,11 +117,11 @@
                         <StackPanel>
                             <Label></Label>
                             <Label>Liste des Têtes de gondoles enregistrées</Label>
-                            <Label></Label>
+                            <Label/>
                             <ListBox Margin="0,0,0,13" Name="listBox1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="220" Height="200">
 
                             </ListBox>
-                            <Button Click="retirerTG">Retirer TG selectionée</Button>
+                            <Button Click="RetirerTG">Retirer TG selectionée</Button>
                         </StackPanel>
                     </StackPanel>
 
@@ -141,6 +145,81 @@
 
 
             </TabItem>
+
+            <TabItem Header=" Commande Emag">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel >
+                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                        <TextBlock>  fichier commande Emag</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>EAN :</Label>
+                            <Label></Label>
+                            <TextBox Width="98" Name="EanEMag"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Libellé article :</Label>
+                            <Label></Label>
+                            <TextBox Width="52" Name="LibEMag"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Quantité :</Label>
+                            <Label></Label>
+                            <TextBox Width="75" Name="QteEMag"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Prix :</Label>
+                            <Label></Label>
+                            <TextBox Width="101" Name="PrixEMag"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Localisation</Label>
+                            <Label></Label>
+                            <TextBox Width="65" Name="LocEMag"/>
+                        </StackPanel>
+                        <Label/>
+                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyEmag">Appliquer</Button>
+                    </StackPanel>
+                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                    <StackPanel >
+                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                        <TextBlock>  fichier commande Emag</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>EAN :</Label>
+                            <Label></Label>
+                            <TextBox Width="98" Name="EanProd"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Libellé article :</Label>
+                            <Label></Label>
+                            <TextBox Width="52" Name="LibProd"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Alle</Label>
+                            <Label></Label>
+                            <TextBox Width="75" Name="AllePro"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Prix :</Label>
+                            <Label></Label>
+                            <TextBox Width="101" Name="TraveProd"/>
+                        </StackPanel>
+                        <Label/>
+                        <Label/>
+                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyProd">Appliquer</Button>
+                    </StackPanel>
+
+                </StackPanel>
+
+
+            </TabItem>
+
 
         </TabControl>
 

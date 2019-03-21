@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace WpfApp1.code.bdd.NonAddresse
@@ -17,7 +16,7 @@ namespace WpfApp1.code.bdd.NonAddresse
             string str = text;
             str = str.Replace('\r', ' ');
             string[] vs = str.Split('\n');
-
+            Parameters p = Parameters.Instance();
             for (int i = 1; i < vs.Length; i++)
             {
                 try
@@ -26,18 +25,18 @@ namespace WpfApp1.code.bdd.NonAddresse
                     string[] item = line.Split('\t');
                     NonAddresseS art = new NonAddresseS();
 
-                    art.Lib = item[2];
-                    art.Ean = long.Parse(item[3]);
-                    art.Alle = int.Parse(item[8]);
-                    art.Trave = int.Parse(item[9]);
-
+                    art.Lib = item[p.prod.LIB-1];//2];
+                    art.Ean = long.Parse(item[p.prod.EAN - 1]);//3]);
+                    art.Alle = int.Parse(item[p.prod.Alle - 1]);//8]);
+                    art.Trave = int.Parse(item[p.prod.Trave - 1]);//9]);
                     _list.Add(art);
 
                 }
                 catch (Exception e) { Console.WriteLine(e.Message); }
 
-                           }
-            foreach (NonAddresseS nonAddresseS in _list) {
+            }
+            foreach (NonAddresseS nonAddresseS in _list)
+            {
                 bdd.AddProduit(nonAddresseS);
 
                 Console.WriteLine("ok");
@@ -45,6 +44,28 @@ namespace WpfApp1.code.bdd.NonAddresse
 
 
         }
+     /*   public void test()
+        {
+            NonAddresseS nonAddresseS;
+            string srt = "";
+            var m = Bdd.Instance().SearchLocProduit(long.Parse(srt));
+            if (m.Count == 0) {
+                Bdd.Instance().AddProduit();
+            }else
+            {
+                if (nonAddresseS == tg) { noChange; } else
+                {
+                    change();
+
+                }
+
+
+            }
+
+        }
+        */
+
+
         /**
          *
          */
@@ -60,7 +81,7 @@ namespace WpfApp1.code.bdd.NonAddresse
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
             int rowCount = xlRange.Rows.Count;
             int colCount = xlRange.Columns.Count;
-          
+
             for (int i = 2; i <= rowCount; i++)
             {
                 NonAddresseS art = new NonAddresseS();
@@ -79,7 +100,8 @@ namespace WpfApp1.code.bdd.NonAddresse
                             break;
                         case 10:
                             art.Trave = xlRange.Cells[i, j].Value2.ToString();
-                            break;                    }
+                            break;
+                    }
                 }
                 _list.Add(art);
             }

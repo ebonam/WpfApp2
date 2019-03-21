@@ -43,15 +43,15 @@ namespace WpfApp1.code.bdd.cmdEmag
                 {
                     if (!line.Equals(""))
                     {
-
+                        Parameters p = Parameters.Instance();
                         string[] item = line.Split('\t');
                         ArticleEmag art = new ArticleEmag
                         {
-                            _ean = item[13],
-                            _lib = item[15],
-                            _qte = item[16],
-                            _prix = item[20],
-                            _loc = item[23]
+                            _ean = item[p.emag.EAN - 1],//13],
+                            _lib = item[p.emag.LIB - 1],// 15],
+                            _qte = item[p.emag.QTE - 1],//16],
+                            _prix = item[p.emag.PRIX - 1],//20],
+                            _loc = item[p.emag.LOC - 1],//23]
                         };
                         Tri(art);
                     }
@@ -109,7 +109,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             foreach (ArticleEmag product in List)
             {
                 i++;
-                xlWorksheet.Cells[i, 1].value2 = product._lib+"\n" + product._ean;
+                xlWorksheet.Cells[i, 1].value2 = product._lib + "\n" + product._ean;
                 xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
                 MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");
                 xlWorksheet.Cells[i, 3].value2 = gege[0].Value + "€";
@@ -184,7 +184,7 @@ namespace WpfApp1.code.bdd.cmdEmag
                 i = FctQuifaittout(NAL, i, xlWorksheet);
             }
 
-           
+
             xlWorksheet.PageSetup.PrintArea = "A$1:E" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
@@ -270,6 +270,51 @@ namespace WpfApp1.code.bdd.cmdEmag
                 NA.Add(ae);
             }
         }
+
+
+        //todo gerer liste plus le sort(dans params) 
+        public void WriteExcelFileV2()
+        {
+
+            object misValue = System.Reflection.Missing.Value;
+            Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\emag.xlsm"));
+            _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            xlApp.Visible = true;
+            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
+            int i = 2;
+            string str = "";
+
+            foreach (ArticleEmag product in List)
+            {
+                if (str == "" || str == product._sec)
+                {
+                    xlWorksheet.Cells[i, 1].value2 = product._sec;
+
+                }
+                i++;
+                xlWorksheet.Cells[i, 1].value2 = product._lib + "\n" + product._ean;
+                xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
+                MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");
+                xlWorksheet.Cells[i, 3].value2 = gege[0].Value + "€";
+                xlWorksheet.Cells[i, 4].value2 = product._qte;
+                xlWorksheet.Cells[i, 5].value2 = product._loc;
+            }
+
+
+            xlWorksheet.PageSetup.PrintArea = "A$1:E" + i;
+            xlWorkbook.PrintPreview();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Marshal.ReleaseComObject(xlWorksheet);
+            xlWorkbook.Close(false, misValue, misValue);
+            Marshal.ReleaseComObject(xlWorkbook);
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
+        }
+
+
     }
 }
 

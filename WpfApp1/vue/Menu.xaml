@@ -18,29 +18,26 @@
             <MenuItem Header="Mot clé">
                 <MenuItem Header="Ajouter mot clé" Click="Button_Click_3" />
             </MenuItem>
-            <MenuItem Header="Base Produit">
+            <!-- Header="Base Produit">
                 <MenuItem Header="mettre a jour Base" Click="Button_Click_2" />
-            </MenuItem>
+            </>-->
             <MenuItem Header="Etiquettes">
                 <MenuItem Header="Creer des etiquettes" Click="Button_Click_4" />
             </MenuItem>
             <MenuItem Header="Liste mots clés" Click="Button_Click_5">
                
             </MenuItem>
-            <MenuItem Header="Manquant" Click="MenuItem_Click_3">
+            <MenuItem Header="Manquants" Click="MenuItem_Click_3">
                
             </MenuItem> 
             <MenuItem Header="NA" Click="MenuItem_Click">
                
             </MenuItem>
 
-            <MenuItem Header="parametres" Click="Button_Click_6">
+            <MenuItem Header="Parametres" Click="Button_Click_6">
 
             </MenuItem>
 
-            <MenuItem  Header="parametres" >
-
-            </MenuItem>
         </Menu>
        <!--
         <StackPanel Height="Auto" Width="200"  DockPanel.Dock="Left">

@@ -27,11 +27,11 @@
                 <Label>Secteur :</Label>
                 <Label></Label>
                 <ComboBox Name="_combo" Width="128">
-                    <ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
+                    <!--<ComboBoxItem  IsSelected="True">Liquide</ComboBoxItem>
                     <ComboBoxItem >Epicerie</ComboBoxItem>
                     <ComboBoxItem>DPH</ComboBoxItem>
                     <ComboBoxItem>Frais</ComboBoxItem>
-                    
+                    -->
                 </ComboBox>
                 <Label></Label>
                 <CheckBox x:Name="checkAddresse" IsChecked="True">recherche derniere addresse connue</CheckBox>

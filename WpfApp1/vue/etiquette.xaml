@@ -30,7 +30,7 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Line X1="0" X2="1000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
+        <Line X1="0" X2="320" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="3"></Line>
         <StackPanel>
             <StackPanel Width="8cm" Orientation="Horizontal">
                 <StackPanel Width="4cm">
@@ -43,12 +43,15 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
-        <Line X1="0" X2="10000" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="4"></Line>
+        <Line X1="0" X2="320" Y1="0"  Y2="0" Stroke="Black" StrokeThickness="3"></Line>
         <StackPanel >
-            <Label></Label>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,-20">
+
+
+            <Label Name="_lbNC" HorizontalAlignment="Right" Margin="0,0,0,-30"></Label>
+            <StackPanel Width="8cm" Orientation="Horizontal"  Margin="0,0,0,-20">
                 
                 <Label Name="zone" Content="Info : Zone NAL BAZECS, 7322PREP13" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+              
             </StackPanel>
         </StackPanel>
         <Label Margin="0,-20" FontSize="80" FontWeight="Bold" Name="cmdShort" Content="4241" HorizontalAlignment="Left" VerticalAlignment="Top"/>

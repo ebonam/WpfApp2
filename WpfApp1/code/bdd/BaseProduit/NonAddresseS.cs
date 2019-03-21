@@ -21,9 +21,24 @@ namespace WpfApp1.code.bdd.NonAddresse
         [Column("Trave")]
         public int Trave { get; set; }
 
+        public string SetSec()
+        {
+            Parameters p = Parameters.Instance();
+            //LisSecteur s1 = new LisSecteur();
+            foreach (Parameters.Defrayon sec in p.ps.secteurs)
+            {
+                if (sec.rayon.Contains("" + Alle))
+                {
+
+                    return sec.nom;
+                }
+            }
+            return "NA";
+
+        }
 
 
-       public void Setter(long codebar, string lib, int alle, int trave)
+        public void Setter(long codebar, string lib, int alle, int trave)
         {
             Ean = codebar;
             Lib = lib;

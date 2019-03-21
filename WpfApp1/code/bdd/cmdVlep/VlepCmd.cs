@@ -156,6 +156,56 @@ namespace WpfApp1.code.bdd.cmdVlep
             i++;
             return i;
         }
+        //@todo
+        public void WriteExcelFileV2()
+        {
+            Application xlApp = new Microsoft.Office.Interop.Excel.Application();
+            object misValue = System.Reflection.Missing.Value;
+            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\vlep.xlsm"));
+            _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
+            xlApp.Visible = true;
+            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
+            int i = 1;
+            string str="";
+            foreach (ProductVlep product in d)
+            {
+                i++;
+                if (str == "" || str == product.Sec)
+                {
+                    xlWorksheet.Cells[i, 1].value2 = product.Sec;
+                    i++;
+                }
+                
+                xlWorksheet.Cells[i, 1].value2 = product.Lib + "\n" + product.Gencode;
+                xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product.Gencode + ")";
+                xlWorksheet.Cells[i, 3].value2 = product.Prix1;
+                xlWorksheet.Cells[i, 4].value2 = product.Qte;
+                xlWorksheet.Cells[i, 5].value2 = product.Prix2;
+                xlWorksheet.Cells[i, 6].value2 = product.Loc;
+            }
+
+            
+            xlWorksheet.PageSetup.PrintArea = "A$1:F" + i;
+            xlWorkbook.PrintPreview();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            Marshal.ReleaseComObject(xlWorksheet);
+            xlWorkbook.Close(false, misValue, misValue);
+            Marshal.ReleaseComObject(xlWorkbook);
+            xlApp.Quit();
+            Marshal.ReleaseComObject(xlApp);
+        }
+
+
+
+
+
+
+
+
+
+
 
         public void Tri(ProductVlep ae)
         {

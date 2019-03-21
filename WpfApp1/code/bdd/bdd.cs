@@ -19,7 +19,7 @@ namespace WpfApp1.code.bdd
 
         public static Bdd Instance()
         {
-            if (_instance == null)  
+            if (_instance == null)
                 _instance = new Bdd();
             return _instance;
         }
@@ -35,19 +35,18 @@ namespace WpfApp1.code.bdd
         }
         public void AddNA(string Nom, int rayon, bool MC, string secteur)
         {
-           NA mc = new NA();
+            NA mc = new NA();
             mc.Setter(Nom, rayon, MC, secteur);
             Console.WriteLine(mc.ToString());
             AddNA(mc);
         }
-
-
 
         public List<NA> ListeNA()
         {
             List<NA> listena = conn.Query<NA>("SELECT * FROM NA; ");
             return listena;
         }
+
         public List<NA> ListeNA(string sec)
         {
             List<NA> roles = conn.Table<NA>().Where(x => x._sec == sec).ToList();
@@ -58,11 +57,14 @@ namespace WpfApp1.code.bdd
         {
             conn.Update(lA);
         }
+
+        public void VideNA()
+        {
+            conn.DeleteAll<NA>();
+        }
         public void RemoveNA(NA i)
         {
-
             conn.Delete(i);
-
         }
 
         public void AddProduit(long codebar, string lib, int alle, int trave)
@@ -72,6 +74,12 @@ namespace WpfApp1.code.bdd
             lA.Setter(codebar, lib, alle, trave);
             AddProduit(lA);
         }
+
+        public void UpdateProduit(NonAddresseS non)
+        {
+            conn.Update(non);
+        }
+
 
         public void AddProduit(NonAddresseS lA)
         {

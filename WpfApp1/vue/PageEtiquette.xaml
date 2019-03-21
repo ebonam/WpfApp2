@@ -40,7 +40,7 @@
 
             </StackPanel>
         </StackPanel>
-        <StackPanel>
+        <StackPanel Margin="0,0,0,0.333" Width="261">
             <Label FontWeight="Bold">Creer et imprimer Etiquettes</Label>
             <StackPanel Orientation="Horizontal">
                 <Label>Etiquette 1</Label>
@@ -82,9 +82,9 @@
             <Button  Click="Button_print">Imprimer</Button>
 
             <Label></Label>
-            <StackPanel Name="cp" Visibility="Hidden">
+            <StackPanel Name="cp" Visibility="Hidden" Width="261">
                 <Label>Coller l'etiquette ci dessous</Label>
-                <TextBox Name="tb" Height="203" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                <TextBox Name="tb" Width="261" Height="203" AcceptsReturn="True" AcceptsTab="True"></TextBox>
                 <Button Name="addtag" Click="Button_AjouterEtiquette">Ajouter</Button>
 
             </StackPanel>
