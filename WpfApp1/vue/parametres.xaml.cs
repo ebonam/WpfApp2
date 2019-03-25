@@ -50,6 +50,7 @@ namespace WpfApp1.vue
                 rayon = int.Parse(rayonTg.Text);
                 trave = int.Parse(traveTg.Text);
                 string str = (string)_comboSecteur1.SelectedItem;
+
                 p.TGs.Ajout(rayon, trave, str);
                 listBox1.ItemsSource = null;
                 listBox1.ItemsSource = p.TGs.tgs;
@@ -118,7 +119,7 @@ namespace WpfApp1.vue
         {
 
             string str = (string)_comboSecteur0.SelectedItem;
-            if (str != null)
+            if (str != null && str!="")
             {
                 _labelSecteur.Content = str;
                 _listSecteurRayon.ItemsSource = null;
@@ -169,7 +170,7 @@ namespace WpfApp1.vue
                 p.Sav();
                 RayonSecteurNum.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception )
             {
 
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);

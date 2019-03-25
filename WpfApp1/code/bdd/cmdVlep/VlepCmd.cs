@@ -11,7 +11,12 @@ namespace WpfApp1.code.bdd.cmdVlep
         /// <summary>
         /// Liste de produit
         /// </summary>
-        private List<ProductVlep> d;
+        /// 
+
+        private string Ncommande;
+     
+
+        public List<ProductVlep> d;
 
         private List<ProductVlep> Fleg = new List<ProductVlep>();
         private List<ProductVlep> Surg = new List<ProductVlep>();
@@ -35,6 +40,21 @@ namespace WpfApp1.code.bdd.cmdVlep
         }
 
 
+        /// <summary>
+        /// Fonction de parse pour commande VLEP
+        /// </summary>
+        /// <param name="sdsf"></param>
+        public void Test(string sdsf, string cmd)
+        {
+            this.Ncommande = cmd;
+           
+
+            Test(sdsf);
+
+        }
+
+
+        //TODO ADD NUMCOMMAND IN PRODUCT 
         /// <summary>
         /// Fonction de parse pour commande VLEP
         /// </summary>

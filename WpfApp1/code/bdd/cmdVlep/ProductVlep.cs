@@ -11,6 +11,9 @@ namespace WpfApp1.code.bdd.cmdVlep
         private string lib;
         private string loc;
         private string _sec;
+        public string nCommande;
+
+
         public int rayon;
         public int Alle;
         public long Gencode { get => gencode; set => gencode = value; }

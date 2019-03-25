@@ -117,6 +117,14 @@
     <Compile Include="code\bdd\cmdEmag\cmdEmag.xaml.cs">
       <DependentUpon>cmdEmag.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\bdd\cmdEmag\CmdMulti.xaml.cs">
+      <DependentUpon>CmdMulti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="code\bdd\cmdEmag\ListCmdEmag.cs" />
+    <Compile Include="code\bdd\cmdVlep\ListeCmdVlep.cs" />
+    <Compile Include="code\bdd\cmdVlep\PageVlep2.xaml.cs">
+      <DependentUpon>PageVlep2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="code\bdd\NonAddressé\ListMotClé.cs" />
     <Compile Include="code\bdd\cmdVlep\PageVlep.xaml.cs">
       <DependentUpon>PageVlep.xaml</DependentUpon>
@@ -136,6 +144,7 @@
     <Compile Include="code\client\client.xaml.cs">
       <DependentUpon>client.xaml</DependentUpon>
     </Compile>
+    <Compile Include="code\client\ClientBdd.cs" />
     <Compile Include="code\ListeMC.cs" />
     <Compile Include="code\Loggeur.cs" />
     <Compile Include="code\Serializator.cs" />
@@ -181,11 +190,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="code\bdd\cmdEmag\CmdMulti.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="code\bdd\cmdVlep\PageVlep.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="code\bdd\BaseProduit\updateBaseNA.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="code\bdd\cmdVlep\PageVlep2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
