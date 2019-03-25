@@ -2,6 +2,8 @@
 {
     public class ArticleEmag
     {
+        public int NumList;
+        public string Ncommande;
         public string _ean;
         public string _lib;
         public string _qte;

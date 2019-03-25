@@ -20,7 +20,7 @@ namespace WpfApp1.code.bdd.cmdEmag
 
 
 
-        List<ArticleEmag> List = new List<ArticleEmag>();
+     public   List<ArticleEmag> List = new List<ArticleEmag>();
         /// <summary>
         /// fonction qui permet de lire un presse papier pour en faire une liste d'article
         /// </summary>

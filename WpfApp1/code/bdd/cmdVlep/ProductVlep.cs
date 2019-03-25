@@ -11,6 +11,8 @@ namespace WpfApp1.code.bdd.cmdVlep
         private string lib;
         private string loc;
         private string _sec;
+        public string nCommande;
+
 
         public long Gencode { get => gencode; set => gencode = value; }
         public string Prix1 { get => prix1; set => prix1 = value; }
