@@ -5,28 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Menu" Height="524" Width="1006">
+        Title="Carrefour Drive" Height="524" Width="1006">
     <StackPanel Height="auto" Width="auto" Margin="0,0,0,-21">
         <Menu Width="Auto" Height="20">
             <!-- DockPanel.Dock="Top" -->
-        <MenuItem Header="VLEP">
-                <MenuItem Header="Lister commande Vlep" Click="Button_Click" />
-            </MenuItem>
-            <MenuItem Header="EMAG">
-                <MenuItem Header=" Lister commande Emag" Click="Button_Click_1" />
-            </MenuItem>
+        <MenuItem Header="Commande VLEP" Click="Button_Click" />
+            
+            <MenuItem Header="Commande EMAG" Click="Button_Click_1" />
             <MenuItem Header="Mot clé">
                 <MenuItem Header="Ajouter mot clé" Click="Button_Click_3" />
-            </MenuItem>
-            <!-- Header="Base Produit">
+                <MenuItem Header="Liste mots clés" Click="Button_Click_5"/>
+
+                <!-- Header="Base Produit">
                 <MenuItem Header="mettre a jour Base" Click="Button_Click_2" />
             </>-->
-            <MenuItem Header="Etiquettes">
-                <MenuItem Header="Creer des etiquettes" Click="Button_Click_4" />
             </MenuItem>
-            <MenuItem Header="Liste mots clés" Click="Button_Click_5">
+                <MenuItem Header="Etiquettes"
+                 Click="Button_Click_4" />
+            
+            
                
-            </MenuItem>
+            
             <MenuItem Header="Manquants" Click="MenuItem_Click_3">
                
             </MenuItem> 

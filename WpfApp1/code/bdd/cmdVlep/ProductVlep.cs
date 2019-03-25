@@ -11,7 +11,8 @@ namespace WpfApp1.code.bdd.cmdVlep
         private string lib;
         private string loc;
         private string _sec;
-
+        public int rayon;
+        public int Alle;
         public long Gencode { get => gencode; set => gencode = value; }
         public string Prix1 { get => prix1; set => prix1 = value; }
         public string Prix2 { get => prix2; set => prix2 = value; }
@@ -35,13 +36,17 @@ namespace WpfApp1.code.bdd.cmdVlep
             var lis = Bdd.Instance().SearchLocProduit(this.gencode);
             if (lis.Count != 0)
             {
-                foreach (NonAddresseS s in lis)
-                {
-                    sr += s.Alle + "." + s.Trave + "\n";
-                }
-                Loc = sr;
+                rayon = lis[0].Alle;
+                Alle= lis[0].Trave;
+
+                Loc = lis[0].Alle + "." + lis[0].Trave + "\n"; ;
             }
-            else Loc = "NA";
+            else { Loc = "NA";
+                rayon = 0;
+                Alle = 0;
+
+
+            }
         }
         public string  OString()
         {

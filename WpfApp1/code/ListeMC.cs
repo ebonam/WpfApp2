@@ -38,8 +38,7 @@ namespace WpfApp1.code
                 i++;
             }
 
-            xlWorksheet.PageSetup.PrintArea = "A$1:F" + i;
-            xlWorkbook.PrintPreview();
+          
             GC.Collect();
             GC.WaitForPendingFinalizers();
             Marshal.ReleaseComObject(xlWorksheet);
@@ -51,7 +50,7 @@ namespace WpfApp1.code
         public void ReadExcelFile(string s)
         {
             string[] s1 = s.Split('\n');
-
+            Bdd.Instance().VideNA();
             for (int i = 0; i > s1.Length; i++)
             {
                 NA f = new NA();

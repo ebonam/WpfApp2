@@ -15,7 +15,6 @@ namespace WpfApp1.code
                 {
                     if (sec.rayon.Contains("" + rayon))
                     {
-
                         return sec.nom;
                     }
                 }

@@ -52,8 +52,23 @@ namespace WpfApp1.code.bdd.cmdEmag
                             _qte = item[p.emag.QTE - 1],//16],
                             _prix = item[p.emag.PRIX - 1],//20],
                             _loc = item[p.emag.LOC - 1],//23]
+                            
                         };
-                        Tri(art);
+                        try
+                        {
+                            string[] sr= art._loc.Split('.');
+                            art._sec = SetSec(int.Parse(sr[0]));
+                            art.trave =int.Parse(sr[0]);
+                            art.rayon = int.Parse(sr[1]);
+                            
+                        }
+                        catch (Exception) {
+
+
+                            art._sec="NA";
+
+                        }
+                        List.Add(art);
                     }
                 }
                 catch (Exception e) { Console.WriteLine(e.Message); }
@@ -91,7 +106,7 @@ namespace WpfApp1.code.bdd.cmdEmag
                 };
 
 
-                Tri(art);
+                List.Add(art);
             }
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -272,6 +287,37 @@ namespace WpfApp1.code.bdd.cmdEmag
         }
 
 
+        public string SetSec(int rayon)
+        {
+            Parameters p = Parameters.Instance();
+            foreach (Parameters.Defrayon sec in p.ps.secteurs)
+            {
+                if (sec.rayon.Contains("" + rayon))
+                {
+                    return sec.nom;
+                }
+            }
+            return "NA";
+
+        }
+
+        public int SortRayon(ArticleEmag A, ArticleEmag B)
+        {
+          
+            int cpr = A._sec.CompareTo(B._sec);
+            if (cpr == 0)
+            {
+
+                cpr = A.rayon.CompareTo(B.rayon);
+                if (cpr == 0)
+                {
+                  
+                    cpr = A.trave.CompareTo(B.trave);
+                }
+            }
+            return cpr;
+        }
+
         //todo gerer liste plus le sort(dans params) 
         public void WriteExcelFileV2()
         {
@@ -283,17 +329,19 @@ namespace WpfApp1.code.bdd.cmdEmag
             _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
-            int i = 2;
+            int i = 1;
+            List.Sort(SortRayon);//tofo rayon +alle 
             string str = "";
 
             foreach (ArticleEmag product in List)
             {
-                if (str == "" || str == product._sec)
-                {
+                if (str == "" || str != product._sec)
+                { i++;
                     xlWorksheet.Cells[i, 1].value2 = product._sec;
-
+                    str = product._sec;
                 }
                 i++;
+                Console.Write(product._lib + "\n" + product._ean);
                 xlWorksheet.Cells[i, 1].value2 = product._lib + "\n" + product._ean;
                 xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
                 MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");

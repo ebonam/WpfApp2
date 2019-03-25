@@ -30,7 +30,7 @@ namespace WpfApp1.code.bdd.cmdEmag
         {
             CmdEmag cmdEmag = new CmdEmag();
             cmdEmag.ReadCp(this.tb.Text);
-            cmdEmag.WriteExcelFile();
+            cmdEmag.WriteExcelFileV2();
         }
 
         private void Open_Click(object sender, RoutedEventArgs e)

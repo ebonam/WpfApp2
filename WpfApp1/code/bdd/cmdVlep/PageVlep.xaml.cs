@@ -29,7 +29,7 @@ namespace WpfApp1.code.bdd.cmdVlep
         {
             VlepCmd vlepCmd= new VlepCmd();
             vlepCmd.Test(textblock.Text);
-            vlepCmd.WriteExcelFile();
+            vlepCmd.WriteExcelFileV2();
         }
     }
 }

@@ -64,11 +64,47 @@ namespace WpfApp1.code.bdd.cmdVlep
                     var qte = gege3[0].Value;
                     lib = lib.Replace(gege3[0].Value, "");
                     ProductVlep pv = new ProductVlep(long.Parse(gencode), prix1, prix2, qte, lib);
+                    
                     pv.Searchemplacement();
-                    Tri(pv);          
+                    pv.Sec = SetSec(pv.rayon);
+                    d.Add(pv);
+                    //  Tri(pv);          
                 }
             }
         }
+
+        public string SetSec(int rayon)
+        {
+            Parameters p = Parameters.Instance();
+            foreach (Parameters.Defrayon sec in p.ps.secteurs)
+            {
+                if (sec.rayon.Contains("" + rayon))
+                {
+                    return sec.nom;
+                }
+            }
+            return "NA";
+
+        }
+
+        public int SortRayon(ProductVlep A, ProductVlep B)
+        {
+
+            int cpr = A.Sec.CompareTo(B.Sec);
+            if (cpr == 0)
+            {
+
+                cpr = A.rayon.CompareTo(B.rayon);
+                if (cpr == 0)
+                {
+
+                    cpr = A.Alle.CompareTo(B.Alle);
+                }
+            }
+            return cpr;
+        }
+
+
         /// <summary>
         /// ecrit dans un fichier pour impression
         /// </summary>
@@ -167,12 +203,15 @@ namespace WpfApp1.code.bdd.cmdVlep
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
             int i = 1;
-            string str="";
+            d.Sort(SortRayon);//tofo rayon +alle 
+
+            string str ="";
             foreach (ProductVlep product in d)
             {
                 i++;
-                if (str == "" || str == product.Sec)
+                if (str == "" || str != product.Sec)
                 {
+                    str = product.Sec;
                     xlWorksheet.Cells[i, 1].value2 = product.Sec;
                     i++;
                 }
