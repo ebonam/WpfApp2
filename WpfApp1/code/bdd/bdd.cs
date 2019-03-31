@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using WpfApp1.code.bdd.BaseProduit;
 using WpfApp1.code.bdd.NonAddresse;
 using WpfApp1.code.client;
 
@@ -34,6 +35,8 @@ namespace WpfApp1.code.bdd
         //= Bdd.Instance().ListeClient(_idClient.Text, _nomClient.Text, _prenomClient.Text);
         public List<ClientBdd> ListeClient(string idClient, string nom, string prenom)
         {
+                        int i = int.Parse(idClient);
+
             if (idClient != "")
             {
                 if (nom != "")
@@ -41,12 +44,12 @@ namespace WpfApp1.code.bdd
 
                     if (prenom != "")
                     {
-                        return conn.Table<ClientBdd>().Where(x => x.IdClient == int.Parse(idClient) && x.Nom == nom && x.Prenom == prenom).ToList();
+                        return conn.Table<ClientBdd>().Where(x => x.IdClient == i && x.Nom == nom && x.Prenom == prenom).ToList();
 
                     }
                     else
                     {
-                        return conn.Table<ClientBdd>().Where(x => x.IdClient == int.Parse(idClient) && x.Nom == nom).ToList();
+                        return conn.Table<ClientBdd>().Where(x => x.IdClient == i && x.Nom == nom).ToList();
                     }
                 }
                 else
@@ -54,12 +57,12 @@ namespace WpfApp1.code.bdd
 
                     if (prenom != "")
                     {
-                        return conn.Table<ClientBdd>().Where(x => x.IdClient == int.Parse(idClient) && x.Prenom == prenom).ToList();
+                        return conn.Table<ClientBdd>().Where(x => x.IdClient == i && x.Prenom == prenom).ToList();
 
                     }
                     else
                     {
-                        return conn.Table<ClientBdd>().Where(x => x.IdClient == int.Parse(idClient)).ToList();
+                        return conn.Table<ClientBdd>().Where(x => x.IdClient == i).ToList();
                     }
 
                 }
@@ -147,7 +150,12 @@ namespace WpfApp1.code.bdd
         AddProduit(lA);
     }
 
-    public void UpdateProduit(NonAddresseS non)
+        internal void AddProduit(NonAddresseS2 nonAddresseS)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateProduit(NonAddresseS non)
     {
         conn.Update(non);
     }

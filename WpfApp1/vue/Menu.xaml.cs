@@ -16,6 +16,7 @@ using WpfApp1.code;
 using WpfApp1.code.bdd.cmdEmag;
 using WpfApp1.code.bdd.cmdVlep;
 using WpfApp1.code.bdd.NonAddresse;
+using WpfApp1.code.client;
 
 namespace WpfApp1.vue
 {
@@ -81,6 +82,18 @@ namespace WpfApp1.vue
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
+
+        }
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new Client();
+
+        }
+
+
+        private void EmagMulti(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new CmdMulti();
 
         }
     }

@@ -10,16 +10,19 @@ namespace WpfApp1.code.bdd.cmdVlep
     class ListeCmdVlep
     {
 
-        public void add(string cmd, string sdsf)
+        public void add(string cmd, int sdsf)
         {
             var b = new VlepCmd();
-            b.Test(sdsf, cmd);
+            b.Test(cmd, sdsf);
             cmdVleps.Add(b);
         }
 
 
 
-
+        public void Remove(int selectedIndex)
+        {
+            cmdVleps.RemoveAt(selectedIndex);
+        }
         List<VlepCmd> cmdVleps = new List<VlepCmd>();
         List<ProductVlep> articleVleps = new List<ProductVlep>();
         public void WriteExcelFileV2(string sec)
@@ -37,20 +40,36 @@ namespace WpfApp1.code.bdd.cmdVlep
 
             foreach (ProductVlep product in articleVleps)
             {
-                i++;
-                if (!str.Contains(product.nCommande))
-                {
-                    str.Add(product.nCommande);
 
+
+                bool t = false;
+                bool test = true;
+                while (test)
+                {
+                    try
+                    {
+                        i++;
+                        if (!str.Contains(product.nCommande))
+                        {
+                            str.Add(product.nCommande);
+                            t = true;
+                        }
+
+                        xlWorksheet.Cells[i, 1].value2 = product.nCommande + str.FindIndex(x => x.Equals(product.nCommande)); ;
+                        xlWorksheet.Cells[i, 2].value2 = product.Lib + "\n" + product.Gencode;
+                        xlWorksheet.Cells[i, 3].value2 = "=Transbar(" + product.Gencode + ")";
+                        xlWorksheet.Cells[i, 4].value2 = product.Prix1;
+                        xlWorksheet.Cells[i, 5].value2 = product.Qte;
+                        xlWorksheet.Cells[i, 6].value2 = product.Prix2;
+                        xlWorksheet.Cells[i, 7].value2 = product.Loc;
+                        test = false;
+                    }
+                    catch (Exception)
+                    {
+                        if (t) i--;
+                    }
                 }
 
-                xlWorksheet.Cells[i, 1].value2 = product.nCommande + str.FindIndex(x => x.Equals(product.nCommande)); ;
-                xlWorksheet.Cells[i, 2].value2 = product.Lib + "\n" + product.Gencode;
-                xlWorksheet.Cells[i, 3].value2 = "=Transbar(" + product.Gencode + ")";
-                xlWorksheet.Cells[i, 4].value2 = product.Prix1;
-                xlWorksheet.Cells[i, 5].value2 = product.Qte;
-                xlWorksheet.Cells[i, 6].value2 = product.Prix2;
-                xlWorksheet.Cells[i, 7].value2 = product.Loc;
             }
 
 

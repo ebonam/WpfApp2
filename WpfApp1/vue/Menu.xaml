@@ -10,8 +10,12 @@
         <Menu Width="Auto" Height="20">
             <!-- DockPanel.Dock="Top" -->
         <MenuItem Header="Commande VLEP" Click="Button_Click" />
-            
-            <MenuItem Header="Commande EMAG" Click="Button_Click_1" />
+
+            <MenuItem Header="Commande EMAG" >
+
+                <MenuItem Header="Normal" Click="Button_Click_1" />
+                <MenuItem Header="EmagMulti" Click="EmagMulti" />
+            </MenuItem>
             <MenuItem Header="Mot clé">
                 <MenuItem Header="Ajouter mot clé" Click="Button_Click_3" />
                 <MenuItem Header="Liste mots clés" Click="Button_Click_5"/>
@@ -22,10 +26,13 @@
             </MenuItem>
                 <MenuItem Header="Etiquettes"
                  Click="Button_Click_4" />
-            
-            
-               
-            
+
+
+            <MenuItem Header="Clients" Click="MenuItem_Click_2">
+
+            </MenuItem>
+
+
             <MenuItem Header="Manquants" Click="MenuItem_Click_3">
                
             </MenuItem> 

@@ -62,7 +62,7 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Label>Secteur :</Label>
                                     <Label Name="_labelSecteur"/>
-                                    
+
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label>N° de rayon:</Label>
@@ -94,7 +94,7 @@
                                 <Label></Label>
 
                                 <ComboBox Name="_comboSecteur1" Width="128">
-                                    
+
                                 </ComboBox>
                             </StackPanel>
                             <Label></Label>
@@ -139,7 +139,10 @@
                     <StackPanel>
                         <Label></Label>
                         <Label>Pour mettre a jour les produits et leurs emplacements</Label>
-                        <Button Click="MAJBD">Mettre a jour</Button>
+
+                        <TextBox Name="tb" Height="113" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                        <Label></Label>
+                        <Button Name="Validate" Click="Validate_Click">Valider</Button>
                     </StackPanel>
                 </StackPanel>
 
@@ -186,7 +189,7 @@
                     <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
                     <StackPanel >
                         <TextBlock>  Mettre la postion des elements d'un</TextBlock>
-                        <TextBlock>  fichier commande Emag</TextBlock>
+                        <TextBlock>  fichier d'addresse</TextBlock>
                         <StackPanel Orientation="Horizontal">
                             <Label>EAN :</Label>
                             <Label></Label>
@@ -216,10 +219,60 @@
                     </StackPanel>
 
                 </StackPanel>
-
-
             </TabItem>
+            <TabItem Header=" Commande Emag">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel >
+                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                        <TextBlock>  fichier client</TextBlock>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>idclient:</Label>
+                            <Label></Label>
+                            <TextBox Width="98" Name="idClient"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Nom Client :</Label>
+                            <Label></Label>
+                            <TextBox Width="52" Name="nomClient"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Prenom client:</Label>
+                            <Label></Label>
+                            <TextBox Width="75" Name="QteEMa"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Telephone 1</Label>
+                            <Label></Label>
+                            <TextBox Width="101" Name="tel1"/>
+                        </StackPanel>
+                        <Label/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label>Telephone 2</Label>
+                            <Label></Label>
+                            <TextBox Width="65" Name="tel2"/>
+                        </StackPanel>
+                        <Label/>
+                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyClient">Appliquer</Button>
+                    </StackPanel>
+                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                    <StackPanel Width="250">
+                        <Label></Label>
+                        <Label>Vider base client</Label>
+                        <Button Click="viderClient">Vider base</Button>
+                        <Label></Label>
+                        <Label>
+                            Mettre a jour base client
+                        </Label>
+                        <TextBox Height="238"  Name="tbclient" AcceptsReturn="True" AcceptsTab="True"/>
+                        <Label></Label>
+                        <Button Click="updateClient" >Mettre a jour</Button>
+                    </StackPanel>
 
+                </StackPanel>
+            </TabItem>
 
         </TabControl>
 

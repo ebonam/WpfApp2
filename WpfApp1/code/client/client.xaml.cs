@@ -18,12 +18,12 @@ namespace WpfApp1.code.client
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (_idClient.Text != "" && _nomClient.Text != "" && _prenomClient.Text != "")
-            {
+       //     if (_idClient.Text != "" && _nomClient.Text != "" && _prenomClient.Text != "")
+         //   {
                 items = Bdd.Instance().ListeClient(_idClient.Text, _nomClient.Text, _prenomClient.Text);
                 lvUsers.ItemsSource = items;
 
-            }
+           // }
         }
         List<ClientBdd> items = new List<ClientBdd>();
         private void LastNameCM_Click(object sender, RoutedEventArgs e)

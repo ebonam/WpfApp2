@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using WpfApp1.code.bdd.BaseProduit;
 using Excel = Microsoft.Office.Interop.Excel;
 namespace WpfApp1.code.bdd.NonAddresse
 {
     public class ToutLesNonA
     {
-        private List<NonAddresseS> _list;
+        private List<NonAddresseS2> _list;
 
 
         public void ReadCp(string text)
         {
             var bdd = Bdd.Instance();
-            _list = new List<NonAddresseS>();
+            _list = new List<NonAddresseS2>();
             string str = text;
             str = str.Replace('\r', ' ');
             string[] vs = str.Split('\n');
@@ -23,19 +24,19 @@ namespace WpfApp1.code.bdd.NonAddresse
                 {
                     string line = vs[i];
                     string[] item = line.Split('\t');
-                    NonAddresseS art = new NonAddresseS();
+                     NonAddresseS2 art = new NonAddresseS2();
 
-                    art.Lib = item[p.prod.LIB-1];//2];
-                    art.Ean = long.Parse(item[p.prod.EAN - 1]);//3]);
-                    art.Alle = int.Parse(item[p.prod.Alle - 1]);//8]);
-                    art.Trave = int.Parse(item[p.prod.Trave - 1]);//9]);
+                    art.Lib = item[p.prod.LIB-1];//3];
+                    art.Ean = long.Parse(item[p.prod.EAN - 1]);//4]);
+                    art.Alle = int.Parse(item[p.prod.Alle - 1]);//9]);
+                    art.Trave = int.Parse(item[p.prod.Trave - 1]);//10]);
                     _list.Add(art);
 
                 }
                 catch (Exception e) { Console.WriteLine(e.Message); }
-
+                
             }
-            foreach (NonAddresseS nonAddresseS in _list)
+            foreach (NonAddresseS2 nonAddresseS in _list)
             {
                 bdd.AddProduit(nonAddresseS);
 
@@ -72,7 +73,7 @@ namespace WpfApp1.code.bdd.NonAddresse
         public void GetExcelFile(string fileName)
         {
             var bdd = Bdd.Instance();
-            _list = new List<NonAddresseS>();
+            _list = new List<NonAddresseS2>();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@fileName);
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
@@ -84,7 +85,7 @@ namespace WpfApp1.code.bdd.NonAddresse
 
             for (int i = 2; i <= rowCount; i++)
             {
-                NonAddresseS art = new NonAddresseS();
+                NonAddresseS2 art = new NonAddresseS2();
                 for (int j = 1; j <= colCount; j++)
                 {
                     switch (j)
@@ -112,7 +113,7 @@ namespace WpfApp1.code.bdd.NonAddresse
             xlWorkbook.Close();
             Marshal.ReleaseComObject(xlWorkbook);
             Marshal.ReleaseComObject(xlApp);
-            foreach (NonAddresseS nonAddresseS in _list)
+            foreach (NonAddresseS2 nonAddresseS in _list)
             {
                 bdd.AddProduit(nonAddresseS);
             }

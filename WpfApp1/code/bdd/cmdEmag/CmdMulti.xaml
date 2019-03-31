@@ -6,12 +6,16 @@
              xmlns:local="clr-namespace:WpfApp1.code.bdd.cmdEmag"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel>
+    <StackPanel Background="White">
         <Label HorizontalAlignment="Center">Imprimer commande via EMag</Label>
         <StackPanel Orientation="Horizontal" Height="301">
             <StackPanel Margin="10" Width="300">
                 <Label></Label>
-                <Label>Par un copier/coller</Label>
+
+                <StackPanel Orientation="Horizontal">
+                    <Label>Numero de commande :</Label>
+                    <TextBox Margin="30,0,0,0" Name="NumCmd" Width="70" ></TextBox>
+                </StackPanel>
                 <Label Height="28"></Label>
                 <TextBox Name="tb" Height="113" AcceptsReturn="True" AcceptsTab="True"></TextBox>
                 <Button x:Name="Validate" Click="Validate_Click" Content="Ajouter"/>
@@ -25,7 +29,7 @@
                     <ComboBox Name="_comboSecteur0" Width="128">
 
                     </ComboBox>
-                    <Button Margin="20,0,0,0" Click="AfficherRayonSecteur">Recherche rayon</Button>
+                    <Button Margin="20,0,0,0" Click="Proceder">Recherche rayon</Button>
                 </StackPanel>
                 <Label Height="50"></Label>
                 <StackPanel>

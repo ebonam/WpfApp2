@@ -18,14 +18,68 @@ namespace WpfApp1.code.bdd.cmdEmag
 
 
 
+        public bool ReadCp(string text, int id)
+        {
+            bool retunr = true;
+            List = new List<ArticleEmag>();
+            string str = text;
+            str = str.Replace('\r', ' ');
+            string[] vs = str.Split('\n');
+            for (int i = 1; i < vs.Length; i++)
+            {
+                string line = vs[i];
+                try
+                {
+                    if (!line.Equals(""))
+                    {
+                        Parameters p = Parameters.Instance();
+                        string[] item = line.Split('\t');
+                        ArticleEmag art = new ArticleEmag
+                        {
+                            _ean = item[p.emag.EAN - 1],//13],
+                            _lib = item[p.emag.LIB - 1],// 15],
+                            _qte = item[p.emag.QTE - 1],//16],
+                            _prix = item[p.emag.PRIX - 1],//20],
+                            _loc = item[p.emag.LOC - 1],//23]
+                            Ncommande = "" + id,
+                        };
+                        try
+                        {
+                            string[] sr = art._loc.Split('.');
+                            art._sec = SetSec(int.Parse(sr[0]));
+                            art.trave = int.Parse(sr[0]);
+                            art.rayon = int.Parse(sr[1]);
+
+                        }
+                        catch (Exception)
+                        {
 
 
-     public   List<ArticleEmag> List = new List<ArticleEmag>();
+                            art._sec = "NA";
+
+                        }
+                        List.Add(art);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    throw new NotImplementedException();
+                    retunr = false;
+                }
+            }
+            return retunr;
+        }
+
+        //TODO CASSER LE CODE
+        public List<ArticleEmag> List = new List<ArticleEmag>();
         /// <summary>
         /// fonction qui permet de lire un presse papier pour en faire une liste d'article
         /// </summary>
-        public void ReadCp(string text)
+        public bool ReadCp(string text)
         {
+            bool retunr = true;
+
             List = new List<ArticleEmag>();
             string str = text;
             str = str.Replace('\r', ' ');
@@ -52,27 +106,34 @@ namespace WpfApp1.code.bdd.cmdEmag
                             _qte = item[p.emag.QTE - 1],//16],
                             _prix = item[p.emag.PRIX - 1],//20],
                             _loc = item[p.emag.LOC - 1],//23]
-                            
+
                         };
                         try
                         {
-                            string[] sr= art._loc.Split('.');
+                            string[] sr = art._loc.Split('.');
                             art._sec = SetSec(int.Parse(sr[0]));
-                            art.trave =int.Parse(sr[0]);
+                            art.trave = int.Parse(sr[0]);
                             art.rayon = int.Parse(sr[1]);
-                            
+
                         }
-                        catch (Exception) {
+                        catch (Exception)
+                        {
 
 
-                            art._sec="NA";
+                            art._sec = "NA";
 
                         }
                         List.Add(art);
                     }
                 }
-                catch (Exception e) { Console.WriteLine(e.Message); }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+
+                    retunr = false;
+                }
             }
+            return retunr;
         }
         /// <summary>
         /// fonction qui permet de lire un fichier excel pour en faire une liste d'article
@@ -135,158 +196,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             return i;
         }
 
-
-        public void WriteExcelFile()
-        {
-
-            object misValue = System.Reflection.Missing.Value;
-            Application xlApp = new Microsoft.Office.Interop.Excel.Application();
-            string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-            Workbook xlWorkbook = xlApp.Workbooks.Open(System.IO.Path.Combine(exeDir, "excel\\emag.xlsm"));
-
-            _Worksheet xlWorksheet = xlWorkbook.Sheets[1];
-            xlApp.Visible = true;
-            xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
-            int i = 2;
-
-            if (this.NA.Count != 0)
-            {
-                xlWorksheet.Cells[i, 1].value2 = "Non addressé";
-                i = FctQuifaittout(NA, i, xlWorksheet);
-
-            }
-            if (this.Liquide.Count != 0)
-            {
-                Liquide.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "Liquide";
-                i = FctQuifaittout(Liquide, i, xlWorksheet);
-            }
-            if (this.Epicerie.Count != 0)
-            {
-                Epicerie.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "Epicerie";
-                i = FctQuifaittout(Epicerie, i, xlWorksheet);
-            }
-            if (this.DPH.Count != 0)
-            {
-                DPH.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "DPH";
-                i = FctQuifaittout(DPH, i, xlWorksheet);
-            }
-            if (this.Fleg.Count != 0)
-            {
-                Fleg.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "Fruits et legumes";
-                i = FctQuifaittout(Fleg, i, xlWorksheet);
-            }
-            if (this.FRAIS.Count != 0)
-            {
-                FRAIS.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "Frais";
-                i = FctQuifaittout(FRAIS, i, xlWorksheet);
-            }
-            if (this.Surg.Count != 0)
-            {
-                Surg.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "Surgelé";
-                i = FctQuifaittout(Surg, i, xlWorksheet);
-            }
-            if (this.NAL.Count != 0)
-            {
-                NAL.Sort(Mtri);
-                xlWorksheet.Cells[i, 1].value2 = "NAL";
-                i = FctQuifaittout(NAL, i, xlWorksheet);
-            }
-
-
-            xlWorksheet.PageSetup.PrintArea = "A$1:E" + i;
-            xlWorkbook.PrintPreview();
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-            Marshal.ReleaseComObject(xlWorksheet);
-            xlWorkbook.Close(false, misValue, misValue);
-            Marshal.ReleaseComObject(xlWorkbook);
-            xlApp.Quit();
-            Marshal.ReleaseComObject(xlApp);
-        }
-
-        List<ArticleEmag> Fleg = new List<ArticleEmag>();
-        List<ArticleEmag> Surg = new List<ArticleEmag>();
-        List<ArticleEmag> Liquide = new List<ArticleEmag>();
-        List<ArticleEmag> Epicerie = new List<ArticleEmag>();
-        List<ArticleEmag> DPH = new List<ArticleEmag>();
-        List<ArticleEmag> FRAIS = new List<ArticleEmag>();
-        List<ArticleEmag> NAL = new List<ArticleEmag>();
-        List<ArticleEmag> NA = new List<ArticleEmag>();
-        public static int Mtri(ArticleEmag x, ArticleEmag y)
-        {
-            int i = int.Parse(x._loc.Split('.')[0]);
-            int j = int.Parse(y._loc.Split('.')[0]);
-            return i.CompareTo(j);/*
-            if (x._loc == null && y._loc == null) return 0;
-            else if (x._loc == null) return -1;
-            else if (y._loc == null) return 1;
-            else return x._loc.CompareTo(y._loc);
-            */
-        }
-        public void Tri(ArticleEmag ae)
-        {
-
-            //            NA.Sort(Mtri);
-            try
-            {
-                int i = int.Parse(ae._loc.Split('.')[0]);
-
-                if (i == 25)
-                {
-                    Fleg.Add(ae);
-                    //fleg
-                }
-                if (i == 13 || i == 15)
-                {
-                    Surg.Add(ae);
-                    //surg
-
-                }
-                if (i < 7 || i == 8 || i == 10)
-                {
-                    Liquide.Add(ae);
-                    //liquide
-                }
-                else if (i > 101)
-                {
-                    FRAIS.Add(ae);
-                    //    Frais / boucherie
-
-                }
-                else if (i < 28 && i % 2 == 0)
-                {
-                    Epicerie.Add(ae);
-                    //epi
-                }
-                else if (i <= 42 && i % 2 == 0)
-                {
-                    //DPH
-                    DPH.Add(ae);
-                }
-                else if (i % 2 == 1 && i <= 23)
-                {
-                    FRAIS.Add(ae);
-                }
-                else
-                {
-                    NAL.Add(ae);//NAL}
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                NA.Add(ae);
-            }
-        }
-
-
+    
         public string SetSec(int rayon)
         {
             Parameters p = Parameters.Instance();
@@ -303,15 +213,14 @@ namespace WpfApp1.code.bdd.cmdEmag
 
         public int SortRayon(ArticleEmag A, ArticleEmag B)
         {
-          
+
             int cpr = A._sec.CompareTo(B._sec);
             if (cpr == 0)
             {
-
                 cpr = A.rayon.CompareTo(B.rayon);
                 if (cpr == 0)
                 {
-                  
+
                     cpr = A.trave.CompareTo(B.trave);
                 }
             }
@@ -321,7 +230,6 @@ namespace WpfApp1.code.bdd.cmdEmag
         //todo gerer liste plus le sort(dans params) 
         public void WriteExcelFileV2()
         {
-
             object misValue = System.Reflection.Missing.Value;
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
             string exeDir = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -332,25 +240,39 @@ namespace WpfApp1.code.bdd.cmdEmag
             int i = 1;
             List.Sort(SortRayon);//tofo rayon +alle 
             string str = "";
-
             foreach (ArticleEmag product in List)
             {
-                if (str == "" || str != product._sec)
-                { i++;
-                    xlWorksheet.Cells[i, 1].value2 = product._sec;
-                    str = product._sec;
+                bool t = false, t2 = false;
+                bool test = true;
+                while (test)
+                {
+                    try
+                    {
+                        if (str == "" || str != product._sec)
+                        {
+                            i++;
+                            t = true;
+                            xlWorksheet.Cells[i, 1].value2 = product._sec;
+                            str = product._sec;
+                        }
+                        i++;
+                        t2 = true;
+                        Console.Write(product._lib + "\n" + product._ean);
+                        xlWorksheet.Cells[i, 1].value2 = product._lib + "\n" + product._ean;
+                        xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
+                        MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");
+                        xlWorksheet.Cells[i, 3].value2 = gege[0].Value + "€";
+                        xlWorksheet.Cells[i, 4].value2 = product._qte;
+                        xlWorksheet.Cells[i, 5].value2 = product._loc;
+                        test = false;
+                    }
+                    catch (Exception)
+                    {
+                        if (t2) i--;
+                        if (t) i--;
+                    }
                 }
-                i++;
-                Console.Write(product._lib + "\n" + product._ean);
-                xlWorksheet.Cells[i, 1].value2 = product._lib + "\n" + product._ean;
-                xlWorksheet.Cells[i, 2].value2 = "=Transbar(" + product._ean + ")";
-                MatchCollection gege = Regex.Matches(product._prix, "([0-9]*,[0-9]{0,2})");
-                xlWorksheet.Cells[i, 3].value2 = gege[0].Value + "€";
-                xlWorksheet.Cells[i, 4].value2 = product._qte;
-                xlWorksheet.Cells[i, 5].value2 = product._loc;
             }
-
-
             xlWorksheet.PageSetup.PrintArea = "A$1:E" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
@@ -361,8 +283,6 @@ namespace WpfApp1.code.bdd.cmdEmag
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
         }
-
-
     }
 }
 

@@ -4,25 +4,16 @@ namespace WpfApp1.code.bdd.cmdVlep
 {
     public class ProductVlep
     {
-        private long gencode;
-        private string prix1;
-        private string prix2;
-        private string qte;
-        private string lib;
-        private string loc;
-        private string _sec;
         public string nCommande;
-
-
         public int rayon;
         public int Alle;
-        public long Gencode { get => gencode; set => gencode = value; }
-        public string Prix1 { get => prix1; set => prix1 = value; }
-        public string Prix2 { get => prix2; set => prix2 = value; }
-        public string Sec { get => _sec; set => _sec = value; }
-        public string Qte { get => qte; set => qte = value; }
-        public string Lib { get => lib; set => lib = value; }
-        public string Loc { get => loc; set => loc = value; }
+        public long Gencode { get; set; }
+        public string Prix1 { get; set; }
+        public string Prix2 { get; set; }
+        public string Sec { get; set; }
+        public string Qte { get; set; }
+        public string Lib { get; set; }
+        public string Loc { get; set; }
         //todo finir ici
         public ProductVlep(long gencode, string prix1, string prix2, string qte, string lib)
         {
@@ -35,8 +26,8 @@ namespace WpfApp1.code.bdd.cmdVlep
         }
         public void Searchemplacement()
         {
-            string sr = "";
-            var lis = Bdd.Instance().SearchLocProduit(this.gencode);
+            
+            var lis = Bdd.Instance().SearchLocProduit(this.Gencode);
             if (lis.Count != 0)
             {
                 rayon = lis[0].Alle;
@@ -47,13 +38,11 @@ namespace WpfApp1.code.bdd.cmdVlep
             else { Loc = "NA";
                 rayon = 0;
                 Alle = 0;
-
-
             }
         }
         public string  OString()
         {
-             return Gencode + "   " + lib + "   " + qte + "   " + prix1 + "   " + prix2;
+             return Gencode + "   " + Lib + "   " + Qte + "   " + Prix1 + "   " + Prix2;
         }
     }
 }

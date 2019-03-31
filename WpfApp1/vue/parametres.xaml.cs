@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.code;
+using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.vue
 {
@@ -132,6 +133,13 @@ namespace WpfApp1.vue
         {
 
         }
+        private void Validate_Click(object sender, RoutedEventArgs e)
+        {
+            var tlna = new ToutLesNonA();
+            tlna.ReadCp(this.tb.Text);
+
+        }
+
 
         private void AddSecteur(object sender, RoutedEventArgs e)
         {
@@ -156,8 +164,21 @@ namespace WpfApp1.vue
 
         }
 
+        private void ApplyClient(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
-        private void AjouterRayonSecteur(object sender, EventArgs e)
+        private void viderClient(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+        private void updateClient(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+            private void AjouterRayonSecteur(object sender, EventArgs e)
         {
             string str = (string)_labelSecteur.Content;
             try

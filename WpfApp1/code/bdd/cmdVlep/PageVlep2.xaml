@@ -16,7 +16,7 @@
             </StackPanel>
             <Label>Coller ci-dessous la commande de VLEP</Label>
 
-            <TextBox Height="238" Margin="45,0,45,0" Name="textblock" AcceptsReturn="True" AcceptsTab="True"/>
+            <TextBox Height="238" Margin="45,0,45,0" Name="tb" AcceptsReturn="True" AcceptsTab="True"/>
             <Label></Label>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 

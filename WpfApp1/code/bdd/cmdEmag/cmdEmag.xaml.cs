@@ -36,15 +36,17 @@ namespace WpfApp1.code.bdd.cmdEmag
         private void Open_Click(object sender, RoutedEventArgs e)
         {
             CmdEmagVue cmdEmag = new CmdEmagVue();
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Fichier excel |*.xlsx";
-            openFileDialog1.Title = "Selectionnez le fichier";
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                Filter = "Fichier excel |*.xlsx",
+                Title = "Selectionnez le fichier"
+            };
 
             if (openFileDialog1.ShowDialog() == true)
             {
                 var tlna = new CmdEmag();
                 tlna.GetExcelFile(openFileDialog1.FileName);
-                tlna.WriteExcelFile();
+                tlna.WriteExcelFileV2();
             }
         }
     }

@@ -279,6 +279,9 @@
     <None Include="excel\emag.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="excel\emagmulti.xlsm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="excel\manquants.xlsm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

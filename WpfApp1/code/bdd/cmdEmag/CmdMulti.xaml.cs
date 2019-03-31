@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp1.code.bdd.cmdEmag
 {
@@ -20,40 +10,51 @@ namespace WpfApp1.code.bdd.cmdEmag
     /// </summary>
     public partial class CmdMulti : UserControl
     {
-
         List<CmdEmag> vlepCmds = new List<CmdEmag>();
         Parameters p;
         List<string> l;
         List<string> ListeCMD;
-
         public CmdMulti()
         {
             l = new List<string>();
             ListeCMD = new List<string>();
             p = Parameters.Instance();
             InitializeComponent();
-
-            _comboSecteur0.ItemsSource = l;
-
-            _listboxNomSecteur.ItemsSource = p.ps.nomSecteur;
-
-
-        }
-        private void Validate_Click(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-            CmdEmag cmdEmag = new CmdEmag();
-            cmdEmag.ReadCp(this.tb.Text);
-            cmdEmag.WriteExcelFile();
+            _comboSecteur0.ItemsSource = p.ps.nomSecteur;
+            _listboxNomSecteur.ItemsSource = l;
         }
         
 
-        private void AfficherRayonSecteur(object sender, RoutedEventArgs e)
+        ListCmdEmag listCmd = new ListCmdEmag();
+        private void Validate_Click(object sender, RoutedEventArgs e)
+        {
+           
+            try
+            {
+                listCmd.add(this.tb.Text, int.Parse(this.NumCmd.Text));
+                l.Add(this.NumCmd.Text);
+                _listboxNomSecteur.ItemsSource = null;
+                _listboxNomSecteur.ItemsSource = l;
+                this.tb.Text = "";
+                this.NumCmd.Text = "";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+
+                //    throw new NotImplementedException();
+            }
+        }
+
+
+        private void Proceder(object sender, RoutedEventArgs e)
         {
 
             string str = (string)_comboSecteur0.SelectedItem;
-            if (str != null && str != "")
+            if (str != null && str != "" && l.Count != 0)
             {
+
+                this.listCmd.WriteExcelFileV3(str);
             }
         }
 
@@ -62,20 +63,19 @@ namespace WpfApp1.code.bdd.cmdEmag
             int selectedIndex = _listboxNomSecteur.SelectedIndex;
             try
             {
-                p.ps.Remov(selectedIndex);
+                this.l.RemoveAt(selectedIndex);   //   p.ps.Remov(selectedIndex);
+                this.listCmd.Remove(selectedIndex);
             }
             catch
             {
             }
             _listboxNomSecteur.ItemsSource = null;
-            _listboxNomSecteur.ItemsSource = p.ps.nomSecteur;
-
+            _listboxNomSecteur.ItemsSource = l;
         }
         private void UpdateSelector()
         {
             _comboSecteur0.ItemsSource = null;
             _comboSecteur0.ItemsSource = p.ps.nomSecteur;
         }
-
     }
 }
