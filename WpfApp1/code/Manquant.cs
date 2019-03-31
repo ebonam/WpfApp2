@@ -25,7 +25,7 @@ namespace WpfApp1.code
         {
             try
             {
-                // string line = "84 22/12/2018 22/12/2018 22/12/2018 19:00 FRS 17.7.1.1 6123444 8714100385678 BAC CDO CREME VANILLE 500G 755 1.000 0.000 57150735 262605 Harlet Justine Antoine 3.070    0.000 0.000 0.000  PICKING_DRIVE";              
+               
                 string lib = line.Remove(0, 3);
                 MatchCollection gege = Regex.Matches(lib, "([0-9]{2}\\/){2}([0-9]{4}) ");
                 lib = lib.Replace(gege[0].Value, "");
@@ -43,7 +43,6 @@ namespace WpfApp1.code
                     gege = Regex.Matches(lib, "(\\w)+ :([A-z]| )*");
                     _loca = gege[0].Value;
                     lib = lib.Replace(gege[0].Value, "");
-
                 }
                 else
                 {
@@ -55,8 +54,7 @@ namespace WpfApp1.code
                         lib = lib.Replace(gege[0].Value, "");
                     }
                     else
-                    {
-                       
+                    {                       
                         gege = Regex.Matches(lib, "(\\w)+ :([A-z]| )*");
                         _loca = gege[0].Value;
                         lib = lib.Replace(gege[0].Value, "");
@@ -92,9 +90,8 @@ namespace WpfApp1.code
                 Console.Write(_nomPrep);
             }
             catch (Exception e)
-            {
-                //215 : \w \w
-                Console.Write(e.Message);
+            {//todo
+                              Console.Write(e.Message);
 
             }
         }

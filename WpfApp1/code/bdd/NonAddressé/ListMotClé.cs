@@ -5,7 +5,6 @@ namespace WpfApp1.code.bdd.NonAddressé
 {
     class ListMotClé
     {
-
         public List<NA2> _NaMC;
         public Bdd bd;
         List<NA> _mc = new List<NA>();
@@ -19,7 +18,6 @@ namespace WpfApp1.code.bdd.NonAddressé
         public List<NA2> TriDesFamilles(List<NA2> Atrier)
         {
             List<NA2> NonTrier = new List<NA2>();
-            // List<NA> nAbdds = new List<NA>();
 
             foreach (NA2 nA in Atrier)
             {
@@ -45,8 +43,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                     else
                     {
                         nA.rayon = mc._Rayon;
-                        
-                         nA.loc="" + mc._Nom;
+                        nA.loc = "" + mc._Nom;
                         flag = true;
                         _NaMC.Add(nA);
                     }
@@ -59,8 +56,6 @@ namespace WpfApp1.code.bdd.NonAddressé
             _NaMC.Sort(Mtri);
             return NonTrier;
         }
-
-
         public static int Mtri(NA2 x, NA2 y)
         {
             int i = x.rayon;
@@ -74,7 +69,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                 int cpr2 = i.CompareTo(j);
                 return cpr2;
             }
-                return cpr;
+            return cpr;
         }
     }
 }

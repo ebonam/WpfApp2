@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Height="440" Margin="10,0,0,0" VerticalAlignment="Top" Width="790">
+        <TabControl HorizontalAlignment="Left" Height="440" Width="800" Margin="10,0,0,0" VerticalAlignment="Top">
             <TabItem Header="Mot clés">
 
                 <StackPanel>
@@ -89,14 +89,14 @@
                             <Label></Label>
                             <Label>Ajouter une tête de gondole</Label>
                             <Label></Label>
-                            <StackPanel Orientation="Horizontal">
+                           <!-- <StackPanel Orientation="Horizontal">
                                 <Label>Secteur:</Label>
                                 <Label></Label>
 
                                 <ComboBox Name="_comboSecteur1" Width="128">
 
                                 </ComboBox>
-                            </StackPanel>
+                            </StackPanel>-->
                             <Label></Label>
                             <StackPanel Orientation="Horizontal">
                                 <Label>Rayon :</Label>
@@ -140,7 +140,7 @@
                         <Label></Label>
                         <Label>Pour mettre a jour les produits et leurs emplacements</Label>
 
-                        <TextBox Name="tb" Height="113" AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                        <TextBox Name="tb" Height="113" Width="400" MaxWidth="500"  AcceptsReturn="True" AcceptsTab="True"></TextBox>
                         <Label></Label>
                         <Button Name="Validate" Click="Validate_Click">Valider</Button>
                     </StackPanel>
@@ -261,14 +261,14 @@
                     <StackPanel Width="250">
                         <Label></Label>
                         <Label>Vider base client</Label>
-                        <Button Click="viderClient">Vider base</Button>
+                        <Button Click="ViderClient">Vider base</Button>
                         <Label></Label>
                         <Label>
                             Mettre a jour base client
                         </Label>
                         <TextBox Height="238"  Name="tbclient" AcceptsReturn="True" AcceptsTab="True"/>
                         <Label></Label>
-                        <Button Click="updateClient" >Mettre a jour</Button>
+                        <Button Click="UpdateClient" >Mettre a jour</Button>
                     </StackPanel>
 
                 </StackPanel>

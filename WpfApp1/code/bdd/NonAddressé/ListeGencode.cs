@@ -14,15 +14,6 @@ namespace WpfApp1.code.bdd.NonAddressé
             _NaMC = new List<NA2>();
             var _mc = Bdd.Instance().ListeNA();
         }
-
-
-
-
-
-
-
-
-
         public static int Mtri(NA2 x, NA2 y)
         {
             int i = int.Parse(x.loc.Split('.')[0]);
@@ -51,49 +42,30 @@ namespace WpfApp1.code.bdd.NonAddressé
                 }
                 return 0;
             }
-
-//            return i.CompareTo(j);
-/*
-            if (x._loc == null && y._loc == null) return 0;
-            else if (x._loc == null) return -1;
-            else if (y._loc == null) return 1;
-            else return x._loc.CompareTo(y._loc);
-            */
         }
-
-
-
-
-
-
+        //todo changer nom
         public List<NA2> TriDesFamilles(List<NA2> Atrier)
         {
             List<NA2> NonTrier = new List<NA2>();
             foreach (NA2 nA in Atrier)
             {
-                 List<NonAddresseS> n = bd.SearchLocProduit(long.Parse(nA.Ean));
-                   if (n.Count != 0)
-                   {
-                       nA.loc = "";
-                           foreach (NonAddresseS nonAddresseS in n)
-                       {
-                           nA.loc = " " + nonAddresseS.Alle + "."+nonAddresseS.Trave;
-                          
-
-
-                       }
-                       this._NaMC.Add(nA);
-                   }
-                   else
-                   {
-                       NonTrier.Add(nA);
-                   }
+                List<NonAddresseS> n = bd.SearchLocProduit(long.Parse(nA.Ean));
+                if (n.Count != 0)
+                {
+                    nA.loc = "";
+                    foreach (NonAddresseS nonAddresseS in n)
+                    {
+                        nA.loc = " " + nonAddresseS.Alle + "." + nonAddresseS.Trave;
+                    }
+                    this._NaMC.Add(nA);
+                }
+                else
+                {
+                    NonTrier.Add(nA);
+                }
             }
             _NaMC.Sort(Mtri);
             return NonTrier;
         }
     }
-
-
-
 }

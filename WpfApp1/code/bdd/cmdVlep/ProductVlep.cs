@@ -14,7 +14,7 @@ namespace WpfApp1.code.bdd.cmdVlep
         public string Qte { get; set; }
         public string Lib { get; set; }
         public string Loc { get; set; }
-        //todo finir ici
+        
         public ProductVlep(long gencode, string prix1, string prix2, string qte, string lib)
         {
             this.Gencode = gencode;

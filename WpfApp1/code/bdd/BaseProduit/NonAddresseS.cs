@@ -20,11 +20,11 @@ namespace WpfApp1.code.bdd.NonAddresse
         public  int Alle { get; set; }
         [Column("Trave")]
         public int Trave { get; set; }
-
+        /*
         public string SetSec()
         {
             Parameters p = Parameters.Instance();
-            //LisSecteur s1 = new LisSecteur();
+          
             foreach (Parameters.Defrayon sec in p.ps.secteurs)
             {
                 if (sec.rayon.Contains("" + Alle))
@@ -36,7 +36,7 @@ namespace WpfApp1.code.bdd.NonAddresse
             return "NA";
 
         }
-
+        */
 
         public void Setter(long codebar, string lib, int alle, int trave)
         {

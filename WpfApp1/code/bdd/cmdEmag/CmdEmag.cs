@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using Excel = Microsoft.Office.Interop.Excel;
 
 namespace WpfApp1.code.bdd.cmdEmag
 {
@@ -16,8 +15,7 @@ namespace WpfApp1.code.bdd.cmdEmag
         public string hfin;
 
 
-
-
+        //todo 
         public bool ReadCp(string text, int id)
         {
             bool retunr = true;
@@ -25,59 +23,68 @@ namespace WpfApp1.code.bdd.cmdEmag
             string str = text;
             str = str.Replace('\r', ' ');
             string[] vs = str.Split('\n');
-            for (int i = 1; i < vs.Length; i++)
+
+            if (vs.Length != 0)
             {
-                string line = vs[i];
-                try
+                for (int i = 1; i < vs.Length; i++)
                 {
-                    if (!line.Equals(""))
+                    string line = vs[i];
+                    try
                     {
-                        Parameters p = Parameters.Instance();
-                        string[] item = line.Split('\t');
-                        ArticleEmag art = new ArticleEmag
+                        if (!line.Equals(""))
                         {
-                            _ean = item[p.emag.EAN - 1],//13],
-                            _lib = item[p.emag.LIB - 1],// 15],
-                            _qte = item[p.emag.QTE - 1],//16],
-                            _prix = item[p.emag.PRIX - 1],//20],
-                            _loc = item[p.emag.LOC - 1],//23]
-                            Ncommande = "" + id,
-                        };
-                        try
-                        {
-                            string[] sr = art._loc.Split('.');
-                            art._sec = SetSec(int.Parse(sr[0]));
-                            art.trave = int.Parse(sr[0]);
-                            art.rayon = int.Parse(sr[1]);
+                            Parameters p = Parameters.Instance();
+                            string[] item = line.Split('\t');
+                            ArticleEmag art = new ArticleEmag
+                            {
+                                _ean = item[p.emag.EAN - 1],//13],
+                                _lib = item[p.emag.LIB - 1],// 15],
+                                _qte = item[p.emag.QTE - 1],//16],
+                                _prix = item[p.emag.PRIX - 1],//20],
+                                _loc = item[p.emag.LOC - 1],//23]
+                                Ncommande = "" + id,
 
+                            };
+                            try
+                            {
+                                string[] sr = art._loc.Split('.');
+                                art._sec = SetSec(int.Parse(sr[0]));
+                                art.trave = int.Parse(sr[0]);
+                                art.rayon = int.Parse(sr[1]);
+
+                            }
+                            catch (Exception)
+                            {
+
+                                art._sec = "NA";
+
+                            }
+                            List.Add(art);
                         }
-                        catch (Exception)
-                        {
-
-
-                            art._sec = "NA";
-
-                        }
-                        List.Add(art);
+                    }
+                    catch (Exception)
+                    {
+                        retunr = false;
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-                    throw new NotImplementedException();
-                    retunr = false;
-                }
             }
+            else { retunr = false; }
             return retunr;
         }
+        
+        private Parameters p = Parameters.Instance();
 
-        //TODO CASSER LE CODE
+        /// <summary>
+        /// 
+        /// </summary>
         public List<ArticleEmag> List = new List<ArticleEmag>();
         /// <summary>
         /// fonction qui permet de lire un presse papier pour en faire une liste d'article
         /// </summary>
         public bool ReadCp(string text)
-        {
+        { return ReadCp(text, 0); }
+
+            /*
             bool retunr = true;
 
             List = new List<ArticleEmag>();
@@ -89,52 +96,55 @@ namespace WpfApp1.code.bdd.cmdEmag
             date = xlRange.Cells[2, 11].Value2.ToString();
             Hdeb = xlRange.Cells[2, 12].Value2.ToString();
             hfin = xlRange.Cells[2, 13].Value2.ToString();
-            */
-            for (int i = 1; i < vs.Length; i++)
+            *
+            if (vs.Length > 1)
             {
-                string line = vs[i];
-                try
+                for (int i = 1; i < vs.Length; i++)
                 {
-                    if (!line.Equals(""))
+                    string line = vs[i];
+                    try
                     {
-                        Parameters p = Parameters.Instance();
-                        string[] item = line.Split('\t');
-                        ArticleEmag art = new ArticleEmag
+                        if (!line.Equals(""))
                         {
-                            _ean = item[p.emag.EAN - 1],//13],
-                            _lib = item[p.emag.LIB - 1],// 15],
-                            _qte = item[p.emag.QTE - 1],//16],
-                            _prix = item[p.emag.PRIX - 1],//20],
-                            _loc = item[p.emag.LOC - 1],//23]
 
-                        };
-                        try
-                        {
-                            string[] sr = art._loc.Split('.');
-                            art._sec = SetSec(int.Parse(sr[0]));
-                            art.trave = int.Parse(sr[0]);
-                            art.rayon = int.Parse(sr[1]);
-
+                            string[] item = line.Split('\t');
+                            ArticleEmag art = new ArticleEmag
+                            {
+                                _ean = item[p.emag.EAN - 1],//13],
+                                _lib = item[p.emag.LIB - 1],// 15],
+                                _qte = item[p.emag.QTE - 1],//16],
+                                _prix = item[p.emag.PRIX - 1],//20],
+                                _loc = item[p.emag.LOC - 1],//23]
+                            };
+                            try
+                            {
+                                string[] sr = art._loc.Split('.');
+                                art._sec = SetSec(int.Parse(sr[0]));
+                                art.trave = int.Parse(sr[0]);
+                                art.rayon = int.Parse(sr[1]);
+                            }
+                            catch (Exception)
+                            {
+                                art._sec = "NA";
+                            }
+                            List.Add(art);
                         }
-                        catch (Exception)
-                        {
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.Message);
 
-
-                            art._sec = "NA";
-
-                        }
-                        List.Add(art);
+                        retunr = false;
                     }
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e.Message);
-
-                    retunr = false;
-                }
             }
+            else retunr = false;
             return retunr;
-        }
+            }
+             */
+        
+     
+        /*
         /// <summary>
         /// fonction qui permet de lire un fichier excel pour en faire une liste d'article
         /// </summary>
@@ -181,7 +191,6 @@ namespace WpfApp1.code.bdd.cmdEmag
 
         public int FctQuifaittout(List<ArticleEmag> List, int i, _Worksheet xlWorksheet)
         {
-
             foreach (ArticleEmag product in List)
             {
                 i++;
@@ -194,12 +203,15 @@ namespace WpfApp1.code.bdd.cmdEmag
             }
             i++;
             return i;
-        }
-
-    
+        }*/
+        /// <summary>
+        /// Selectionne le secteur en fonction du rayon fourni, la liste des secteur se trouve dans parametres 
+        /// </summary>
+        /// <param name="rayon">rayon du produit </param>
+        /// <returns></returns>
         public string SetSec(int rayon)
         {
-            Parameters p = Parameters.Instance();
+
             foreach (Parameters.Defrayon sec in p.ps.secteurs)
             {
                 if (sec.rayon.Contains("" + rayon))
@@ -210,7 +222,12 @@ namespace WpfApp1.code.bdd.cmdEmag
             return "NA";
 
         }
-
+        /// <summary>
+        /// Comparaison pour deux produit, => CompareTo
+        /// </summary>
+        /// <param name="A"></param>
+        /// <param name="B"></param>
+        /// <returns></returns>
         public int SortRayon(ArticleEmag A, ArticleEmag B)
         {
 
@@ -226,8 +243,10 @@ namespace WpfApp1.code.bdd.cmdEmag
             }
             return cpr;
         }
-
-        //todo gerer liste plus le sort(dans params) 
+        //todo Test
+        /// <summary>
+        /// Ecrit dans un fichier excel la commande Emag (une seule ) pour plusieurs commandes voir classe ListCmdEmags
+        /// </summary>
         public void WriteExcelFileV2()
         {
             object misValue = System.Reflection.Missing.Value;
@@ -238,7 +257,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             xlApp.Visible = true;
             xlApp.AutomationSecurity = Microsoft.Office.Core.MsoAutomationSecurity.msoAutomationSecurityByUI;
             int i = 1;
-            List.Sort(SortRayon);//tofo rayon +alle 
+            List.Sort(SortRayon);
             string str = "";
             foreach (ArticleEmag product in List)
             {

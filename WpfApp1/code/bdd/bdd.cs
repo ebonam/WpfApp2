@@ -26,16 +26,17 @@ namespace WpfApp1.code.bdd
             return _instance;
         }
 
+        Parameters p = Parameters.Instance();
         public void CreateTable()
         {
             conn.CreateTable<NA>();
             conn.CreateTable<NonAddresseS>();
+            conn.CreateTable<NonAddresseS2>();
             conn.CreateTable<ClientBdd>();
         }
-        //= Bdd.Instance().ListeClient(_idClient.Text, _nomClient.Text, _prenomClient.Text);
         public List<ClientBdd> ListeClient(string idClient, string nom, string prenom)
         {
-                        int i = int.Parse(idClient);
+            int i = int.Parse(idClient);
 
             if (idClient != "")
             {
@@ -80,7 +81,7 @@ namespace WpfApp1.code.bdd
                     }
                     else
                     {
-                        return conn.Table<ClientBdd>().Where(x =>  x.Nom == nom).ToList();
+                        return conn.Table<ClientBdd>().Where(x => x.Nom == nom).ToList();
                     }
                 }
                 else
@@ -100,105 +101,122 @@ namespace WpfApp1.code.bdd
 
             }
         }
+        public void AddNA(NA mc)
+        {
+            conn.Insert(mc);
+        }
+        public void AddNA(string Nom, int rayon, bool MC, string secteur)
+        {
+            NA mc = new NA();
+            mc.Setter(Nom, rayon, MC, secteur);
+            Console.WriteLine(mc.ToString());
+            AddNA(mc);
+        }
+        public List<NA> ListeNA()
+        {
+            List<NA> listena = conn.Query<NA>("SELECT * FROM NA; ");
+            return listena;
+        }
+        public List<NA> ListeNA(string sec)
+        {
+            List<NA> roles = conn.Table<NA>().Where(x => x._sec == sec).ToList();
+            return roles;
+        }
+        public void ModifNA(ListeArticle lA)
+        {
+            conn.Update(lA);
+        }
 
+        public void VideNA()
+        {
+            conn.DeleteAll<NA>();
+        }
+        public void RemoveNA(NA i)
+        {
+            conn.Delete(i);
+        }
 
-    
-
-    public void AddNA(NA mc)
-    {
-        conn.Insert(mc);
-    }
-    public void AddNA(string Nom, int rayon, bool MC, string secteur)
-    {
-        NA mc = new NA();
-        mc.Setter(Nom, rayon, MC, secteur);
-        Console.WriteLine(mc.ToString());
-        AddNA(mc);
-    }
-
-    public List<NA> ListeNA()
-    {
-        List<NA> listena = conn.Query<NA>("SELECT * FROM NA; ");
-        return listena;
-    }
-
-    public List<NA> ListeNA(string sec)
-    {
-        List<NA> roles = conn.Table<NA>().Where(x => x._sec == sec).ToList();
-        return roles;
-    }
-
-    public void ModifNA(ListeArticle lA)
-    {
-        conn.Update(lA);
-    }
-
-    public void VideNA()
-    {
-        conn.DeleteAll<NA>();
-    }
-    public void RemoveNA(NA i)
-    {
-        conn.Delete(i);
-    }
-
-    public void AddProduit(long codebar, string lib, int alle, int trave)
-    {
-        //conn.q("            SELECT name FROM sqlite_master WHERE type IN('table', 'view') AND name NOT LIKE 'sqlite_%' ORDER BY 1");
-        NonAddresseS lA = new NonAddresseS();
-        lA.Setter(codebar, lib, alle, trave);
-        AddProduit(lA);
-    }
+        public void AddProduit(long codebar, string lib, int alle, int trave)
+        {
+            NonAddresseS lA = new NonAddresseS();
+            lA.Setter(codebar, lib, alle, trave);
+            AddProduit(lA);
+        }
 
         internal void AddProduit(NonAddresseS2 nonAddresseS)
         {
-            throw new NotImplementedException();
+            List<NonAddresseS2> roles = conn.Table<NonAddresseS2>().Where(x => x.Ean == nonAddresseS.Ean).ToList();
+            if (roles.Count == 0)
+            {
+                conn.Insert(nonAddresseS);
+                Console.WriteLine("ajouter" + nonAddresseS.Lib);
+            }
+            else if (!roles[0].Equals(nonAddresseS))
+            {
+
+                if (!p.TGs.appartient(nonAddresseS))
+                {
+                    Console.WriteLine("Modifié" + nonAddresseS.Lib);
+
+                    conn.Update(nonAddresseS);
+                }
+                else
+                {
+                    Console.WriteLine("TG" + nonAddresseS.Lib);
+
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("ignoré" + nonAddresseS.Lib);
+            }
         }
 
         public void UpdateProduit(NonAddresseS non)
-    {
-        conn.Update(non);
-    }
+        {
+            conn.Update(non);
+        }
 
 
-    public void AddProduit(NonAddresseS lA)
-    {
-        try
+        public void AddProduit(NonAddresseS lA)
+        {
+            try
+            {
+                conn.Insert(lA);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(lA.Ean);
+                Console.WriteLine(e.Message);
+            }
+
+        }
+        public void AddProduit2(long codebar, string lib, int alle, int trave)
+        {
+            ListeArticle lA = new ListeArticle();
+            lA.Setter(codebar, lib, alle, trave);
+            AddProduit2(lA);
+        }
+        public void AddProduit2(ListeArticle lA)
         {
             conn.Insert(lA);
         }
-        catch (Exception e)
+
+        public List<NonAddresseS> SearchLocProduit(long produ)
         {
-            Console.WriteLine(lA.Ean);
-            Console.WriteLine(e.Message);
+            List<NonAddresseS> roles = conn.Table<NonAddresseS>().Where(x => x.Ean == produ).ToList();
+            return roles;
         }
 
-    }
-    public void AddProduit2(long codebar, string lib, int alle, int trave)
-    {
-        ListeArticle lA = new ListeArticle();
-        lA.Setter(codebar, lib, alle, trave);
-        AddProduit2(lA);
-    }
-    public void AddProduit2(ListeArticle lA)
-    {
-        conn.Insert(lA);
-    }
+        public void ViderTProduit()
+        {
+            conn.DropTable<ListeArticle>();
+        }
 
-    public List<NonAddresseS> SearchLocProduit(long produ)
-    {
-        List<NonAddresseS> roles = conn.Table<NonAddresseS>().Where(x => x.Ean == produ).ToList();
-        return roles;
+        public void Dispose()
+        {
+            conn.Dispose();
+        }
     }
-
-    public void ViderTProduit()
-    {
-        conn.DropTable<ListeArticle>();
-    }
-
-    public void Dispose()
-    {
-        conn.Dispose();
-    }
-}
 }

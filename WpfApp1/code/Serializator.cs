@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -23,22 +19,22 @@ namespace WpfApp1.code
         {
             if (serializableObject == null) { return; }
 
-//            try
-  //          {
-                XmlDocument xmlDocument = new XmlDocument();
-                XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    serializer.Serialize(stream, serializableObject);
-                    stream.Position = 0;
-                    xmlDocument.Load(stream);
-                    xmlDocument.Save(fileName);
-                }
-         /*   }
-            catch (Exception ex)
+            //            try
+            //          {
+            XmlDocument xmlDocument = new XmlDocument();
+            XmlSerializer serializer = new XmlSerializer(serializableObject.GetType());
+            using (MemoryStream stream = new MemoryStream())
             {
-                //Log exception here
-            }*/
+                serializer.Serialize(stream, serializableObject);
+                stream.Position = 0;
+                xmlDocument.Load(stream);
+                xmlDocument.Save(fileName);
+            }
+            /*   }
+               catch (Exception ex)
+               {
+                   //Log exception here
+               }*/
         }
 
 
@@ -71,13 +67,13 @@ namespace WpfApp1.code
                     }
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 //Log exception here
             }
             return objectOut;
         }
 
-    
+
     }
 }

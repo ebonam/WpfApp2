@@ -9,8 +9,7 @@ namespace WpfApp1.code
 {
     class Loggeur
     {
-        //https://docs.microsoft.com/fr-fr/dotnet/standard/io/how-to-open-and-append-to-a-log-file
-
+      
         public static void Main()
         {
             using (StreamWriter w = File.AppendText("log.txt"))
@@ -24,7 +23,6 @@ namespace WpfApp1.code
                 DumpLog(r);
             }
         }
-
         public static void Log(string logMessage, TextWriter w)
         {
             w.Write("\r\nLog Entry : ");
@@ -43,22 +41,4 @@ namespace WpfApp1.code
             }
         }
     }
-    // The example creates a file named "log.txt" and writes the following lines to it,
-    // or appends them to the existing "log.txt" file:
-
-    // Log Entry : <current long time string> <current long date string>
-    //  :
-    //  :Test1
-    // -------------------------------
-
-    // Log Entry : <current long time string> <current long date string>
-    //  :
-    //  :Test2
-    // -------------------------------
-
-    // It then writes the contents of "log.txt" to the console.
-
-
-
-
 }

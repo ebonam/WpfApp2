@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using WpfApp1.code.bdd.BaseProduit;
 
 namespace WpfApp1.code
 {
@@ -19,10 +20,8 @@ namespace WpfApp1.code
                     }
                 }
                 return "NA";
-
             }
         }
-
         public int SortRayon(object A, object B)
         {
             string s = "", v = "";
@@ -39,7 +38,6 @@ namespace WpfApp1.code
             }
             return cpr;
         }
-
         public class Emag
         {
             public int EAN, LIB, QTE, PRIX, LOC;
@@ -59,7 +57,7 @@ namespace WpfApp1.code
             public void Add(string str)
             {
                 Defrayon dr = new Defrayon(str);
-                
+
                 secteurs.Add(dr);
                 nomSecteur.Add(str);
             }
@@ -92,7 +90,8 @@ namespace WpfApp1.code
             public Defrayon() { }
             public string nom;
             public List<string> rayon;
-            public Defrayon(string nom) {
+            public Defrayon(string nom)
+            {
                 this.nom = nom;
                 rayon = new List<string>();
             }
@@ -107,31 +106,50 @@ namespace WpfApp1.code
                 tgs = new List<string>();
                 emplacement = new List<Doubleint>();
             }
+            public bool appartient(NonAddresseS2 na)
+            {
+
+                foreach (Doubleint doubleint in emplacement)
+                {
+                    if (doubleint.Equal(new Doubleint(na.Alle, na.Trave))) return true;
+                }
+                return false;
+
+            }
+
             [Serializable]
             public class Doubleint
             {
                 public int rayon, trave;
-                public string sec;
+
                 public Doubleint() { }
 
-                public Doubleint(int r, int tr, string sec)
+                public Doubleint(int r, int tr)
                 {
                     this.rayon = r;
                     this.trave = tr;
-                    this.sec = sec;
+
+                }
+
+                public bool Equal(object obj)
+                {
+                    var doubleint = obj as Doubleint;
+                    return doubleint != null &&
+                           rayon == doubleint.rayon &&
+                           trave == doubleint.trave;
                 }
 
                 public string Tolist()
                 {
-                    return rayon + "." + trave + "   " + sec;
+                    return rayon + "." + trave;
 
                 }
 
             }
 
-            public void Ajout(int text1, int text2, string sec)
+            public void Ajout(int text1, int text2)
             {
-                var di = new Doubleint(text1,text2, sec);
+                var di = new Doubleint(text1, text2);
                 emplacement.Add(di);
                 tgs.Add(di.Tolist());
             }
@@ -168,6 +186,11 @@ namespace WpfApp1.code
 
         }
 
+        internal bool blaklist(NonAddresseS2 nonAddresseS)
+        {
+            //            this.TGs.emplacement.Contains(x => x.);
+            return TGs.emplacement.Contains(new TG.Doubleint { rayon = nonAddresseS.Alle, trave = nonAddresseS.Trave });
+        }
 
         private Parameters()
         {

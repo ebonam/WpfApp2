@@ -28,8 +28,9 @@ namespace WpfApp1.code.bdd.cmdVlep
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             VlepCmd vlepCmd= new VlepCmd();
-            vlepCmd.Test(textblock.Text);
+            if(vlepCmd.Test(textblock.Text))
             vlepCmd.WriteExcelFileV2();
+            else MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
         }
     }
 }

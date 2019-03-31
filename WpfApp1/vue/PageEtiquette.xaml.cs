@@ -165,7 +165,7 @@ namespace WpfApp1.vue
             etiquette3 = null;
             etiquette4 = null;
             etiquette5 = null;
-//todo regler cette merde
+
             
         }
     }

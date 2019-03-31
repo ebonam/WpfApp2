@@ -14,8 +14,14 @@ namespace WpfApp1.vue
     public partial class parametres : UserControl
 #pragma warning restore IDE1006 // Styles d'affectation de noms
     {
-
+        /// <summary>
+        /// 
+        /// </summary>
         public List<string> l;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public parametres()
         {
             l = new List<string>();
@@ -24,7 +30,7 @@ namespace WpfApp1.vue
             PrintEmag();
             PrintProd();
             _comboSecteur0.ItemsSource = l;
-            _comboSecteur1.ItemsSource = l;
+            //_comboSecteur1.ItemsSource = l;
             _listboxNomSecteur.ItemsSource = p.ps.nomSecteur;
 
             listBox1.ItemsSource = p.TGs.tgs;
@@ -37,7 +43,7 @@ namespace WpfApp1.vue
 
 
 
-        //TODO controle du flux utilisateur 
+
         /// <summary>
         /// ajoute une tg, et sauvegarde 
         /// </summary>
@@ -50,9 +56,7 @@ namespace WpfApp1.vue
             {
                 rayon = int.Parse(rayonTg.Text);
                 trave = int.Parse(traveTg.Text);
-                string str = (string)_comboSecteur1.SelectedItem;
-
-                p.TGs.Ajout(rayon, trave, str);
+                p.TGs.Ajout(rayon, trave);
                 listBox1.ItemsSource = null;
                 listBox1.ItemsSource = p.TGs.tgs;
                 p.Sav();
@@ -82,12 +86,13 @@ namespace WpfApp1.vue
             listBox1.ItemsSource = p.TGs.tgs;
             p.Sav();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RetirerRayon(object sender, EventArgs e)
         {
-
-
-
             int selectedIndex = _listSecteurRayon.SelectedIndex;
             try
             {
@@ -100,7 +105,6 @@ namespace WpfApp1.vue
             _listSecteurRayon.ItemsSource = p.ps.GetRayon((string)_labelSecteur.Content);
             p.Sav();
         }
-
         private void ViderMotCle(object sender, RoutedEventArgs e)
         {
 
@@ -120,7 +124,7 @@ namespace WpfApp1.vue
         {
 
             string str = (string)_comboSecteur0.SelectedItem;
-            if (str != null && str!="")
+            if (str != null && str != "")
             {
                 _labelSecteur.Content = str;
                 _listSecteurRayon.ItemsSource = null;
@@ -156,12 +160,8 @@ namespace WpfApp1.vue
         private void UpdateSelector()
         {
             _comboSecteur0.ItemsSource = null;
-            _comboSecteur1.ItemsSource = null;
             _comboSecteur0.ItemsSource = p.ps.nomSecteur;
-            _comboSecteur1.ItemsSource = p.ps.nomSecteur;
             _rayonSecteur.Visibility = Visibility.Hidden;
-
-
         }
 
         private void ApplyClient(object sender, EventArgs e)
@@ -169,16 +169,16 @@ namespace WpfApp1.vue
             throw new NotImplementedException();
         }
 
-        private void viderClient(object sender, EventArgs e)
+        private void ViderClient(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
-        private void updateClient(object sender, EventArgs e)
+        private void UpdateClient(object sender, EventArgs e)
         {
             throw new NotImplementedException();
         }
 
-            private void AjouterRayonSecteur(object sender, EventArgs e)
+        private void AjouterRayonSecteur(object sender, EventArgs e)
         {
             string str = (string)_labelSecteur.Content;
             try
@@ -191,17 +191,14 @@ namespace WpfApp1.vue
                 p.Sav();
                 RayonSecteurNum.Text = "";
             }
-            catch (Exception )
+            catch (Exception)
             {
-
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
-                //                throw new NotImplementedException();
+
             }
 
 
         }
-
-
 
         /// <summary>
         /// retire une tg, et sauvegarde 
@@ -223,9 +220,11 @@ namespace WpfApp1.vue
             UpdateSelector();
             p.Sav();
         }
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ApplyEmag(object sender, RoutedEventArgs e)
         {
             try
@@ -240,10 +239,11 @@ namespace WpfApp1.vue
             catch (Exception)
             {
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
-
-
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void PrintEmag()
         {
 
@@ -253,6 +253,9 @@ namespace WpfApp1.vue
             PrixEMag.Text = p.emag.PRIX + "";
             QteEMag.Text = "" + p.emag.QTE;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         private void PrintProd()
         {
 
@@ -261,6 +264,11 @@ namespace WpfApp1.vue
             AllePro.Text = "" + p.prod.Alle;
             TraveProd.Text = p.prod.Trave + "";
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ApplyProd(object sender, RoutedEventArgs e)
         {
             try
@@ -275,8 +283,6 @@ namespace WpfApp1.vue
             catch (Exception)
             {
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
-
-
             }
         }
     }

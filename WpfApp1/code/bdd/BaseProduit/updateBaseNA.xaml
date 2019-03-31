@@ -25,7 +25,7 @@
                 <Label Height="82">Par un Fichier Excel</Label>
                 <Label Height="66"></Label>
                 <Label></Label>
-                <Button Name="open" Click="open_Click">Ouvrir</Button>
+                <Button Name="open" Click="Open_Click">Ouvrir</Button>
 
 
             </StackPanel>

@@ -31,7 +31,6 @@ return            Test(sdsf);
         }
 
 
-        //TODO ADD NUMCOMMAND IN PRODUCT 
         /// <summary>
         /// Fonction de parse pour commande VLEP
         /// </summary>
@@ -41,33 +40,40 @@ return            Test(sdsf);
             bool retunr=true;
             d = new List<ProductVlep>();
             var liness = sdsf.Split('\n');
-            foreach (string l in liness)
+            try
             {
-                if (!l.Equals("\r") && !l.Equals(""))
+                foreach (string l in liness)
                 {
-                    string lib = l;
-                    MatchCollection gege = Regex.Matches(lib, "([0-9]{4,13} ){2}");
+                    if (!l.Equals("\r") && !l.Equals(""))
+                    {
+                        string lib = l;
+                        MatchCollection gege = Regex.Matches(lib, "([0-9]{4,13} ){2}");
 
-                    MatchCollection gegebis = Regex.Matches(lib, "([0-9]{4,13} )");
-                    var gencode = gegebis[2].Value;
-                    lib = lib.Replace(gegebis[2].Value, "");
-                    lib = lib.Replace(gegebis[1].Value, "");
-                    lib = lib.Replace(gegebis[0].Value, "");
-                    var gege2 = Regex.Matches(lib, "[0-9]+,[0-9]+€");
-                    var prix1 = gege2[0].Value;
-                    string prix2 = gege2[1].Value;
-                    lib = lib.Replace(gege2[0].Value, "");
-                    lib = lib.Replace(gege2[1].Value, "");
-                    var gege3 = Regex.Matches(l, "[0-9]+\\.[0-9]+");
-                    var qte = gege3[0].Value;
-                    lib = lib.Replace(gege3[0].Value, "");
-                    ProductVlep pv = new ProductVlep(long.Parse(gencode), prix1, prix2, qte, lib);
+                        MatchCollection gegebis = Regex.Matches(lib, "([0-9]{4,13} )");
+                        var gencode = gegebis[2].Value;
+                        lib = lib.Replace(gegebis[2].Value, "");
+                        lib = lib.Replace(gegebis[1].Value, "");
+                        lib = lib.Replace(gegebis[0].Value, "");
+                        var gege2 = Regex.Matches(lib, "[0-9]+,[0-9]+€");
+                        var prix1 = gege2[0].Value;
+                        string prix2 = gege2[1].Value;
+                        lib = lib.Replace(gege2[0].Value, "");
+                        lib = lib.Replace(gege2[1].Value, "");
+                        var gege3 = Regex.Matches(l, "[0-9]+\\.[0-9]+");
+                        var qte = gege3[0].Value;
+                        lib = lib.Replace(gege3[0].Value, "");
+                        ProductVlep pv = new ProductVlep(long.Parse(gencode), prix1, prix2, qte, lib);
 
-                    pv.Searchemplacement();
-                    pv.Sec = SetSec(pv.rayon);
-                    d.Add(pv);
-                    //  Tri(pv);          
+                        pv.Searchemplacement();
+                        pv.Sec = SetSec(pv.rayon);
+                        d.Add(pv);
+                        //  Tri(pv);          
+                    }
                 }
+            }
+            catch (Exception) {
+                retunr = false;
+              //  throw new NotFiniteNumberException();
             }
             return retunr;
         }

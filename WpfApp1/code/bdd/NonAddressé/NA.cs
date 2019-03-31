@@ -6,11 +6,8 @@
         public string Lib;
         public string loc;
         public int rayon;
-
         public  string ToString2() {
             return Ean + "  " + Lib + "   " + loc + "\n";
-
-
         }
     }
 }

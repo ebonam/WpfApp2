@@ -96,5 +96,10 @@ namespace WpfApp1.vue
             ContentArea.Content = new CmdMulti();
 
         }
+        private void VlepMulti(object sender, RoutedEventArgs e)
+        {
+            ContentArea.Content = new PageVlep2();
+
+        }
     }
 }

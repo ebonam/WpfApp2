@@ -14,7 +14,7 @@ namespace WpfApp1.code.bdd
             _sec = sec;
         }
         public override string ToString()
-        {
+        { 
             return "" + _Nom + "  " + _Rayon + "   " + _motcomplet + "   " + _sec + "\n";
         }
         [PrimaryKey, AutoIncrement]

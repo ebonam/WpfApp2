@@ -25,9 +25,11 @@ namespace WpfApp1.code.bdd.NonAddressé
                     {
                         if (item[1]!="EAN" && item[1] != "")
                         {
-                            var na = new NA2();
-                            na.Lib = item[0];
-                            na.Ean = item[1];// long.Parse(item[1]);
+                            NA2 na = new NA2
+                            {
+                                Lib = item[0],
+                                Ean = item[1]
+                            };
                             _NAs.Add(na);
                         }
                     }
@@ -46,9 +48,7 @@ namespace WpfApp1.code.bdd.NonAddressé
             }
             WriteExcelFile();
             //  WriteExcelFil2e();
-
-
-
+            
         }
         public void WriteExcelFil2e()
         {
@@ -80,10 +80,11 @@ namespace WpfApp1.code.bdd.NonAddressé
             Marshal.ReleaseComObject(xlWorkbook);
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
-
-
+            
         }
 
+
+        //todo gerer les pbs 
         public void WriteExcelFile()
         {
             Application xlApp = new Microsoft.Office.Interop.Excel.Application();
@@ -129,14 +130,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                 xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
                 xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
                 i++;
-            }
-
-
-
-
-
-
-
+            }           
             xlWorksheet.PageSetup.PrintArea = "B$3:D" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
@@ -146,8 +140,6 @@ namespace WpfApp1.code.bdd.NonAddressé
             Marshal.ReleaseComObject(xlWorkbook);
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
-
-
         }
     }
 }

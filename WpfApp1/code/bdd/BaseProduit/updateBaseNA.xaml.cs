@@ -6,7 +6,9 @@ using System.Windows.Input;
 
 namespace WpfApp1.code.bdd.NonAddresse
 {
+    //undone
     /// <summary>
+    /// Plus utile  sauf pour test 
     /// Logique d'interaction pour updateBaseNA.xaml
     /// </summary>
     public partial class UpdateBaseNA : UserControl
@@ -17,12 +19,14 @@ namespace WpfApp1.code.bdd.NonAddresse
             InitializeComponent();
         }
 
-        private void open_Click(object sender, RoutedEventArgs e)
+        private void Open_Click(object sender, RoutedEventArgs e)
         {
-           
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Fichier excel |*.xlsx";
-            openFileDialog1.Title = "Selectionnez le fichier";
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                Filter = "Fichier excel |*.xlsx",
+                Title = "Selectionnez le fichier"
+            };
 
             if (openFileDialog1.ShowDialog() ==true)
             {

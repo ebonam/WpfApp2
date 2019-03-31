@@ -31,7 +31,7 @@ namespace WpfApp1.code.bdd.cmdEmag
            
             try
             {
-                listCmd.add(this.tb.Text, int.Parse(this.NumCmd.Text));
+                listCmd.Add(this.tb.Text, int.Parse(this.NumCmd.Text));
                 l.Add(this.NumCmd.Text);
                 _listboxNomSecteur.ItemsSource = null;
                 _listboxNomSecteur.ItemsSource = l;
@@ -53,7 +53,6 @@ namespace WpfApp1.code.bdd.cmdEmag
             string str = (string)_comboSecteur0.SelectedItem;
             if (str != null && str != "" && l.Count != 0)
             {
-
                 this.listCmd.WriteExcelFileV3(str);
             }
         }
@@ -63,7 +62,7 @@ namespace WpfApp1.code.bdd.cmdEmag
             int selectedIndex = _listboxNomSecteur.SelectedIndex;
             try
             {
-                this.l.RemoveAt(selectedIndex);   //   p.ps.Remov(selectedIndex);
+                this.l.RemoveAt(selectedIndex); 
                 this.listCmd.Remove(selectedIndex);
             }
             catch

@@ -19,7 +19,6 @@ namespace WpfApp1.code.bdd
         public int _alle { get; set; }
         [Column("trave")]
         public int _trave { get; set; }
-
         public void Setter(long codebar, string lib, int alle, int trave)
         {
             _codebar = codebar;

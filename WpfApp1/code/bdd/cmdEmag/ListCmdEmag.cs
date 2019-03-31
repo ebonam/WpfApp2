@@ -8,22 +8,47 @@ namespace WpfApp1.code.bdd.cmdEmag
 {
     class ListCmdEmag
     {
+
+        /// <summary>
+        /// Liste de differentes commandes pour le tri 
+        /// </summary>
         List<CmdEmag> cmdEmags = new List<CmdEmag>();
+
+
+        /// <summary>
+        /// Liste des articles trié sur un secteur 
+        /// </summary>
         List<ArticleEmag> articleEmags = new List<ArticleEmag>();
 
-        public void add(string text, int id)
+
+        /// <summary>
+        /// test l'ajout d'une commande, si erreur, retourne false sinon ajoute la commande dans cmdEmags
+        /// </summary>
+        /// <param name="text">text representant la commande </param>
+        /// <param name="id"> int representant un numero de commande</param>
+        /// <returns>retourne faux si erreur lors du traitement </returns>
+        public bool Add(string text, int id)
         {
+            bool r = true;
+
             try
             {
                 var t = new CmdEmag();
-                t.ReadCp(text, id);
-                cmdEmags.Add(t);
+                if (t.ReadCp(text, id))
+
+                    cmdEmags.Add(t);
+                else {
+                    r = false;
+                }
             }
             catch (Exception)
             {
-                throw new NotImplementedException();
+                r = false;
 
             }
+
+            return r;
+
         }
 
         public void Remove(int selectedIndex)

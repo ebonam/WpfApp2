@@ -7,13 +7,24 @@ namespace WpfApp1.code.bdd.NonAddresse
 {
     public class ToutLesNonA
     {
+        //undone that 
+/*
+        /// <summary>
+        /// 
+        /// </summary>
         private List<NonAddresseS2> _list;
-
-
+        */
+        //TODO TEST
+        /// <summary>
+        /// /!\ Sur les produits /!\
+        /// Permet de lire une string pour la decouper et demande de rajouter le produit addressé dans la base 
+        /// (voir la classe bdd)
+        /// </summary>
+        /// <param name="text"></param>
         public void ReadCp(string text)
         {
             var bdd = Bdd.Instance();
-            _list = new List<NonAddresseS2>();
+       //     _list = new List<NonAddresseS2>();
             string str = text;
             str = str.Replace('\r', ' ');
             string[] vs = str.Split('\n');
@@ -24,56 +35,41 @@ namespace WpfApp1.code.bdd.NonAddresse
                 {
                     string line = vs[i];
                     string[] item = line.Split('\t');
-                     NonAddresseS2 art = new NonAddresseS2();
-
-                    art.Lib = item[p.prod.LIB-1];//3];
-                    art.Ean = long.Parse(item[p.prod.EAN - 1]);//4]);
-                    art.Alle = int.Parse(item[p.prod.Alle - 1]);//9]);
-                    art.Trave = int.Parse(item[p.prod.Trave - 1]);//10]);
-                    _list.Add(art);
-
+                    NonAddresseS2 art = new NonAddresseS2
+                    {
+                        Lib = item[p.prod.LIB - 1],//3];
+                        Ean = long.Parse(item[p.prod.EAN - 1]),//4]);
+                        Alle = int.Parse(item[p.prod.Alle - 1]),//9]);
+                        Trave = int.Parse(item[p.prod.Trave - 1])//10]);
+                    };
+                    //         _list.Add(art);
+                    bdd.AddProduit(art);
                 }
-                catch (Exception e) { Console.WriteLine(e.Message); }
+                catch (Exception e) {
+                    Console.WriteLine(e.Message);
+                }
                 
             }
+            /*
             foreach (NonAddresseS2 nonAddresseS in _list)
             {
                 bdd.AddProduit(nonAddresseS);
 
                 Console.WriteLine("ok");
-            }
+            }*/
 
 
         }
-     /*   public void test()
-        {
-            NonAddresseS nonAddresseS;
-            string srt = "";
-            var m = Bdd.Instance().SearchLocProduit(long.Parse(srt));
-            if (m.Count == 0) {
-                Bdd.Instance().AddProduit();
-            }else
-            {
-                if (nonAddresseS == tg) { noChange; } else
-                {
-                    change();
-
-                }
-
-
-            }
-
-        }
-        */
-
-
-        /**
-         *
-         */
+    
+        //undone ?
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fileName"></param>
         public void GetExcelFile(string fileName)
         {
             var bdd = Bdd.Instance();
-            _list = new List<NonAddresseS2>();
+      //      _list = new List<NonAddresseS2>();
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(@fileName);
             Excel._Worksheet xlWorksheet = xlWorkbook.Sheets[1];
@@ -104,7 +100,7 @@ namespace WpfApp1.code.bdd.NonAddresse
                             break;
                     }
                 }
-                _list.Add(art);
+                bdd.AddProduit(art);
             }
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -113,11 +109,11 @@ namespace WpfApp1.code.bdd.NonAddresse
             xlWorkbook.Close();
             Marshal.ReleaseComObject(xlWorkbook);
             Marshal.ReleaseComObject(xlApp);
-            foreach (NonAddresseS2 nonAddresseS in _list)
+/*            foreach (NonAddresseS2 nonAddresseS in _list)
             {
                 bdd.AddProduit(nonAddresseS);
             }
-
+            */
         }
     }
 }
