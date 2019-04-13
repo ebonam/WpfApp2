@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:WpfApp1.code.bdd.cmdVlep"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <StackPanel Orientation="Horizontal" Background="White">
+    <StackPanel>
+        <Label HorizontalAlignment="Center">Imprimer commandes via VLEP</Label>
+        <StackPanel Orientation="Horizontal" Background="White">
+       
         <StackPanel>
             <Label></Label>
             <Label Height="34"></Label>
@@ -46,4 +49,5 @@
             </StackPanel>
         </StackPanel>
     </StackPanel>
+        </StackPanel>
 </UserControl>

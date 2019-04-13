@@ -23,13 +23,16 @@
                     <Label></Label>
                     <Label></Label>
 
-                    <Label HorizontalAlignment="Center">Importer les mots clés à partir d'un fichier excel</Label>
+                    <Label HorizontalAlignment="Center">Importer les mots clés à partir d'un copier coller </Label>
+                    <TextBox Name="tbMC" Height="113" Width="400" MaxWidth="500"  AcceptsReturn="True" AcceptsTab="True"></TextBox>
                     <Button Click="ViderMotCle" Width="100">Importer</Button>
 
                 </StackPanel>
             </TabItem>
             <TabItem Header="definition rayon">
-                <StackPanel Orientation="Horizontal">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="16">Definition des Rayons/Secteurs</Label>
+                    <StackPanel Orientation="Horizontal">
                     <StackPanel>
                         <StackPanel Margin="0,0,0,40">
                             <Label>Ajouter Secteur:</Label>
@@ -58,7 +61,7 @@
                         <StackPanel>
                             <Label/>
                             <Label/>
-                            <StackPanel Name="_rayonSecteur"  Visibility="Hidden">
+                            <StackPanel Name="_rayonSecteur"  >
                                 <StackPanel Orientation="Horizontal">
                                     <Label>Secteur :</Label>
                                     <Label Name="_labelSecteur"/>
@@ -72,17 +75,18 @@
                                 </StackPanel>
                                 <Label>Liste des Rayons enregistrées pour ce secteur</Label>
                                 <Label></Label>
-                                <ListBox Margin="0,0,0,13" Name="_listSecteurRayon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="200">
+                                <ListBox Margin="0,0,0,13" Name="_listSecteurRayon" HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Height="150">
                                 </ListBox>
                                 <Button Click="RetirerRayon">Retirer rayon selectionée</Button>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
+                </StackPanel>
             </TabItem>
             <TabItem Header="Tête de gondoles">
                 <StackPanel>
-                    <Label Margin="120,0,0,0" FontWeight="Bold" FontSize="16" TextOptions.TextHintingMode="Animated" >Operations sur les Têtes de gondoles</Label>
+                    <Label Margin="120,0,0,0" FontWeight="Bold" FontSize="16"  >Definition des Têtes de gondoles</Label>
                     <Label></Label>
                     <StackPanel Orientation="Horizontal">
                         <StackPanel>
@@ -128,149 +132,160 @@
                 </StackPanel>
             </TabItem>
             <TabItem Header="Adressage">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <Label></Label>
-                        <Label>Vider la memoire de tous les produits</Label>
-                        <Button>Vider</Button>
-                    </StackPanel>
-                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                <StackPanel >
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="156,0,267,0" Width="371">Operations sur la base de produit</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <Label></Label>
+                            <Label>Vider la memoire de tous les produits</Label>
+                            <Button>Vider</Button>
+                        </StackPanel>
+                        <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
 
-                    <StackPanel>
-                        <Label></Label>
-                        <Label>Pour mettre a jour les produits et leurs emplacements</Label>
+                        <StackPanel>
+                            <Label></Label>
+                            <Label>Pour mettre a jour les produits et leurs emplacements</Label>
 
-                        <TextBox Name="tb" Height="113" Width="400" MaxWidth="500"  AcceptsReturn="True" AcceptsTab="True"></TextBox>
-                        <Label></Label>
-                        <Button Name="Validate" Click="Validate_Click">Valider</Button>
+                            <TextBox Name="tb" Height="113" Width="400" MaxWidth="500"  AcceptsReturn="True" AcceptsTab="True"></TextBox>
+                            <Label></Label>
+                            <Button Name="Validate" Click="Validate_Click">Valider</Button>
+                            <Label></Label>
+                            
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 
-
             </TabItem>
 
-            <TabItem Header=" Commande Emag">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel >
-                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
-                        <TextBlock>  fichier commande Emag</TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>EAN :</Label>
-                            <Label></Label>
-                            <TextBox Width="98" Name="EanEMag"/>
+            <TabItem Header="Definition fichiers">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="157,0,266,0" Width="371" >Definition des entrées utilisateurs </Label>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel >
+                            <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                            <TextBlock>  fichier commande Emag</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>EAN :</Label>
+                                <Label></Label>
+                                <TextBox Width="98" Name="EanEMag"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Libellé article :</Label>
+                                <Label></Label>
+                                <TextBox Width="52" Name="LibEMag"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Quantité :</Label>
+                                <Label></Label>
+                                <TextBox Width="75" Name="QteEMag"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Prix :</Label>
+                                <Label></Label>
+                                <TextBox Width="101" Name="PrixEMag"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Localisation</Label>
+                                <Label></Label>
+                                <TextBox Width="65" Name="LocEMag"/>
+                            </StackPanel>
+                            <Label/>
+                            <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyEmag">Appliquer</Button>
                         </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Libellé article :</Label>
-                            <Label></Label>
-                            <TextBox Width="52" Name="LibEMag"/>
+                        <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                        <StackPanel >
+                            <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                            <TextBlock>  fichier d'addresse</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>EAN :</Label>
+                                <Label></Label>
+                                <TextBox Width="98" Name="EanProd"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Libellé article :</Label>
+                                <Label></Label>
+                                <TextBox Width="52" Name="LibProd"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Alle</Label>
+                                <Label></Label>
+                                <TextBox Width="75" Name="AllePro"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Prix :</Label>
+                                <Label></Label>
+                                <TextBox Width="101" Name="TraveProd"/>
+                            </StackPanel>
+                            <Label/>
+                            <Label/>
+                            <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyProd">Appliquer</Button>
                         </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Quantité :</Label>
-                            <Label></Label>
-                            <TextBox Width="75" Name="QteEMag"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Prix :</Label>
-                            <Label></Label>
-                            <TextBox Width="101" Name="PrixEMag"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Localisation</Label>
-                            <Label></Label>
-                            <TextBox Width="65" Name="LocEMag"/>
-                        </StackPanel>
-                        <Label/>
-                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyEmag">Appliquer</Button>
-                    </StackPanel>
-                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
-                    <StackPanel >
-                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
-                        <TextBlock>  fichier d'addresse</TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>EAN :</Label>
-                            <Label></Label>
-                            <TextBox Width="98" Name="EanProd"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Libellé article :</Label>
-                            <Label></Label>
-                            <TextBox Width="52" Name="LibProd"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Alle</Label>
-                            <Label></Label>
-                            <TextBox Width="75" Name="AllePro"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Prix :</Label>
-                            <Label></Label>
-                            <TextBox Width="101" Name="TraveProd"/>
-                        </StackPanel>
-                        <Label/>
-                        <Label/>
-                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyProd">Appliquer</Button>
+
                     </StackPanel>
 
                 </StackPanel>
             </TabItem>
-            <TabItem Header=" Commande Emag">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel >
-                        <TextBlock>  Mettre la postion des elements d'un</TextBlock>
-                        <TextBlock>  fichier client</TextBlock>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>idclient:</Label>
-                            <Label></Label>
-                            <TextBox Width="98" Name="idClient"/>
+            <TabItem Header="Base client">
+                <StackPanel>
+                    <Label HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="157,0,286,0" Width="351">Operations sur la base client</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel >
+                            <TextBlock>  Mettre la postion des elements d'un</TextBlock>
+                            <TextBlock>  fichier client</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>idclient:</Label>
+                                <Label></Label>
+                                <TextBox Width="98" Name="idClient"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Nom Client :</Label>
+                                <Label></Label>
+                                <TextBox Width="52" Name="nomClient"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Prenom client:</Label>
+                                <Label></Label>
+                                <TextBox Width="75" Name="_prenomclient"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Telephone 1</Label>
+                                <Label></Label>
+                                <TextBox Width="101" Name="clienttel1"/>
+                            </StackPanel>
+                            <Label/>
+                            <StackPanel Orientation="Horizontal">
+                                <Label>Telephone 2</Label>
+                                <Label></Label>
+                                <TextBox Width="65" Name="clienttel2"/>
+                            </StackPanel>
+                            <Label/>
+                            <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyClient">Appliquer</Button>
                         </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Nom Client :</Label>
+                        <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+                        <StackPanel Width="250">
                             <Label></Label>
-                            <TextBox Width="52" Name="nomClient"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Prenom client:</Label>
+                            <Label>Vider base client</Label>
+                            <Button Click="ViderClient">Vider base</Button>
                             <Label></Label>
-                            <TextBox Width="75" Name="QteEMa"/>
-                        </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Telephone 1</Label>
+                            <Label>
+                                Mettre a jour base client
+                            </Label>
+                            <TextBox Height="238"  Name="tbclient" AcceptsReturn="True" AcceptsTab="True"/>
                             <Label></Label>
-                            <TextBox Width="101" Name="tel1"/>
+                            <Button Click="UpdateClient" >Mettre a jour</Button>
                         </StackPanel>
-                        <Label/>
-                        <StackPanel Orientation="Horizontal">
-                            <Label>Telephone 2</Label>
-                            <Label></Label>
-                            <TextBox Width="65" Name="tel2"/>
-                        </StackPanel>
-                        <Label/>
-                        <Button Margin="30,0,0,0" HorizontalAlignment="Left" Width="100"  Click="ApplyClient">Appliquer</Button>
-                    </StackPanel>
-                    <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
-                    <StackPanel Width="250">
-                        <Label></Label>
-                        <Label>Vider base client</Label>
-                        <Button Click="ViderClient">Vider base</Button>
-                        <Label></Label>
-                        <Label>
-                            Mettre a jour base client
-                        </Label>
-                        <TextBox Height="238"  Name="tbclient" AcceptsReturn="True" AcceptsTab="True"/>
-                        <Label></Label>
-                        <Button Click="UpdateClient" >Mettre a jour</Button>
-                    </StackPanel>
 
+                    </StackPanel>
                 </StackPanel>
             </TabItem>
 

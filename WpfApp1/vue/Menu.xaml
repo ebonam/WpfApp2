@@ -5,79 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1.vue"
         mc:Ignorable="d"
-        Title="Carrefour Drive" Height="524" Width="1006">
+        Title="Carrefour Drive" Height="510" Width="830" ResizeMode="CanMinimize" KeyUp="Window_KeyUp">
     <StackPanel Height="auto" Width="auto" Margin="0,0,0,-21">
         <Menu Width="Auto" Height="20">
             <!-- DockPanel.Dock="Top" -->
             <MenuItem Header="Commande VLEP">
-
                 <MenuItem Header="Commande unique" Click="Button_Click" />
                 <MenuItem Header="Plusieurs commandes" Click="VlepMulti" />
-
             </MenuItem>
-
             <MenuItem Header="Commande EMAG" >
-
                 <MenuItem Header="Commande unique" Click="Button_Click_1" />
-                <MenuItem Header="EmagMulti" Click="EmagMulti" />
+                <MenuItem Header="Plusieurs commandes" Click="EmagMulti" />
             </MenuItem>
             <MenuItem Header="Mot clé">
                 <MenuItem Header="Ajouter mot clé" Click="Button_Click_3" />
                 <MenuItem Header="Liste mots clés" Click="Button_Click_5"/>
-
                 <!-- Header="Base Produit">
                 <MenuItem Header="mettre a jour Base" Click="Button_Click_2" />
             </>-->
             </MenuItem>
-                <MenuItem Header="Etiquettes"
+            <MenuItem Header="Etiquettes"
                  Click="Button_Click_4" />
-
-
             <MenuItem Header="Clients" Click="MenuItem_Click_2">
-
             </MenuItem>
-
-
             <MenuItem Header="Manquants" Click="MenuItem_Click_3">
-               
-            </MenuItem> 
+            </MenuItem>
             <MenuItem Header="NA" Click="MenuItem_Click">
-               
             </MenuItem>
-
             <MenuItem Header="Parametres" Click="Button_Click_6">
-
             </MenuItem>
-
         </Menu>
-       <!--
-        <StackPanel Height="Auto" Width="200"  DockPanel.Dock="Left">
-            <Label Height="50">  </Label>
-            <Button Content="Lister commande Vlep" Click="Button_Click"/>
-            <Label Height="50"></Label>
-            <Button Content="lister commande Emag " Click="Button_Click_1"/>
-            <Label Height="50"></Label>
-            <Button Content="Ajouter mot clé" Click="Button_Click_3"/>
-            <Label Height="50"></Label>
-            
-            <Button Click="Button_Click_2">mettre a jour Base</Button>
-            <Label Height="50"></Label>
-            <Button Click="Button_Click_4">fesdfkozef</Button>
-            <Label Height="50"></Label>
-            <Button Click="Button_Click_5">fesdfkozef</Button>
-            <Label Height="50"></Label>
-
-
-
-
-        </StackPanel>-->
-        <!--<StackPanel Height="auto" Width="auto" DockPanel.Dock="Bottom"></StackPanel>
-        <StackPanel DockPanel.Dock="Right"></StackPanel>
-        <StackPanel  DockPanel.Dock="Top" ></StackPanel>-->
         <ContentControl x:Name="ContentArea"  />
-    
-
-
-
-    </StackPanel>    
+    </StackPanel>
 </Window>

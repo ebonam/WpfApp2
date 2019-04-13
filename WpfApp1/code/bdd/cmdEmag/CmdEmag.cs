@@ -8,13 +8,13 @@ namespace WpfApp1.code.bdd.cmdEmag
 {
     class CmdEmag
     {
-
+/*#pragma warning disable
         public string Ncommande;
         public string date;
         public string Hdeb;
         public string hfin;
-
-
+#pragma warning restore
+*/
         //todo 
         public bool ReadCp(string text, int id)
         {
@@ -69,7 +69,7 @@ namespace WpfApp1.code.bdd.cmdEmag
                 }
             }
             else { retunr = false; }
-            return retunr;
+            return retunr && List.Count!=0;
         }
         
         private Parameters p = Parameters.Instance();

@@ -7,6 +7,15 @@ namespace WpfApp1.code
     [Serializable]
     public class Parameters
     {
+        public class ClientPar
+        {
+            public int id=1;
+            public int nom=3;
+            public int prenom=4;
+            public int tel1=6;
+            public int tel2=7;
+        }
+
         public class BLAALBA
         {
             public string SetSec(int rayon)
@@ -40,12 +49,12 @@ namespace WpfApp1.code
         }
         public class Emag
         {
-            public int EAN, LIB, QTE, PRIX, LOC;
+            public int EAN=14, LIB=16, QTE=17, PRIX=21, LOC=24;
         }
 
         public class Prod
         {
-            public int EAN, LIB, Trave, Alle;
+            public int EAN=3, LIB=4, Trave=10, Alle=9;
         }
         public class LisSecteur
         {
@@ -106,7 +115,7 @@ namespace WpfApp1.code
                 tgs = new List<string>();
                 emplacement = new List<Doubleint>();
             }
-            public bool appartient(NonAddresseS2 na)
+            public bool Appartient(NonAddresseS2 na)
             {
 
                 foreach (Doubleint doubleint in emplacement)
@@ -131,9 +140,9 @@ namespace WpfApp1.code
 
                 }
 
-                public bool Equal(object obj)
+                public bool Equal(Doubleint obj)
                 {
-                    var doubleint = obj as Doubleint;
+                    Doubleint doubleint = obj ;
                     return doubleint != null &&
                            rayon == doubleint.rayon &&
                            trave == doubleint.trave;
@@ -168,7 +177,7 @@ namespace WpfApp1.code
         public bool Naprintdirect;
         public TG TGs;
         public string datelastUpdateBase;
-
+        public ClientPar client;
         private static Parameters _instance = null;
 
         public void Sav()
@@ -185,12 +194,12 @@ namespace WpfApp1.code
             _instance = serializator.DeSerializeObject<Parameters>("objet.xml");
 
         }
-
+        /*
         internal bool blaklist(NonAddresseS2 nonAddresseS)
         {
             //            this.TGs.emplacement.Contains(x => x.);
             return TGs.emplacement.Contains(new TG.Doubleint { rayon = nonAddresseS.Alle, trave = nonAddresseS.Trave });
-        }
+        }*/
 
         private Parameters()
         {
@@ -198,6 +207,7 @@ namespace WpfApp1.code
             this.TGs = new TG();
             this.ps = new LisSecteur();
             this.emag = new Emag();
+            this.client = new ClientPar();
         }
 
         public static Parameters Instance()

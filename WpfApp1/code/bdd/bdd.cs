@@ -36,10 +36,11 @@ namespace WpfApp1.code.bdd
         }
         public List<ClientBdd> ListeClient(string idClient, string nom, string prenom)
         {
-            int i = int.Parse(idClient);
 
             if (idClient != "")
             {
+                int i = int.Parse(idClient);
+
                 if (nom != "")
                 {
 
@@ -101,6 +102,12 @@ namespace WpfApp1.code.bdd
 
             }
         }
+
+        internal void Addclient(ClientBdd art)
+        {
+            conn.InsertOrReplace(art);
+        }
+
         public void AddNA(NA mc)
         {
             conn.Insert(mc);
@@ -143,33 +150,36 @@ namespace WpfApp1.code.bdd
             AddProduit(lA);
         }
 
-        internal void AddProduit(NonAddresseS2 nonAddresseS)
+        internal int AddProduit(NonAddresseS2 nonAddresseS)
         {
             List<NonAddresseS2> roles = conn.Table<NonAddresseS2>().Where(x => x.Ean == nonAddresseS.Ean).ToList();
             if (roles.Count == 0)
             {
                 conn.Insert(nonAddresseS);
                 Console.WriteLine("ajouter" + nonAddresseS.Lib);
+                return 1;
             }
             else if (!roles[0].Equals(nonAddresseS))
             {
 
-                if (!p.TGs.appartient(nonAddresseS))
+                if (!p.TGs.Appartient(nonAddresseS))
                 {
                     Console.WriteLine("Modifié" + nonAddresseS.Lib);
 
                     conn.Update(nonAddresseS);
+                    return 2;
                 }
                 else
                 {
                     Console.WriteLine("TG" + nonAddresseS.Lib);
-
+                    return 3;
                 }
 
             }
             else
             {
                 Console.WriteLine("ignoré" + nonAddresseS.Lib);
+                return 0;
             }
         }
 
@@ -202,18 +212,25 @@ namespace WpfApp1.code.bdd
         {
             conn.Insert(lA);
         }
-
-        public List<NonAddresseS> SearchLocProduit(long produ)
+        //todo
+        public List<NonAddresseS2> SearchLocProduit(long produ)
         {
-            List<NonAddresseS> roles = conn.Table<NonAddresseS>().Where(x => x.Ean == produ).ToList();
+            List<NonAddresseS2> roles = conn.Table<NonAddresseS2>().Where(x => x.Ean == produ).ToList();
             return roles;
         }
 
         public void ViderTProduit()
         {
-            conn.DropTable<ListeArticle>();
+            conn.DeleteAll<ListeArticle>();
         }
-
+        public void ViderClient()
+        {
+            conn.DeleteAll<ClientBdd>();
+        }
+        public void ViderNa()
+        {
+            conn.DeleteAll<ClientBdd>();
+        }
         public void Dispose()
         {
             conn.Dispose();

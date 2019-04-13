@@ -9,8 +9,10 @@ namespace WpfApp1.code.bdd.NonAddressé
         public List<NA2> _NAs;
         public ListMotClé _listMotClé;
         public ListeGencode _listGencode;
-        public void ReadCp(string text, string str2, bool gencode, bool motcle)
+        public bool ReadCp(string text, string str2, bool gencode, bool motcle)
         {
+
+            bool flag = true;
             _NAs = new List<NA2>();
             string str = text;
             str = str.Replace('\r', ' ');
@@ -23,7 +25,7 @@ namespace WpfApp1.code.bdd.NonAddressé
                     string[] item = line.Split('\t');
                     if (item.Length == 2)
                     {
-                        if (item[1]!="EAN" && item[1] != "")
+                        if (item[1] != "EAN" && item[1] != "")
                         {
                             NA2 na = new NA2
                             {
@@ -34,21 +36,26 @@ namespace WpfApp1.code.bdd.NonAddressé
                         }
                     }
                 }
-                catch (Exception e) { Console.WriteLine(e.Message); }
+                catch (Exception) { flag = false; }
             }
-            if (gencode)
+            if (flag)
             {
                 _listGencode = new ListeGencode();
-                _NAs = _listGencode.TriDesFamilles(_NAs);
-            }
-            if (motcle)
-            {
+                if (gencode)
+                {
+                    
+                    _NAs = _listGencode.TriDesFamilles(_NAs);
+                }
                 _listMotClé = new ListMotClé(str2);
-                _NAs = _listMotClé.TriDesFamilles(_NAs);
+                if (motcle)
+                {
+                   
+                    _NAs = _listMotClé.TriDesFamilles(_NAs);
+                }
             }
-            WriteExcelFile();
+            return flag;
             //  WriteExcelFil2e();
-            
+
         }
         public void WriteExcelFil2e()
         {
@@ -80,7 +87,7 @@ namespace WpfApp1.code.bdd.NonAddressé
             Marshal.ReleaseComObject(xlWorkbook);
             xlApp.Quit();
             Marshal.ReleaseComObject(xlApp);
-            
+
         }
 
 
@@ -98,39 +105,114 @@ namespace WpfApp1.code.bdd.NonAddressé
             string label = "";
             foreach (NA2 nonAddresseS in _listGencode._NaMC)//METTRE GENCODE
             {
+                bool flag = true, pas1 = false, pas2 = false;
 
-                if (label == "" || label != nonAddresseS.loc) {
+                while (flag)
+                {
+                    flag = true;
+                    pas1 = false;
+                    pas2 = false;
 
-                    label = nonAddresseS.loc;
-                    xlWorksheet.Cells[i, 2].value2 = "Localisation=" + label;
-                    i++;
+                    try
+                    {
+
+                        pas1 = false;
+                        pas2 = false;
+                        if (label == "" || label != nonAddresseS.loc)
+                        {
+
+                            label = nonAddresseS.loc;
+                            xlWorksheet.Cells[i, 2].value2 = "Localisation=" + label;
+                            i++;
+                            pas1 = true;
+                        }
+                        xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
+                        xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
+                        i++;
+                        pas2 = true;
+                        flag = false;
+                    }
+
+                    catch (Exception)
+                    {
+                        if (pas1) i--;
+                        if (pas2) i--;
+                    }
                 }
-                xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
-                xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
-                i++;
             }
-
             foreach (NA2 nonAddresseS in _listMotClé._NaMC)//METTRE GENCODE
             {
-                if (label == "" || label != nonAddresseS.loc)
+                bool flag = true, pas1 = false, pas2 = false;
+                while (flag)
                 {
-                    label = nonAddresseS.loc;
-                    xlWorksheet.Cells[i, 2].value2 = label + " : " + nonAddresseS.rayon;
-                    i++;
+                    flag = true;
+                    pas1 = false;
+                    pas2 = false;
+
+                    pas1 = false; pas2 = false;
+                    try
+                    {
+
+                        if (label == "" || label != nonAddresseS.loc)
+                        {
+                            label = nonAddresseS.loc;
+                            xlWorksheet.Cells[i, 2].value2 = label + " : " + nonAddresseS.rayon;
+                            i++;
+                            pas1 = true;
+                        }
+                        xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
+                        xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
+                        i++;
+                        pas2 = true;
+                        flag = false;
+                    }
+                    catch (Exception)
+                    {
+                        if (pas1) i--;
+                        if (pas2) i--;
+                    }
                 }
-                xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
-                xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
-                i++;
             }
 
             i++;
 
             foreach (NA2 nonAddresseS in _NAs)//METTRE GENCODE
             {
-                xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
-                xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
-                i++;
-            }           
+                bool flag = true, pas1 = false;
+                while (flag)
+                {
+                    flag = true;
+                    pas1 = false;
+                    
+                 
+                    try
+                   {
+                        xlWorksheet.Cells[i, 2].value2 = nonAddresseS.Lib;
+                        xlWorksheet.Cells[i, 4].value2 = nonAddresseS.Ean;
+                        i++;
+                        pas1 = true;
+                        flag = false;
+                   }
+                    catch (COMException e)
+                    {
+                        if (e.ErrorCode == -2147418111)
+                        {
+                            Console.WriteLine(e.Source);
+                            Console.WriteLine(e.ErrorCode);
+                            Console.WriteLine(e.Data);
+                            Console.WriteLine(e.HelpLink);
+                            Console.WriteLine(e.Message);
+                            Console.WriteLine(e.StackTrace);
+                            Console.WriteLine(e.TargetSite);
+                            throw new Exception();
+                        }
+
+                            //if (pas1) i--;
+         //                   Console.WriteLine();
+                        
+                        }
+                }
+            }
             xlWorksheet.PageSetup.PrintArea = "B$3:D" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();

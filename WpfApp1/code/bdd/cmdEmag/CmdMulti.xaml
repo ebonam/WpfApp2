@@ -7,13 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel Background="White">
-        <Label HorizontalAlignment="Center">Imprimer commande via EMag</Label>
+        <Label HorizontalAlignment="Center">Imprimer commandes via EMAG</Label>
         <StackPanel Orientation="Horizontal" Height="301">
             <StackPanel Margin="10" Width="300">
                 <Label></Label>
 
                 <StackPanel Orientation="Horizontal">
-                    <Label>Numero de commande :</Label>
+                    <Label>Numéro de commande :</Label>
                     <TextBox Margin="30,0,0,0" Name="NumCmd" Width="70" ></TextBox>
                 </StackPanel>
                 <Label Height="28"></Label>

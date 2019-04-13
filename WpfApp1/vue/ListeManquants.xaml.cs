@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.code;
+using Application = Microsoft.Office.Interop.Excel.Application;
 
 namespace WpfApp1.vue
-{
+{//TODO HERE
     /// <summary>
     /// Logique d'interaction pour ListeManquants.xaml
     /// </summary>
@@ -21,27 +23,47 @@ namespace WpfApp1.vue
 
         public void ReadManquant()
         {
-            var liness = this.textblock.Text.Split('\n');//Regex.Matches(sdsf, "\n");
-            int i = 0;
-            string l = liness[i];
-            bool flag = true;
-            while (flag && i < liness.Length)
+            if (textblock.Text != "")
             {
-                l = liness[i++];
-                if (l.Equals("") || l.Equals("\r") || l.Equals(" "))
+                var liness = this.textblock.Text.Split('\n');//Regex.Matches(sdsf, "\n");
+                int i = 0;
+                string l = liness[i];
+                bool flag = true;
+                bool flag2 = true;
+                while (flag2 && flag && i < liness.Length)
                 {
-                    flag = false;
+                    l = liness[i++];
+                    if (l.Equals("") || l.Equals("\r") || l.Equals(" "))
+                    {
+                        flag = false;
+                    }
+                    else
+                    {
+                        Manquant m = new Manquant();
+                        if (m.Fct(l))
+                        { _manquants.Add(m); }
+                        else
+                        {
+                            flag2 = false;
+                        }
+                    }
+
+                }
+                if (flag2)
+                {
+                    _manquants.Sort(Tri);
+                    WriteExcelFile();
                 }
                 else
                 {
-                    Manquant m = new Manquant();
-                    m.fct(l);
-                    _manquants.Add(m);
-                }
+                    MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
 
+                }
             }
-            _manquants.Sort(Tri);
-            WriteExcelFile();
+            else
+            {
+                MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+            }
         }
         private int Tri(Manquant x, Manquant y)
         {
@@ -67,39 +89,51 @@ namespace WpfApp1.vue
             string st = "";
             foreach (Manquant manquant in _manquants)
             {
-                i++;
-                if (st == "")
+                bool flag = true;
+                bool flag1 = false;
+                bool flag2 = false;
+                bool flag3 = false;
+                while (flag)
                 {
-                    st = manquant._nomPrep;
-                    xlWorksheet.Cells[i, 1].value2 = manquant._nomPrep;
-                    i++;
-                }
-                else if (st != manquant._nomPrep)
-                {
-                    st = manquant._nomPrep;
-                    xlWorksheet.Cells[i, 1].value2 = manquant._nomPrep;
-                    i++;
-                }
-                try
-                {
-                    xlWorksheet.Cells[i, 1].value2 = manquant._date + manquant._heure;
-                    xlWorksheet.Cells[i, 2].value2 = manquant._lib + "\n" + manquant._ean;
-                    xlWorksheet.Cells[i, 3].value2 = "=Transbar(" + manquant._ean + ")";
-                    xlWorksheet.Cells[i, 4].value2 = manquant._loca;
-                    xlWorksheet.Cells[i, 5].value2 = manquant._Prixvente;
-                    xlWorksheet.Cells[i, 6].value2 = manquant._qtecmd;
-                    xlWorksheet.Cells[i, 7].value2 = manquant._qteFact;
-                    xlWorksheet.Cells[i, 8].value2 = manquant._Prep;
-                    xlWorksheet.Cells[i, 9].value2 = manquant._Ncmd;
-                    xlWorksheet.Cells[i, 10].value2 = manquant._nomClient;
+                    try
+                    {
+                        i++;
+                        flag3 = true;
+                        if (st == "" || flag1)
+                        {
+                            st = manquant._nomPrep;
+                            xlWorksheet.Cells[i++, 1].value2 = manquant._nomPrep;
+                            flag1 = true;
 
-
+                        }
+                        else if (st != manquant._nomPrep || flag2)
+                        {
+                            st = manquant._nomPrep;
+                            xlWorksheet.Cells[i++, 1].value2 = manquant._nomPrep;
+                            flag2 = true;
+                        }
+                        xlWorksheet.Cells[i, 1].value2 = manquant._date + manquant._heure;
+                        xlWorksheet.Cells[i, 2].value2 = manquant._lib + "\n" + manquant._ean;
+                        xlWorksheet.Cells[i, 3].value2 = "=Transbar(" + manquant._ean + ")";
+                        xlWorksheet.Cells[i, 4].value2 = manquant._loca;
+                        xlWorksheet.Cells[i, 5].value2 = manquant._Prixvente;
+                        xlWorksheet.Cells[i, 6].value2 = manquant._qtecmd;
+                        xlWorksheet.Cells[i, 7].value2 = manquant._qteFact;
+                        xlWorksheet.Cells[i, 8].value2 = manquant._Prep;
+                        xlWorksheet.Cells[i, 9].value2 = manquant._Ncmd;
+                        xlWorksheet.Cells[i, 10].value2 = manquant._nomClient;
+                        flag = false;
+                    }
+                    catch (Exception)
+                    {
+                        if (flag1) i--;
+                        if (flag2) i--;
+                        if (flag3) i--;
+                    }
                 }
-                catch (Exception ) { i++; }
-
             }
             this._manquants = new List<Manquant>();
-            xlWorksheet.PageSetup.PrintArea = "A$1:K" + i;
+            xlWorksheet.PageSetup.PrintArea = "A$1:I" + i;
             xlWorkbook.PrintPreview();
             GC.Collect();
             GC.WaitForPendingFinalizers();

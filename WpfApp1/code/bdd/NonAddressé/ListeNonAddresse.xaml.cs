@@ -32,8 +32,12 @@ namespace WpfApp1.vue
             else {
                 b1 = (bool)checkMC.IsChecked;
             }
-            
-            new ListeNA().ReadCp(this.tb.Text, str, (bool)checkAddresse.IsChecked, b1);
+
+            var lna = new ListeNA();
+            if(lna.ReadCp(this.tb.Text, str, (bool)checkAddresse.IsChecked, b1))
+                lna.WriteExcelFile();
+            else MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+
         }
     }
 }

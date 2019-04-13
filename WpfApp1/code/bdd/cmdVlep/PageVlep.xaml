@@ -7,13 +7,15 @@
       mc:Ignorable="d"
        Width="661" Height="354">
     <StackPanel Background="White">
+        <Label HorizontalAlignment="Center">Imprimer commande via VLEP</Label>
+
         <Label></Label>
         <Label>Coller ci-dessous la commande de VLEP</Label>
         <Label Height="34"></Label>
-        <TextBox Height="238" Margin="45,0,98,0" Name="textblock" AcceptsReturn="True" AcceptsTab="True"/>
+        <TextBox Height="218" Margin="45,0,98,0" Name="textblock" AcceptsReturn="True" AcceptsTab="True"/>
         <Label></Label>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Label Width="146"></Label>
+            
             <Button Width="67" HorizontalAlignment="Center" Click="Button_Click">Valider</Button>
         </StackPanel>
     </StackPanel>

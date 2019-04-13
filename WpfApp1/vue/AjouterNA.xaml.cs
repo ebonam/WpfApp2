@@ -34,9 +34,14 @@ namespace WpfApp1.vue
                 if (s != " " && s != null && s2 != "" && s2 != null)
                 {
                     Bdd.Instance().AddNA(s, j, (bool)this._bool.IsChecked, s2);
+                    this._rayon.Text = "";
+                    this._MC.Text = "";
                 }
-                this._rayon.Text = "";
-                this._MC.Text = "";
+                else
+                {
+                    MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+                }
+
             }
             catch (Exception)
             {

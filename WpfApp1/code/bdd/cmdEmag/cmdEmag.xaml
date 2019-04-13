@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <Label HorizontalAlignment="Center">Imprimer commande via EMag</Label>
+        <Label HorizontalAlignment="Center">Imprimer commande via EMAG</Label>
         <StackPanel Orientation="Horizontal" Height="301">
             <StackPanel Margin="10" Width="300">
                 <Label></Label>
@@ -18,14 +18,14 @@
                 <Label></Label>
 
             </StackPanel>
-            <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
+  <!--          <Line Width="157" MinWidth="2" MinHeight="98" Fill="Black" Stroke="Black" StrokeThickness="2" Y2="300" X1="80" X2="80" Y1="20"></Line>
             <StackPanel>
                 <Label Height="42"></Label>
                 <Label Height="82">Par un Fichier Excel</Label>
                 <Label Height="66"></Label>
                 <Label></Label>
                 <Button Name="open" Click="Open_Click">Ouvrir</Button>
-            </StackPanel>
+            </StackPanel>-->
         </StackPanel>
     </StackPanel>
 </UserControl>

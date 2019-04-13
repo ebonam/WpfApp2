@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace WpfApp1.code
 {
@@ -21,11 +22,11 @@ namespace WpfApp1.code
         public string _nomPrep;
         public string _Prixvente;
 
-        public void fct(string line)
+        public bool Fct(string line)
         {
+            bool bo = true;
             try
             {
-               
                 string lib = line.Remove(0, 3);
                 MatchCollection gege = Regex.Matches(lib, "([0-9]{2}\\/){2}([0-9]{4}) ");
                 lib = lib.Replace(gege[0].Value, "");
@@ -54,7 +55,7 @@ namespace WpfApp1.code
                         lib = lib.Replace(gege[0].Value, "");
                     }
                     else
-                    {                       
+                    {
                         gege = Regex.Matches(lib, "(\\w)+ :([A-z]| )*");
                         _loca = gege[0].Value;
                         lib = lib.Replace(gege[0].Value, "");
@@ -83,17 +84,17 @@ namespace WpfApp1.code
                 _Prixvente = gege[0].Value;
                 str = lib.Substring(0, lib.IndexOf(gege[0].Value) + 0);
                 gege = Regex.Matches(str, "(\\w+) ");
-
                 lib = lib.Replace(str, "");
-                _nomClient = str.Substring(0, (str.Length) - gege[gege.Count - 1].Value.Length - 1);
-                _nomPrep = gege[gege.Count - 1].Value;
+                _nomClient = str.Substring(0, str.Length - gege[gege.Count - 1].Value.Length - 1);
+                _nomPrep = gege[ gege.Count - 1].Value;
                 Console.Write(_nomPrep);
             }
-            catch (Exception e)
-            {//todo
-                              Console.Write(e.Message);
-
+            catch (Exception)
+            {
+                bo = false;
+               // MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
             }
+            return bo;
         }
     }
 }

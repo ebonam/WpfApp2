@@ -10,11 +10,12 @@ namespace WpfApp1.code.bdd.cmdVlep
     class ListeCmdVlep
     {
 
-        public void add(string cmd, int sdsf)
+        public bool Add(string cmd, int sdsf)
         {
-            var b = new VlepCmd();
-            b.Test(cmd, sdsf);
-            cmdVleps.Add(b);
+            VlepCmd b = new VlepCmd();
+          bool boo=  b.Test(cmd, sdsf);
+           if( boo) cmdVleps.Add(b);
+            return boo;
         }
 
 

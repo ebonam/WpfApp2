@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using WpfApp1.code.bdd.BaseProduit;
 using WpfApp1.code.bdd.NonAddresse;
 
 namespace WpfApp1.code.bdd.NonAddressé
@@ -49,11 +50,11 @@ namespace WpfApp1.code.bdd.NonAddressé
             List<NA2> NonTrier = new List<NA2>();
             foreach (NA2 nA in Atrier)
             {
-                List<NonAddresseS> n = bd.SearchLocProduit(long.Parse(nA.Ean));
+                List<NonAddresseS2> n = bd.SearchLocProduit(long.Parse(nA.Ean));
                 if (n.Count != 0)
                 {
                     nA.loc = "";
-                    foreach (NonAddresseS nonAddresseS in n)
+                    foreach (NonAddresseS2 nonAddresseS in n)
                     {
                         nA.loc = " " + nonAddresseS.Alle + "." + nonAddresseS.Trave;
                     }

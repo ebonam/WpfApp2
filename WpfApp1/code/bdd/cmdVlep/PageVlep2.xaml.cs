@@ -25,13 +25,8 @@ namespace WpfApp1.code.bdd.cmdVlep
             ListeCMD = new List<string>();
             p = Parameters.Instance();
             InitializeComponent();
-
             _comboSecteur0.ItemsSource = p.ps.nomSecteur;
             _listboxNomSecteur.ItemsSource = l;
-
-
-
-
 
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -39,25 +34,25 @@ namespace WpfApp1.code.bdd.cmdVlep
 
             try
             {
-                listCmd.add(this.tb.Text, int.Parse(this.nomCommande.Text));
-                l.Add(this.nomCommande.Text);
-                _listboxNomSecteur.ItemsSource = null;
-                _listboxNomSecteur.ItemsSource = l;
-                this.tb.Text = "";
-                this.nomCommande.Text = "";
+                if (listCmd.Add(this.tb.Text, int.Parse(this.nomCommande.Text)))
+                {
+                    l.Add(this.nomCommande.Text);
+                    _listboxNomSecteur.ItemsSource = null;
+                    _listboxNomSecteur.ItemsSource = l;
+                    this.tb.Text = "";
+                    this.nomCommande.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
 
-                //    throw new NotImplementedException();
             }
 
-            /*
-            throw new NotImplementedException();
-            VlepCmd vlepCmd = new VlepCmd();
-            vlepCmd.Test(textblock.Text);
-            vlepCmd.WriteExcelFileV2();*/
         }
 
         private void AfficherRayonSecteur(object sender, RoutedEventArgs e)

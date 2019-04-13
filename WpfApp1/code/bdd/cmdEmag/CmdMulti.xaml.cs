@@ -27,16 +27,20 @@ namespace WpfApp1.code.bdd.cmdEmag
 
         ListCmdEmag listCmd = new ListCmdEmag();
         private void Validate_Click(object sender, RoutedEventArgs e)
-        {
-           
+        {      
             try
             {
-                listCmd.Add(this.tb.Text, int.Parse(this.NumCmd.Text));
-                l.Add(this.NumCmd.Text);
-                _listboxNomSecteur.ItemsSource = null;
-                _listboxNomSecteur.ItemsSource = l;
-                this.tb.Text = "";
-                this.NumCmd.Text = "";
+                if (listCmd.Add(this.tb.Text, int.Parse(this.NumCmd.Text))){
+                    l.Add(this.NumCmd.Text);
+                    _listboxNomSecteur.ItemsSource = null;
+                    _listboxNomSecteur.ItemsSource = l;
+                    this.tb.Text = "";
+                    this.NumCmd.Text = "";
+                }
+                else{
+                    MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+
+                }
             }
             catch (Exception)
             {

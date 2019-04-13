@@ -15,5 +15,9 @@ namespace WpfApp1.code.client
             public string Telephone1 { get; set; }
             [Column("Telephone2")]
             public string Telephone2 { get; set; }      
+
+
+
+
     }
 }

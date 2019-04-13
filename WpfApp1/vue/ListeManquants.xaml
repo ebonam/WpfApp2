@@ -8,6 +8,8 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <StackPanel Background="White">
+        <Label HorizontalAlignment="Center">Lister manquants</Label>
+
         <Label></Label>
         <Label>Coller ci-dessous la liste des manquants</Label>
         <Label Height="34"></Label>

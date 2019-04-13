@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.code;
+using WpfApp1.code.bdd;
 using WpfApp1.code.bdd.NonAddresse;
+using WpfApp1.code.client;
 
 namespace WpfApp1.vue
 {
@@ -18,7 +20,7 @@ namespace WpfApp1.vue
         /// 
         /// </summary>
         public List<string> l;
-
+        Bdd bdd = Bdd.Instance();
         /// <summary>
         /// 
         /// </summary>
@@ -29,10 +31,11 @@ namespace WpfApp1.vue
             InitializeComponent();
             PrintEmag();
             PrintProd();
+            PrintClient();
             _comboSecteur0.ItemsSource = l;
-            //_comboSecteur1.ItemsSource = l;
-            _listboxNomSecteur.ItemsSource = p.ps.nomSecteur;
 
+            _listboxNomSecteur.ItemsSource = p.ps.nomSecteur;
+            _rayonSecteur.Visibility = Visibility.Hidden;
             listBox1.ItemsSource = p.TGs.tgs;
             UpdateSelector();
         }
@@ -117,7 +120,8 @@ namespace WpfApp1.vue
         }
         private void ImporterMotCle(object sender, RoutedEventArgs e)
         {
-
+            ListeMC m = new ListeMC();
+            m.ReadExcelFile(tbMC.Text);
         }
 
         private void AfficherRayonSecteur(object sender, RoutedEventArgs e)
@@ -164,18 +168,22 @@ namespace WpfApp1.vue
             _rayonSecteur.Visibility = Visibility.Hidden;
         }
 
-        private void ApplyClient(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+
 
         private void ViderClient(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bdd.ViderClient();
+
         }
         private void UpdateClient(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+
+            Clients client = new Clients();
+            if (tbclient.Text != "")
+            {
+                if (!client.ReadCp(this.tbclient.Text))
+                    MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+            }
         }
 
         private void AjouterRayonSecteur(object sender, EventArgs e)
@@ -246,7 +254,6 @@ namespace WpfApp1.vue
         /// </summary>
         private void PrintEmag()
         {
-
             this.EanEMag.Text = "" + p.emag.EAN;
             this.LibEMag.Text = "" + p.emag.LIB;
             LocEMag.Text = "" + p.emag.LOC;
@@ -258,7 +265,6 @@ namespace WpfApp1.vue
         /// </summary>
         private void PrintProd()
         {
-
             this.EanProd.Text = "" + p.prod.EAN;
             this.LibProd.Text = "" + p.prod.LIB;
             AllePro.Text = "" + p.prod.Alle;
@@ -284,6 +290,34 @@ namespace WpfApp1.vue
             {
                 MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
             }
+        }
+        private void PrintClient()
+        {
+
+            this.idClient.Text = "" + p.client.id;
+            this.nomClient.Text = "" + p.client.nom;
+            this._prenomclient.Text = "" + p.client.prenom;
+            this.clienttel1.Text = "" + p.client.tel1;
+            this.clienttel2.Text = "" + p.client.tel2;
+
+        }
+        private void ApplyClient(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                p.client.id = int.Parse(this.idClient.Text);
+                p.client.nom = int.Parse(this.nomClient.Text);
+                p.client.prenom = int.Parse(this._prenomclient.Text);
+                p.client.tel1 = int.Parse(this.clienttel1.Text);
+                p.client.tel2 = int.Parse(this.clienttel2.Text);
+
+                p.Sav();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Les données fournies semblent erronées .\n Veuillez ressayer", "Erreur", MessageBoxButton.OK);
+            }
+
         }
     }
 }

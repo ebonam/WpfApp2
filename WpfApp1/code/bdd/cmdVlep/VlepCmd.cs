@@ -73,9 +73,8 @@ return            Test(sdsf);
             }
             catch (Exception) {
                 retunr = false;
-              //  throw new NotFiniteNumberException();
             }
-            return retunr;
+            return retunr &&d.Count!=0;
         }
 
         public string SetSec(int rayon)
