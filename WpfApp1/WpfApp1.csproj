@@ -67,6 +67,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="InTheHand, Version=10.2018.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\InTheHand.Pontoon.10.2018.3.19\lib\net452\InTheHand.dll</HintPath>
+    </Reference>
+    <Reference Include="InTheHand.Devices.Bluetooth, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Network.Bluetooth.4.0.1803.22\lib\net461\InTheHand.Devices.Bluetooth.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -110,6 +116,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="bl\Class1.cs" />
     <Compile Include="code\bdd\BaseProduit\Test.cs" />
     <Compile Include="code\bdd\bdd.cs" />
     <Compile Include="code\bdd\cmdEmag\ArticleEmag.cs" />
@@ -209,6 +216,18 @@
     <Page Include="code\bdd\cmdVlep\PageVlep2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="code\bdd\NonAddressé\Scenario1_Discovery.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="code\bdd\NonAddressé\Scenario2_Client.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="code\bdd\NonAddressé\Scenario3_ServerForeground.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="code\client\client.xaml">
       <SubType>Designer</SubType>
@@ -362,9 +381,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BarcodeLib.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\kisspng-owen-lego-jurassic-world-jurassic-park-fan-art-chris-pratt-5ac6ce4f68de88.8780581215229783834297.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\raptors.bmp" />
